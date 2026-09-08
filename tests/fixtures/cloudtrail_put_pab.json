@@ -1,0 +1,24 @@
+{
+  "id": "11111111-2222-3333-4444-555555555555",
+  "source": "aws.s3",
+  "detail-type": "AWS API Call via CloudTrail",
+  "time": "2026-04-09T02:43:43Z",
+  "region": "us-east-1",
+  "detail": {
+    "eventVersion": "1.08",
+    "eventSource": "s3.amazonaws.com",
+    "eventName": "PutBucketPublicAccessBlock",
+    "eventTime": "2026-04-09T02:43:43Z",
+    "awsRegion": "us-east-1",
+    "eventID": "ct-demo-1",
+    "userIdentity": {
+      "arn": "arn:aws:iam::123456789012:user/aspare-tester"
+    },
+    "requestParameters": {
+      "bucketName": "demo-bucket",
+      "PublicAccessBlockConfiguration": {
+        "BlockPublicAcls": false
+      }
+    }
+  }
+}
