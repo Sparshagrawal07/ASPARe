@@ -1,0 +1,68 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aspare"
+version = "0.5.0"
+description = "ASPARe — Automated Security Posture Assessment & Remediation Engine"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "ASPARe Project" }]
+keywords = ["cspm", "s3", "aws", "security", "remediation"]
+dependencies = [
+    "boto3>=1.35.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "moto[s3]>=5.0",
+    "ruff>=0.8",
+    "mypy>=1.13",
+    "boto3-stubs[s3,events,sts]>=1.35.0",
+    "pyyaml>=6.0",
+]
+dashboard = [
+    "streamlit>=1.40",
+]
+all = [
+    "aspare[dev,dashboard]",
+]
+
+[project.scripts]
+aspare-demo = "aspare.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+aspare = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-q --strict-markers"
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+src = ["src", "tests", "dashboard", "scripts"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.mypy]
+python_version = "3.11"
+mypy_path = "src"
+packages = ["aspare"]
+ignore_missing_imports = true
+check_untyped_defs = true
+warn_unused_ignores = true
+disallow_untyped_defs = true
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["B011"]
+"dashboard/**" = ["E501"]
+"scripts/**" = ["E501"]
