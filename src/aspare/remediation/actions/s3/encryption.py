@@ -1,0 +1,38 @@
+"""S3_ENABLE_DEFAULT_ENCRYPTION — set AES256 or configured KMS encryption."""
+
+from __future__ import annotations
+
+from aspare.config.settings import Settings
+from aspare.core.interfaces import StorageRemediator
+from aspare.core.models import Finding, RemediationActionResult
+from aspare.remediation.actions.s3.common import run_action
+from aspare.remediation.safety import SafetyGate
+
+
+class EnableDefaultEncryptionAction:
+    action_id = "S3_ENABLE_DEFAULT_ENCRYPTION"
+
+    def __init__(
+        self, remediator: StorageRemediator, settings: Settings, gate: SafetyGate
+    ) -> None:
+        self._remediator = remediator
+        self._settings = settings
+        self._gate = gate
+
+    def supports(self, finding: Finding) -> bool:
+        return finding.remediation_action == self.action_id
+
+    def execute(self, finding: Finding) -> RemediationActionResult:
+        return run_action(
+            self.action_id,
+            finding,
+            self._remediator,
+            self._settings,
+            self._gate,
+            lambda: self._remediator.enable_default_encryption(
+                finding.resource_id,
+                self._settings.encryption_algorithm,
+                self._settings.encryption_kms_key_id,
+            ),
+            f"Enabled default encryption ({self._settings.encryption_algorithm})",
+        )
