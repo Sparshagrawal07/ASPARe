@@ -20,6 +20,9 @@ class FindingRow:
     remediation: str
     verification: str
     finding_id: str
+    remedy_message: str = ""
+    before_state: dict[str, Any] = field(default_factory=dict)
+    after_state: dict[str, Any] = field(default_factory=dict)
 
 
 @dataclass
@@ -30,6 +33,9 @@ class ActivityRow:
     result: str
     verified: str
     timestamp: str
+    message: str = ""
+    before_state: dict[str, Any] = field(default_factory=dict)
+    after_state: dict[str, Any] = field(default_factory=dict)
 
 
 @dataclass
@@ -72,8 +78,15 @@ class ReportingAggregator:
                         "remediation": "",
                         "verification": "",
                         "finding_id": record.finding_id,
+                        "remedy_message": "",
+                        "before_state": {},
+                        "after_state": {},
                     },
                 )
+                if record.before_state:
+                    row["before_state"] = record.before_state
+                if record.after_state:
+                    row["after_state"] = record.after_state
                 if record.action == AuditAction.FINDING_DETECTED.value:
                     row["detected_at"] = record.timestamp.isoformat()
                     row["status"] = "DETECTED"
@@ -81,6 +94,7 @@ class ReportingAggregator:
                     row["status"] = record.result
                 elif record.action == AuditAction.REMEDIATION_EXECUTED.value:
                     row["remediation"] = record.details.get("action_id") or record.result
+                    row["remedy_message"] = str(record.details.get("message") or "")
                     row["status"] = record.result
                 elif record.action == AuditAction.VERIFICATION_COMPLETED.value:
                     row["verification"] = record.result
@@ -97,6 +111,9 @@ class ReportingAggregator:
                             result=record.result,
                             verified="yes" if record.verified else "no",
                             timestamp=record.timestamp.isoformat(),
+                            message=str(row.get("remedy_message") or record.details.get("message") or ""),
+                            before_state=row.get("before_state") or {},
+                            after_state=record.after_state or row.get("after_state") or {},
                         )
                     )
 
@@ -110,6 +127,9 @@ class ReportingAggregator:
                 remediation=item["remediation"] or "none",
                 verification=item["verification"] or "n/a",
                 finding_id=item["finding_id"],
+                remedy_message=str(item.get("remedy_message") or ""),
+                before_state=dict(item.get("before_state") or {}),
+                after_state=dict(item.get("after_state") or {}),
             )
             for item in findings.values()
         ]

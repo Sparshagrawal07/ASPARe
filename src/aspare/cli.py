@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import sys
 
+from aspare.dataset import run_dataset_pipeline
 from aspare.demo import run_live_demo, run_mocked_demo
 
 
@@ -14,9 +15,9 @@ def main(argv: list[str] | None = None) -> int:
     )
     parser.add_argument(
         "--mode",
-        choices=("mocked", "live"),
-        default="mocked",
-        help="mocked uses moto (no real AWS). live creates a uniquely named demo bucket.",
+        choices=("dataset", "mocked", "live"),
+        default="dataset",
+        help="dataset replays recorded CloudTrail lookups; mocked synthesizes a bucket; live creates one AWS bucket.",
     )
     parser.add_argument(
         "--confirm",
@@ -25,6 +26,9 @@ def main(argv: list[str] | None = None) -> int:
     )
     parser.add_argument("--cleanup", action="store_true", help="Delete the live demo bucket after a successful run")
     args = parser.parse_args(argv)
+    if args.mode == "dataset":
+        run_dataset_pipeline()
+        return 0
     if args.mode == "mocked":
         run_mocked_demo()
         return 0

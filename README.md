@@ -28,7 +28,7 @@ source .venv/bin/activate
 pip install -e ".[dev,dashboard]"
 
 pytest
-python -m aspare.cli --mode mocked
+python -m aspare.cli --mode dataset
 streamlit run dashboard/app.py
 ```
 

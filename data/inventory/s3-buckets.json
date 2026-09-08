@@ -1,0 +1,1125 @@
+{
+  "source": "April 2026 CloudTrail LookupEvents and GetBucket* captures for the two FERPA lab buckets, plus a reconstructed 40-bucket campus estate using the same control fields.",
+  "region": "us-east-1",
+  "buckets": [
+    {
+      "name": "ferpa-student-record-demo-for-cap",
+      "region": "us-east-1",
+      "tags": {
+        "ASPAReDemo": "true",
+        "DataClass": "FERPA",
+        "Purpose": "student-record-lab",
+        "Environment": "lab"
+      },
+      "public_access_block": {
+        "BlockPublicAcls": false,
+        "IgnorePublicAcls": false,
+        "BlockPublicPolicy": false,
+        "RestrictPublicBuckets": false
+      },
+      "encryption": {
+        "algorithm": "AES256",
+        "bucket_key_enabled": true
+      },
+      "versioning": {
+        "status": null
+      },
+      "policy": null,
+      "acl": "private"
+    },
+    {
+      "name": "ferpa-remediation-results-cap",
+      "region": "us-east-1",
+      "tags": {
+        "ASPAReDemo": "true",
+        "DataClass": "FERPA",
+        "Purpose": "remediation-results",
+        "Environment": "lab"
+      },
+      "public_access_block": {
+        "BlockPublicAcls": false,
+        "IgnorePublicAcls": false,
+        "BlockPublicPolicy": false,
+        "RestrictPublicBuckets": false
+      },
+      "encryption": {
+        "algorithm": "AES256",
+        "bucket_key_enabled": true
+      },
+      "versioning": {
+        "status": null
+      },
+      "policy": null,
+      "acl": "private"
+    },
+    {
+      "name": "ferpa-transcripts-raw-east",
+      "region": "us-east-1",
+      "tags": {
+        "ASPAReDemo": "true",
+        "DataClass": "FERPA",
+        "Purpose": "transcripts",
+        "Environment": "prod"
+      },
+      "public_access_block": {
+        "BlockPublicAcls": false,
+        "IgnorePublicAcls": false,
+        "BlockPublicPolicy": false,
+        "RestrictPublicBuckets": false
+      },
+      "encryption": {
+        "algorithm": "AES256",
+        "bucket_key_enabled": true
+      },
+      "versioning": {
+        "status": null
+      },
+      "policy": null,
+      "acl": "private"
+    },
+    {
+      "name": "ferpa-enrollment-exports",
+      "region": "us-east-1",
+      "tags": {
+        "ASPAReDemo": "true",
+        "DataClass": "FERPA",
+        "Purpose": "enrollment",
+        "Environment": "prod"
+      },
+      "public_access_block": {
+        "BlockPublicAcls": false,
+        "IgnorePublicAcls": false,
+        "BlockPublicPolicy": false,
+        "RestrictPublicBuckets": false
+      },
+      "encryption": {
+        "algorithm": "AES256",
+        "bucket_key_enabled": true
+      },
+      "versioning": {
+        "status": null
+      },
+      "policy": null,
+      "acl": "private"
+    },
+    {
+      "name": "ferpa-advising-notes-2026",
+      "region": "us-east-1",
+      "tags": {
+        "ASPAReDemo": "true",
+        "DataClass": "FERPA",
+        "Purpose": "advising",
+        "Environment": "prod"
+      },
+      "public_access_block": {
+        "BlockPublicAcls": false,
+        "IgnorePublicAcls": false,
+        "BlockPublicPolicy": false,
+        "RestrictPublicBuckets": false
+      },
+      "encryption": {},
+      "versioning": {
+        "status": null
+      },
+      "policy": null,
+      "acl": "private"
+    },
+    {
+      "name": "ferpa-financial-aid-packets",
+      "region": "us-east-1",
+      "tags": {
+        "ASPAReDemo": "true",
+        "DataClass": "FERPA",
+        "Purpose": "finaid",
+        "Environment": "prod"
+      },
+      "public_access_block": {
+        "BlockPublicAcls": false,
+        "IgnorePublicAcls": false,
+        "BlockPublicPolicy": false,
+        "RestrictPublicBuckets": false
+      },
+      "encryption": {
+        "algorithm": "AES256",
+        "bucket_key_enabled": true
+      },
+      "versioning": {
+        "status": null
+      },
+      "policy": null,
+      "acl": "public-read"
+    },
+    {
+      "name": "campus-id-card-photos",
+      "region": "us-east-1",
+      "tags": {
+        "ASPAReDemo": "true",
+        "DataClass": "PII",
+        "Purpose": "id-photos",
+        "Environment": "prod"
+      },
+      "public_access_block": {
+        "BlockPublicAcls": false,
+        "IgnorePublicAcls": false,
+        "BlockPublicPolicy": false,
+        "RestrictPublicBuckets": false
+      },
+      "encryption": {},
+      "versioning": {
+        "status": null
+      },
+      "policy": null,
+      "acl": "private"
+    },
+    {
+      "name": "registrar-degree-audit",
+      "region": "us-east-1",
+      "tags": {
+        "ASPAReDemo": "true",
+        "DataClass": "FERPA",
+        "Purpose": "degree-audit",
+        "Environment": "prod"
+      },
+      "public_access_block": {
+        "BlockPublicAcls": false,
+        "IgnorePublicAcls": false,
+        "BlockPublicPolicy": false,
+        "RestrictPublicBuckets": false
+      },
+      "encryption": {
+        "algorithm": "AES256",
+        "bucket_key_enabled": true
+      },
+      "versioning": {
+        "status": null
+      },
+      "policy": null,
+      "acl": "private"
+    },
+    {
+      "name": "housing-contracts-scan",
+      "region": "us-east-1",
+      "tags": {
+        "ASPAReDemo": "true",
+        "DataClass": "PII",
+        "Purpose": "housing",
+        "Environment": "prod"
+      },
+      "public_access_block": {
+        "BlockPublicAcls": true,
+        "IgnorePublicAcls": true,
+        "BlockPublicPolicy": true,
+        "RestrictPublicBuckets": true
+      },
+      "encryption": {},
+      "versioning": {
+        "status": null
+      },
+      "policy": null,
+      "acl": "private"
+    },
+    {
+      "name": "hr-onboarding-docs",
+      "region": "us-east-1",
+      "tags": {
+        "ASPAReDemo": "true",
+        "DataClass": "PII",
+        "Purpose": "hr",
+        "Environment": "prod"
+      },
+      "public_access_block": {
+        "BlockPublicAcls": true,
+        "IgnorePublicAcls": true,
+        "BlockPublicPolicy": true,
+        "RestrictPublicBuckets": true
+      },
+      "encryption": {
+        "algorithm": "AES256",
+        "bucket_key_enabled": true
+      },
+      "versioning": {
+        "status": "Enabled"
+      },
+      "policy": null,
+      "acl": "private"
+    },
+    {
+      "name": "payroll-yearend-archive",
+      "region": "us-east-1",
+      "tags": {
+        "ASPAReDemo": "true",
+        "DataClass": "FINANCIAL",
+        "Purpose": "payroll",
+        "Environment": "prod"
+      },
+      "public_access_block": {
+        "BlockPublicAcls": false,
+        "IgnorePublicAcls": false,
+        "BlockPublicPolicy": false,
+        "RestrictPublicBuckets": false
+      },
+      "encryption": {},
+      "versioning": {
+        "status": null
+      },
+      "policy": null,
+      "acl": "private"
+    },
+    {
+      "name": "alumni-giving-exports",
+      "region": "us-east-1",
+      "tags": {
+        "ASPAReDemo": "true",
+        "DataClass": "PII",
+        "Purpose": "advancement",
+        "Environment": "prod"
+      },
+      "public_access_block": {
+        "BlockPublicAcls": false,
+        "IgnorePublicAcls": false,
+        "BlockPublicPolicy": false,
+        "RestrictPublicBuckets": false
+      },
+      "encryption": {
+        "algorithm": "AES256",
+        "bucket_key_enabled": true
+      },
+      "versioning": {
+        "status": null
+      },
+      "policy": null,
+      "acl": "private"
+    },
+    {
+      "name": "research-irb-consents",
+      "region": "us-east-1",
+      "tags": {
+        "ASPAReDemo": "true",
+        "DataClass": "PHI",
+        "Purpose": "irb",
+        "Environment": "prod"
+      },
+      "public_access_block": {
+        "BlockPublicAcls": false,
+        "IgnorePublicAcls": false,
+        "BlockPublicPolicy": false,
+        "RestrictPublicBuckets": false
+      },
+      "encryption": {
+        "algorithm": "AES256",
+        "bucket_key_enabled": true
+      },
+      "versioning": {
+        "status": null
+      },
+      "policy": null,
+      "acl": "public-read"
+    },
+    {
+      "name": "clinic-billing-extracts",
+      "region": "us-east-1",
+      "tags": {
+        "ASPAReDemo": "true",
+        "DataClass": "PHI",
+        "Purpose": "clinic",
+        "Environment": "prod"
+      },
+      "public_access_block": {
+        "BlockPublicAcls": true,
+        "IgnorePublicAcls": true,
+        "BlockPublicPolicy": true,
+        "RestrictPublicBuckets": true
+      },
+      "encryption": {},
+      "versioning": {
+        "status": null
+      },
+      "policy": null,
+      "acl": "private"
+    },
+    {
+      "name": "library-patron-holds",
+      "region": "us-east-1",
+      "tags": {
+        "ASPAReDemo": "true",
+        "DataClass": "PII",
+        "Purpose": "library",
+        "Environment": "prod"
+      },
+      "public_access_block": {
+        "BlockPublicAcls": true,
+        "IgnorePublicAcls": true,
+        "BlockPublicPolicy": true,
+        "RestrictPublicBuckets": true
+      },
+      "encryption": {
+        "algorithm": "AES256",
+        "bucket_key_enabled": true
+      },
+      "versioning": {
+        "status": "Enabled"
+      },
+      "policy": null,
+      "acl": "private"
+    },
+    {
+      "name": "its-cloudtrail-archive",
+      "region": "us-east-1",
+      "tags": {
+        "ASPAReDemo": "true",
+        "DataClass": "AUDIT",
+        "Purpose": "audit-logs",
+        "Environment": "prod"
+      },
+      "public_access_block": {
+        "BlockPublicAcls": true,
+        "IgnorePublicAcls": true,
+        "BlockPublicPolicy": true,
+        "RestrictPublicBuckets": true
+      },
+      "encryption": {
+        "algorithm": "AES256",
+        "bucket_key_enabled": true
+      },
+      "versioning": {
+        "status": null
+      },
+      "policy": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Sid": "ASPAReDenyInsecureTransport",
+            "Effect": "Deny",
+            "Principal": "*",
+            "Action": "s3:*",
+            "Resource": [
+              "arn:aws:s3:::its-cloudtrail-archive",
+              "arn:aws:s3:::its-cloudtrail-archive/*"
+            ],
+            "Condition": {
+              "Bool": {
+                "aws:SecureTransport": "false"
+              }
+            }
+          }
+        ]
+      },
+      "acl": "private"
+    },
+    {
+      "name": "its-vpc-flow-logs",
+      "region": "us-east-1",
+      "tags": {
+        "ASPAReDemo": "true",
+        "DataClass": "AUDIT",
+        "Purpose": "net-logs",
+        "Environment": "prod"
+      },
+      "public_access_block": {
+        "BlockPublicAcls": true,
+        "IgnorePublicAcls": true,
+        "BlockPublicPolicy": true,
+        "RestrictPublicBuckets": true
+      },
+      "encryption": {
+        "algorithm": "AES256",
+        "bucket_key_enabled": true
+      },
+      "versioning": {
+        "status": "Enabled"
+      },
+      "policy": null,
+      "acl": "private"
+    },
+    {
+      "name": "its-config-snapshots",
+      "region": "us-east-1",
+      "tags": {
+        "ASPAReDemo": "true",
+        "DataClass": "AUDIT",
+        "Purpose": "config",
+        "Environment": "prod"
+      },
+      "public_access_block": {
+        "BlockPublicAcls": true,
+        "IgnorePublicAcls": true,
+        "BlockPublicPolicy": true,
+        "RestrictPublicBuckets": true
+      },
+      "encryption": {},
+      "versioning": {
+        "status": null
+      },
+      "policy": null,
+      "acl": "private"
+    },
+    {
+      "name": "backup-rds-snapshots-s3",
+      "region": "us-east-1",
+      "tags": {
+        "ASPAReDemo": "true",
+        "DataClass": "BACKUP",
+        "Purpose": "db-backups",
+        "Environment": "prod"
+      },
+      "public_access_block": {
+        "BlockPublicAcls": false,
+        "IgnorePublicAcls": false,
+        "BlockPublicPolicy": false,
+        "RestrictPublicBuckets": false
+      },
+      "encryption": {},
+      "versioning": {
+        "status": null
+      },
+      "policy": null,
+      "acl": "private"
+    },
+    {
+      "name": "backup-home-directories",
+      "region": "us-east-1",
+      "tags": {
+        "ASPAReDemo": "true",
+        "DataClass": "PII",
+        "Purpose": "home-dirs",
+        "Environment": "prod"
+      },
+      "public_access_block": {
+        "BlockPublicAcls": false,
+        "IgnorePublicAcls": false,
+        "BlockPublicPolicy": false,
+        "RestrictPublicBuckets": false
+      },
+      "encryption": {
+        "algorithm": "AES256",
+        "bucket_key_enabled": true
+      },
+      "versioning": {
+        "status": null
+      },
+      "policy": null,
+      "acl": "private"
+    },
+    {
+      "name": "analytics-clickstream-raw",
+      "region": "us-east-1",
+      "tags": {
+        "ASPAReDemo": "true",
+        "DataClass": "INTERNAL",
+        "Purpose": "analytics",
+        "Environment": "prod"
+      },
+      "public_access_block": {
+        "BlockPublicAcls": true,
+        "IgnorePublicAcls": true,
+        "BlockPublicPolicy": true,
+        "RestrictPublicBuckets": true
+      },
+      "encryption": {},
+      "versioning": {
+        "status": null
+      },
+      "policy": null,
+      "acl": "private"
+    },
+    {
+      "name": "analytics-sis-warehouse",
+      "region": "us-east-1",
+      "tags": {
+        "ASPAReDemo": "true",
+        "DataClass": "FERPA",
+        "Purpose": "warehouse",
+        "Environment": "prod"
+      },
+      "public_access_block": {
+        "BlockPublicAcls": true,
+        "IgnorePublicAcls": true,
+        "BlockPublicPolicy": true,
+        "RestrictPublicBuckets": true
+      },
+      "encryption": {
+        "algorithm": "AES256",
+        "bucket_key_enabled": true
+      },
+      "versioning": {
+        "status": "Enabled"
+      },
+      "policy": null,
+      "acl": "private"
+    },
+    {
+      "name": "data-lake-landing-zone",
+      "region": "us-east-1",
+      "tags": {
+        "ASPAReDemo": "true",
+        "DataClass": "INTERNAL",
+        "Purpose": "datalake",
+        "Environment": "prod"
+      },
+      "public_access_block": {
+        "BlockPublicAcls": false,
+        "IgnorePublicAcls": false,
+        "BlockPublicPolicy": false,
+        "RestrictPublicBuckets": false
+      },
+      "encryption": {
+        "algorithm": "AES256",
+        "bucket_key_enabled": true
+      },
+      "versioning": {
+        "status": null
+      },
+      "policy": null,
+      "acl": "private"
+    },
+    {
+      "name": "ml-feature-store-staging",
+      "region": "us-east-1",
+      "tags": {
+        "ASPAReDemo": "true",
+        "DataClass": "INTERNAL",
+        "Purpose": "ml",
+        "Environment": "staging"
+      },
+      "public_access_block": {
+        "BlockPublicAcls": true,
+        "IgnorePublicAcls": true,
+        "BlockPublicPolicy": true,
+        "RestrictPublicBuckets": true
+      },
+      "encryption": {},
+      "versioning": {
+        "status": null
+      },
+      "policy": null,
+      "acl": "private"
+    },
+    {
+      "name": "ci-artifacts-github-runners",
+      "region": "us-east-1",
+      "tags": {
+        "ASPAReDemo": "true",
+        "DataClass": "INTERNAL",
+        "Purpose": "ci",
+        "Environment": "dev"
+      },
+      "public_access_block": {
+        "BlockPublicAcls": false,
+        "IgnorePublicAcls": false,
+        "BlockPublicPolicy": false,
+        "RestrictPublicBuckets": false
+      },
+      "encryption": {
+        "algorithm": "AES256",
+        "bucket_key_enabled": true
+      },
+      "versioning": {
+        "status": null
+      },
+      "policy": null,
+      "acl": "public-read"
+    },
+    {
+      "name": "ci-cache-npm-wheels",
+      "region": "us-east-1",
+      "tags": {
+        "ASPAReDemo": "true",
+        "DataClass": "INTERNAL",
+        "Purpose": "ci-cache",
+        "Environment": "dev"
+      },
+      "public_access_block": {
+        "BlockPublicAcls": true,
+        "IgnorePublicAcls": true,
+        "BlockPublicPolicy": true,
+        "RestrictPublicBuckets": true
+      },
+      "encryption": {
+        "algorithm": "AES256",
+        "bucket_key_enabled": true
+      },
+      "versioning": {
+        "status": null
+      },
+      "policy": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Sid": "ASPAReDenyInsecureTransport",
+            "Effect": "Deny",
+            "Principal": "*",
+            "Action": "s3:*",
+            "Resource": [
+              "arn:aws:s3:::ci-cache-npm-wheels",
+              "arn:aws:s3:::ci-cache-npm-wheels/*"
+            ],
+            "Condition": {
+              "Bool": {
+                "aws:SecureTransport": "false"
+              }
+            }
+          }
+        ]
+      },
+      "acl": "private"
+    },
+    {
+      "name": "app-uploads-student-portal",
+      "region": "us-east-1",
+      "tags": {
+        "ASPAReDemo": "true",
+        "DataClass": "FERPA",
+        "Purpose": "uploads",
+        "Environment": "prod"
+      },
+      "public_access_block": {
+        "BlockPublicAcls": false,
+        "IgnorePublicAcls": false,
+        "BlockPublicPolicy": false,
+        "RestrictPublicBuckets": false
+      },
+      "encryption": {},
+      "versioning": {
+        "status": null
+      },
+      "policy": null,
+      "acl": "private"
+    },
+    {
+      "name": "app-static-marketing-site",
+      "region": "us-east-1",
+      "tags": {
+        "ASPAReDemo": "true",
+        "DataClass": "PUBLIC",
+        "Purpose": "marketing",
+        "Environment": "prod"
+      },
+      "public_access_block": {
+        "BlockPublicAcls": true,
+        "IgnorePublicAcls": true,
+        "BlockPublicPolicy": true,
+        "RestrictPublicBuckets": true
+      },
+      "encryption": {
+        "algorithm": "AES256",
+        "bucket_key_enabled": true
+      },
+      "versioning": {
+        "status": "Enabled"
+      },
+      "policy": null,
+      "acl": "private"
+    },
+    {
+      "name": "media-commencement-video",
+      "region": "us-east-1",
+      "tags": {
+        "ASPAReDemo": "true",
+        "DataClass": "INTERNAL",
+        "Purpose": "media",
+        "Environment": "prod"
+      },
+      "public_access_block": {
+        "BlockPublicAcls": true,
+        "IgnorePublicAcls": true,
+        "BlockPublicPolicy": true,
+        "RestrictPublicBuckets": true
+      },
+      "encryption": {},
+      "versioning": {
+        "status": null
+      },
+      "policy": null,
+      "acl": "private"
+    },
+    {
+      "name": "finance-1098t-batch",
+      "region": "us-east-1",
+      "tags": {
+        "ASPAReDemo": "true",
+        "DataClass": "FINANCIAL",
+        "Purpose": "tax",
+        "Environment": "prod"
+      },
+      "public_access_block": {
+        "BlockPublicAcls": false,
+        "IgnorePublicAcls": false,
+        "BlockPublicPolicy": false,
+        "RestrictPublicBuckets": false
+      },
+      "encryption": {},
+      "versioning": {
+        "status": null
+      },
+      "policy": null,
+      "acl": "private"
+    },
+    {
+      "name": "legal-hold-ediscovery",
+      "region": "us-east-1",
+      "tags": {
+        "ASPAReDemo": "true",
+        "DataClass": "LEGAL",
+        "Purpose": "legal",
+        "Environment": "prod"
+      },
+      "public_access_block": {
+        "BlockPublicAcls": false,
+        "IgnorePublicAcls": false,
+        "BlockPublicPolicy": false,
+        "RestrictPublicBuckets": false
+      },
+      "encryption": {
+        "algorithm": "AES256",
+        "bucket_key_enabled": true
+      },
+      "versioning": {
+        "status": null
+      },
+      "policy": null,
+      "acl": "private"
+    },
+    {
+      "name": "vendor-sftp-dropbox",
+      "region": "us-east-1",
+      "tags": {
+        "ASPAReDemo": "true",
+        "DataClass": "PII",
+        "Purpose": "vendor-sftp",
+        "Environment": "prod"
+      },
+      "public_access_block": {
+        "BlockPublicAcls": false,
+        "IgnorePublicAcls": false,
+        "BlockPublicPolicy": false,
+        "RestrictPublicBuckets": false
+      },
+      "encryption": {
+        "algorithm": "AES256",
+        "bucket_key_enabled": true
+      },
+      "versioning": {
+        "status": null
+      },
+      "policy": null,
+      "acl": "public-read"
+    },
+    {
+      "name": "shared-scratch-sandbox",
+      "region": "us-east-1",
+      "tags": {
+        "ASPAReDemo": "true",
+        "DataClass": "INTERNAL",
+        "Purpose": "scratch",
+        "Environment": "dev"
+      },
+      "public_access_block": {
+        "BlockPublicAcls": false,
+        "IgnorePublicAcls": false,
+        "BlockPublicPolicy": false,
+        "RestrictPublicBuckets": false
+      },
+      "encryption": {},
+      "versioning": {
+        "status": null
+      },
+      "policy": null,
+      "acl": "private"
+    },
+    {
+      "name": "old-glacier-restore-cache",
+      "region": "us-east-1",
+      "tags": {
+        "ASPAReDemo": "true",
+        "DataClass": "BACKUP",
+        "Purpose": "restore",
+        "Environment": "prod"
+      },
+      "public_access_block": {
+        "BlockPublicAcls": true,
+        "IgnorePublicAcls": true,
+        "BlockPublicPolicy": true,
+        "RestrictPublicBuckets": true
+      },
+      "encryption": {
+        "algorithm": "AES256",
+        "bucket_key_enabled": true
+      },
+      "versioning": {
+        "status": null
+      },
+      "policy": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Sid": "ASPAReDenyInsecureTransport",
+            "Effect": "Deny",
+            "Principal": "*",
+            "Action": "s3:*",
+            "Resource": [
+              "arn:aws:s3:::old-glacier-restore-cache",
+              "arn:aws:s3:::old-glacier-restore-cache/*"
+            ],
+            "Condition": {
+              "Bool": {
+                "aws:SecureTransport": "false"
+              }
+            }
+          }
+        ]
+      },
+      "acl": "private"
+    },
+    {
+      "name": "observability-otel-export",
+      "region": "us-east-1",
+      "tags": {
+        "ASPAReDemo": "true",
+        "DataClass": "AUDIT",
+        "Purpose": "otel",
+        "Environment": "prod"
+      },
+      "public_access_block": {
+        "BlockPublicAcls": true,
+        "IgnorePublicAcls": true,
+        "BlockPublicPolicy": true,
+        "RestrictPublicBuckets": true
+      },
+      "encryption": {
+        "algorithm": "AES256",
+        "bucket_key_enabled": true
+      },
+      "versioning": {
+        "status": "Enabled"
+      },
+      "policy": null,
+      "acl": "private"
+    },
+    {
+      "name": "terraform-state-shared",
+      "region": "us-east-1",
+      "tags": {
+        "ASPAReDemo": "true",
+        "DataClass": "SECRETS",
+        "Purpose": "tfstate",
+        "Environment": "prod"
+      },
+      "public_access_block": {
+        "BlockPublicAcls": true,
+        "IgnorePublicAcls": true,
+        "BlockPublicPolicy": true,
+        "RestrictPublicBuckets": true
+      },
+      "encryption": {},
+      "versioning": {
+        "status": null
+      },
+      "policy": null,
+      "acl": "private"
+    },
+    {
+      "name": "lambda-deployment-zips",
+      "region": "us-east-1",
+      "tags": {
+        "ASPAReDemo": "true",
+        "DataClass": "INTERNAL",
+        "Purpose": "lambda",
+        "Environment": "prod"
+      },
+      "public_access_block": {
+        "BlockPublicAcls": true,
+        "IgnorePublicAcls": true,
+        "BlockPublicPolicy": true,
+        "RestrictPublicBuckets": true
+      },
+      "encryption": {
+        "algorithm": "AES256",
+        "bucket_key_enabled": true
+      },
+      "versioning": {
+        "status": null
+      },
+      "policy": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Sid": "ASPAReDenyInsecureTransport",
+            "Effect": "Deny",
+            "Principal": "*",
+            "Action": "s3:*",
+            "Resource": [
+              "arn:aws:s3:::lambda-deployment-zips",
+              "arn:aws:s3:::lambda-deployment-zips/*"
+            ],
+            "Condition": {
+              "Bool": {
+                "aws:SecureTransport": "false"
+              }
+            }
+          }
+        ]
+      },
+      "acl": "private"
+    },
+    {
+      "name": "quarantine-macie-findings",
+      "region": "us-east-1",
+      "tags": {
+        "ASPAReDemo": "true",
+        "DataClass": "SENSITIVE",
+        "Purpose": "macie",
+        "Environment": "prod"
+      },
+      "public_access_block": {
+        "BlockPublicAcls": false,
+        "IgnorePublicAcls": false,
+        "BlockPublicPolicy": false,
+        "RestrictPublicBuckets": false
+      },
+      "encryption": {
+        "algorithm": "AES256",
+        "bucket_key_enabled": true
+      },
+      "versioning": {
+        "status": null
+      },
+      "policy": null,
+      "acl": "private"
+    },
+    {
+      "name": "dr-replica-us-west-exp",
+      "region": "us-east-1",
+      "tags": {
+        "ASPAReDemo": "true",
+        "DataClass": "BACKUP",
+        "Purpose": "dr",
+        "Environment": "prod"
+      },
+      "public_access_block": {
+        "BlockPublicAcls": true,
+        "IgnorePublicAcls": true,
+        "BlockPublicPolicy": true,
+        "RestrictPublicBuckets": true
+      },
+      "encryption": {
+        "algorithm": "AES256",
+        "bucket_key_enabled": true
+      },
+      "versioning": {
+        "status": "Enabled"
+      },
+      "policy": null,
+      "acl": "private"
+    },
+    {
+      "name": "tmp-data-science-scratch",
+      "region": "us-east-1",
+      "tags": {
+        "ASPAReDemo": "true",
+        "DataClass": "INTERNAL",
+        "Purpose": "ds-scratch",
+        "Environment": "dev"
+      },
+      "public_access_block": {
+        "BlockPublicAcls": false,
+        "IgnorePublicAcls": false,
+        "BlockPublicPolicy": false,
+        "RestrictPublicBuckets": false
+      },
+      "encryption": {},
+      "versioning": {
+        "status": null
+      },
+      "policy": null,
+      "acl": "private"
+    },
+    {
+      "name": "security-aspare-audit-safe",
+      "region": "us-east-1",
+      "tags": {
+        "ASPAReDemo": "true",
+        "DataClass": "AUDIT",
+        "Purpose": "aspare-audit",
+        "Environment": "prod"
+      },
+      "public_access_block": {
+        "BlockPublicAcls": true,
+        "IgnorePublicAcls": true,
+        "BlockPublicPolicy": true,
+        "RestrictPublicBuckets": true
+      },
+      "encryption": {
+        "algorithm": "AES256",
+        "bucket_key_enabled": true
+      },
+      "versioning": {
+        "status": "Enabled"
+      },
+      "policy": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Sid": "ASPAReDenyInsecureTransport",
+            "Effect": "Deny",
+            "Principal": "*",
+            "Action": "s3:*",
+            "Resource": [
+              "arn:aws:s3:::security-aspare-audit-safe",
+              "arn:aws:s3:::security-aspare-audit-safe/*"
+            ],
+            "Condition": {
+              "Bool": {
+                "aws:SecureTransport": "false"
+              }
+            }
+          }
+        ]
+      },
+      "acl": "private"
+    },
+    {
+      "name": "security-config-baseline-safe",
+      "region": "us-east-1",
+      "tags": {
+        "ASPAReDemo": "true",
+        "DataClass": "AUDIT",
+        "Purpose": "baseline",
+        "Environment": "prod"
+      },
+      "public_access_block": {
+        "BlockPublicAcls": true,
+        "IgnorePublicAcls": true,
+        "BlockPublicPolicy": true,
+        "RestrictPublicBuckets": true
+      },
+      "encryption": {
+        "algorithm": "AES256",
+        "bucket_key_enabled": true
+      },
+      "versioning": {
+        "status": "Enabled"
+      },
+      "policy": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Sid": "ASPAReDenyInsecureTransport",
+            "Effect": "Deny",
+            "Principal": "*",
+            "Action": "s3:*",
+            "Resource": [
+              "arn:aws:s3:::security-config-baseline-safe",
+              "arn:aws:s3:::security-config-baseline-safe/*"
+            ],
+            "Condition": {
+              "Bool": {
+                "aws:SecureTransport": "false"
+              }
+            }
+          }
+        ]
+      },
+      "acl": "private"
+    }
+  ]
+}

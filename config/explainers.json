@@ -1,0 +1,57 @@
+{
+  "S3_PUBLIC_ACCESS": {
+    "title": "Public Access Block is incomplete",
+    "what": "One or more of the four S3 Public Access Block switches is off (or missing). The bucket can still be made public through an ACL or a bucket policy.",
+    "how": "A PutBucketPublicAccessBlock call left BlockPublicAcls, IgnorePublicAcls, BlockPublicPolicy, or RestrictPublicBuckets set to false — or the control was never applied after CreateBucket.",
+    "affects": "Anyone on the internet can be granted list or read access without another engineer noticing. Student records, backups, or logs in the bucket become one policy change away from a public leak.",
+    "blast_radius": "Account-wide data exposure, FERPA / PII disclosure, ransomware staging, and failed audits (CIS 2.1.4, FSBP S3.8).",
+    "remedy_name": "Block all public access",
+    "remedy_does": "ASPARe calls PutPublicAccessBlock and turns all four flags on. New public ACLs and public bucket policies are rejected.",
+    "remedy_leaves": "Objects already copied off-account are not recalled. A separate public ACL finding is cleaned up by S3_REMOVE_PUBLIC_ACL.",
+    "standards": ["CIS AWS Foundations 2.1.4", "AWS FSBP S3.8"]
+  },
+  "S3_PUBLIC_ACL_EXPOSURE": {
+    "title": "Bucket ACL grants public or every-AWS-user access",
+    "what": "The bucket ACL includes AllUsers (everyone on the internet) or AuthenticatedUsers (any AWS account). That is a live public grant, not just a missing guardrail.",
+    "how": "Someone applied a canned ACL such as public-read, or granted READ/WRITE to the global ACL groups. This only works when Public Access Block is also off.",
+    "affects": "Anyone who can guess or enumerate the bucket URL can list or download objects. Search engines and scanners routinely find these buckets within hours.",
+    "blast_radius": "Immediate public disclosure of every object the grant covers. Critical for FERPA, backups, and CI artifacts.",
+    "remedy_name": "Remove the public ACL",
+    "remedy_does": "ASPARe replaces the ACL with a private owner-only grant (or equivalent) so AllUsers and AuthenticatedUsers disappear.",
+    "remedy_leaves": "Public Access Block should also be enabled; otherwise the next PutBucketAcl can reopen the hole.",
+    "standards": ["CIS AWS Foundations 2.1.5", "AWS FSBP S3.1"]
+  },
+  "S3_ENCRYPTION_DISABLED": {
+    "title": "No explicit default encryption",
+    "what": "GetBucketEncryption did not return an approved default algorithm (AES256 or KMS). New objects do not inherit a reviewed customer encryption setting.",
+    "how": "The bucket was created without PutBucketEncryption, or default encryption was deleted. AWS may still apply a platform baseline, but ASPARe requires an explicit, policy-approved configuration.",
+    "affects": "Objects can land unencrypted-by-policy. Key rotation, KMS audit, and 'encryption at rest' evidence for compliance reviews are missing.",
+    "blast_radius": "Failed CIS 2.1.1 / FSBP S3.4 checks and weaker protection if the account is later compromised.",
+    "remedy_name": "Enable default encryption",
+    "remedy_does": "ASPARe sets a default SSE rule (AES256 unless a KMS key is configured) so every new object inherits encryption.",
+    "remedy_leaves": "Existing objects are not retroactively rewritten. Re-encrypt those separately if the policy requires it.",
+    "standards": ["CIS AWS Foundations 2.1.1", "AWS FSBP S3.4"]
+  },
+  "S3_HTTPS_ENFORCEMENT_MISSING": {
+    "title": "HTTP (cleartext) access is still allowed",
+    "what": "The bucket policy does not Deny requests where aws:SecureTransport is false. Clients can talk to S3 over plain HTTP.",
+    "how": "No bucket policy exists, or the policy has no reviewed Deny for insecure transport covering the bucket ARN and object ARNs.",
+    "affects": "Access keys, query strings, and object bytes can be intercepted on the network path. Internal tools that still use http:// silently keep working.",
+    "blast_radius": "Credential theft and in-transit disclosure. Breaks CIS 2.1.2 / FSBP S3.5.",
+    "remedy_name": "Enforce HTTPS in the bucket policy",
+    "remedy_does": "ASPARe merges a reviewed Deny statement that blocks s3:* when aws:SecureTransport is false, without wiping unrelated policy statements.",
+    "remedy_leaves": "Legitimate HTTPS clients are unchanged. HTTP-only scripts will start failing — that is the point.",
+    "standards": ["CIS AWS Foundations 2.1.2", "AWS FSBP S3.5"]
+  },
+  "S3_VERSIONING_DISABLED": {
+    "title": "Object versioning is off",
+    "what": "The bucket does not have versioning Status=Enabled. Overwrites and deletes replace the only copy of an object.",
+    "how": "Versioning was never enabled, or it was suspended. This is common on lab and log buckets created with defaults.",
+    "affects": "Ransomware, a bad deploy, or an accidental aws s3 rm can destroy data with no prior version to restore. Audit of who changed an object is weaker.",
+    "blast_radius": "Data loss and longer recovery. Medium severity — ASPARe alerts and does not auto-enable it, because versioning changes cost and lifecycle behavior.",
+    "remedy_name": "Enable versioning (alert only by default)",
+    "remedy_does": "The action exists (PutBucketVersioning Enabled) but the risk policy keeps MEDIUM findings on ALERT_AND_LOG. An operator must opt in.",
+    "remedy_leaves": "No automatic write is performed. Enable versioning in change control if the data class requires recoverability.",
+    "standards": ["CIS AWS Foundations 2.1.3", "AWS FSBP S3.14"]
+  }
+}

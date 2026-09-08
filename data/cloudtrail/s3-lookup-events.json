@@ -1,0 +1,1131 @@
+{
+  "source": "Sanitized CloudTrail management events. Access keys and the real account id were removed.",
+  "events": [
+    {
+      "id": "d111de18-0cf9-4b6f-a96a-9c4612e3f417",
+      "source": "aws.s3",
+      "detail-type": "AWS API Call via CloudTrail",
+      "time": "2026-04-05T18:02:09Z",
+      "region": "us-east-1",
+      "detail": {
+        "eventVersion": "1.11",
+        "eventSource": "s3.amazonaws.com",
+        "eventName": "PutBucketPublicAccessBlock",
+        "eventTime": "2026-04-05T18:02:09Z",
+        "awsRegion": "us-east-1",
+        "eventID": "d111de18-0cf9-4b6f-a96a-9c4612e3f417",
+        "userIdentity": {
+          "type": "Root",
+          "accountId": "123456789012",
+          "arn": "arn:aws:iam::123456789012:root"
+        },
+        "requestParameters": {
+          "bucketName": "ferpa-remediation-results-cap",
+          "PublicAccessBlockConfiguration": {
+            "BlockPublicAcls": false,
+            "IgnorePublicAcls": false,
+            "BlockPublicPolicy": false,
+            "RestrictPublicBuckets": false
+          }
+        },
+        "readOnly": false,
+        "eventType": "AwsApiCall"
+      }
+    },
+    {
+      "id": "029c58f6-38c2-4703-9ebb-b15c7d9d6f89",
+      "source": "aws.s3",
+      "detail-type": "AWS API Call via CloudTrail",
+      "time": "2026-04-05T18:53:20Z",
+      "region": "us-east-1",
+      "detail": {
+        "eventVersion": "1.11",
+        "eventSource": "s3.amazonaws.com",
+        "eventName": "PutBucketPublicAccessBlock",
+        "eventTime": "2026-04-05T18:53:20Z",
+        "awsRegion": "us-east-1",
+        "eventID": "029c58f6-38c2-4703-9ebb-b15c7d9d6f89",
+        "userIdentity": {
+          "type": "Root",
+          "accountId": "123456789012",
+          "arn": "arn:aws:iam::123456789012:root"
+        },
+        "requestParameters": {
+          "bucketName": "ferpa-student-record-demo-for-cap",
+          "PublicAccessBlockConfiguration": {
+            "BlockPublicAcls": false,
+            "IgnorePublicAcls": false,
+            "BlockPublicPolicy": false,
+            "RestrictPublicBuckets": false
+          }
+        },
+        "readOnly": false,
+        "eventType": "AwsApiCall"
+      }
+    },
+    {
+      "id": "ct-estate-03-ferpa-transcripts-",
+      "source": "aws.s3",
+      "detail-type": "AWS API Call via CloudTrail",
+      "time": "2026-04-05T18:01:00Z",
+      "region": "us-east-1",
+      "detail": {
+        "eventVersion": "1.11",
+        "eventSource": "s3.amazonaws.com",
+        "eventName": "PutBucketPublicAccessBlock",
+        "eventTime": "2026-04-05T18:01:00Z",
+        "awsRegion": "us-east-1",
+        "eventID": "ct-estate-03-ferpa-transcripts-",
+        "userIdentity": {
+          "type": "Root",
+          "accountId": "123456789012",
+          "arn": "arn:aws:iam::123456789012:root"
+        },
+        "requestParameters": {
+          "bucketName": "ferpa-transcripts-raw-east",
+          "PublicAccessBlockConfiguration": {
+            "BlockPublicAcls": false,
+            "IgnorePublicAcls": false,
+            "BlockPublicPolicy": false,
+            "RestrictPublicBuckets": false
+          }
+        },
+        "readOnly": false,
+        "eventType": "AwsApiCall"
+      }
+    },
+    {
+      "id": "ct-estate-04-ferpa-enrollment-e",
+      "source": "aws.s3",
+      "detail-type": "AWS API Call via CloudTrail",
+      "time": "2026-04-05T18:08:00Z",
+      "region": "us-east-1",
+      "detail": {
+        "eventVersion": "1.11",
+        "eventSource": "s3.amazonaws.com",
+        "eventName": "PutBucketPublicAccessBlock",
+        "eventTime": "2026-04-05T18:08:00Z",
+        "awsRegion": "us-east-1",
+        "eventID": "ct-estate-04-ferpa-enrollment-e",
+        "userIdentity": {
+          "type": "Root",
+          "accountId": "123456789012",
+          "arn": "arn:aws:iam::123456789012:root"
+        },
+        "requestParameters": {
+          "bucketName": "ferpa-enrollment-exports",
+          "PublicAccessBlockConfiguration": {
+            "BlockPublicAcls": false,
+            "IgnorePublicAcls": false,
+            "BlockPublicPolicy": false,
+            "RestrictPublicBuckets": false
+          }
+        },
+        "readOnly": false,
+        "eventType": "AwsApiCall"
+      }
+    },
+    {
+      "id": "ct-estate-05-ferpa-advising-not",
+      "source": "aws.s3",
+      "detail-type": "AWS API Call via CloudTrail",
+      "time": "2026-04-05T18:15:00Z",
+      "region": "us-east-1",
+      "detail": {
+        "eventVersion": "1.11",
+        "eventSource": "s3.amazonaws.com",
+        "eventName": "CreateBucket",
+        "eventTime": "2026-04-05T18:15:00Z",
+        "awsRegion": "us-east-1",
+        "eventID": "ct-estate-05-ferpa-advising-not",
+        "userIdentity": {
+          "type": "Root",
+          "accountId": "123456789012",
+          "arn": "arn:aws:iam::123456789012:root"
+        },
+        "requestParameters": {
+          "bucketName": "ferpa-advising-notes-2026"
+        },
+        "readOnly": false,
+        "eventType": "AwsApiCall"
+      }
+    },
+    {
+      "id": "ct-estate-06-ferpa-financial-ai",
+      "source": "aws.s3",
+      "detail-type": "AWS API Call via CloudTrail",
+      "time": "2026-04-05T18:22:00Z",
+      "region": "us-east-1",
+      "detail": {
+        "eventVersion": "1.11",
+        "eventSource": "s3.amazonaws.com",
+        "eventName": "PutBucketAcl",
+        "eventTime": "2026-04-05T18:22:00Z",
+        "awsRegion": "us-east-1",
+        "eventID": "ct-estate-06-ferpa-financial-ai",
+        "userIdentity": {
+          "type": "Root",
+          "accountId": "123456789012",
+          "arn": "arn:aws:iam::123456789012:root"
+        },
+        "requestParameters": {
+          "bucketName": "ferpa-financial-aid-packets",
+          "x-amz-acl": "public-read"
+        },
+        "readOnly": false,
+        "eventType": "AwsApiCall"
+      }
+    },
+    {
+      "id": "ct-estate-07-campus-id-card-pho",
+      "source": "aws.s3",
+      "detail-type": "AWS API Call via CloudTrail",
+      "time": "2026-04-05T18:29:00Z",
+      "region": "us-east-1",
+      "detail": {
+        "eventVersion": "1.11",
+        "eventSource": "s3.amazonaws.com",
+        "eventName": "CreateBucket",
+        "eventTime": "2026-04-05T18:29:00Z",
+        "awsRegion": "us-east-1",
+        "eventID": "ct-estate-07-campus-id-card-pho",
+        "userIdentity": {
+          "type": "Root",
+          "accountId": "123456789012",
+          "arn": "arn:aws:iam::123456789012:root"
+        },
+        "requestParameters": {
+          "bucketName": "campus-id-card-photos"
+        },
+        "readOnly": false,
+        "eventType": "AwsApiCall"
+      }
+    },
+    {
+      "id": "ct-estate-08-registrar-degree-a",
+      "source": "aws.s3",
+      "detail-type": "AWS API Call via CloudTrail",
+      "time": "2026-04-05T18:36:00Z",
+      "region": "us-east-1",
+      "detail": {
+        "eventVersion": "1.11",
+        "eventSource": "s3.amazonaws.com",
+        "eventName": "PutBucketPublicAccessBlock",
+        "eventTime": "2026-04-05T18:36:00Z",
+        "awsRegion": "us-east-1",
+        "eventID": "ct-estate-08-registrar-degree-a",
+        "userIdentity": {
+          "type": "Root",
+          "accountId": "123456789012",
+          "arn": "arn:aws:iam::123456789012:root"
+        },
+        "requestParameters": {
+          "bucketName": "registrar-degree-audit",
+          "PublicAccessBlockConfiguration": {
+            "BlockPublicAcls": false,
+            "IgnorePublicAcls": false,
+            "BlockPublicPolicy": false,
+            "RestrictPublicBuckets": false
+          }
+        },
+        "readOnly": false,
+        "eventType": "AwsApiCall"
+      }
+    },
+    {
+      "id": "ct-estate-09-housing-contracts-",
+      "source": "aws.s3",
+      "detail-type": "AWS API Call via CloudTrail",
+      "time": "2026-04-05T18:43:00Z",
+      "region": "us-east-1",
+      "detail": {
+        "eventVersion": "1.11",
+        "eventSource": "s3.amazonaws.com",
+        "eventName": "DeleteBucketEncryption",
+        "eventTime": "2026-04-05T18:43:00Z",
+        "awsRegion": "us-east-1",
+        "eventID": "ct-estate-09-housing-contracts-",
+        "userIdentity": {
+          "type": "Root",
+          "accountId": "123456789012",
+          "arn": "arn:aws:iam::123456789012:root"
+        },
+        "requestParameters": {
+          "bucketName": "housing-contracts-scan"
+        },
+        "readOnly": false,
+        "eventType": "AwsApiCall"
+      }
+    },
+    {
+      "id": "ct-estate-10-hr-onboarding-docs",
+      "source": "aws.s3",
+      "detail-type": "AWS API Call via CloudTrail",
+      "time": "2026-04-05T18:50:00Z",
+      "region": "us-east-1",
+      "detail": {
+        "eventVersion": "1.11",
+        "eventSource": "s3.amazonaws.com",
+        "eventName": "DeleteBucketPolicy",
+        "eventTime": "2026-04-05T18:50:00Z",
+        "awsRegion": "us-east-1",
+        "eventID": "ct-estate-10-hr-onboarding-docs",
+        "userIdentity": {
+          "type": "Root",
+          "accountId": "123456789012",
+          "arn": "arn:aws:iam::123456789012:root"
+        },
+        "requestParameters": {
+          "bucketName": "hr-onboarding-docs"
+        },
+        "readOnly": false,
+        "eventType": "AwsApiCall"
+      }
+    },
+    {
+      "id": "ct-estate-11-payroll-yearend-ar",
+      "source": "aws.s3",
+      "detail-type": "AWS API Call via CloudTrail",
+      "time": "2026-04-05T18:57:00Z",
+      "region": "us-east-1",
+      "detail": {
+        "eventVersion": "1.11",
+        "eventSource": "s3.amazonaws.com",
+        "eventName": "CreateBucket",
+        "eventTime": "2026-04-05T18:57:00Z",
+        "awsRegion": "us-east-1",
+        "eventID": "ct-estate-11-payroll-yearend-ar",
+        "userIdentity": {
+          "type": "Root",
+          "accountId": "123456789012",
+          "arn": "arn:aws:iam::123456789012:root"
+        },
+        "requestParameters": {
+          "bucketName": "payroll-yearend-archive"
+        },
+        "readOnly": false,
+        "eventType": "AwsApiCall"
+      }
+    },
+    {
+      "id": "ct-estate-12-alumni-giving-expo",
+      "source": "aws.s3",
+      "detail-type": "AWS API Call via CloudTrail",
+      "time": "2026-04-05T19:04:00Z",
+      "region": "us-east-1",
+      "detail": {
+        "eventVersion": "1.11",
+        "eventSource": "s3.amazonaws.com",
+        "eventName": "PutBucketPublicAccessBlock",
+        "eventTime": "2026-04-05T19:04:00Z",
+        "awsRegion": "us-east-1",
+        "eventID": "ct-estate-12-alumni-giving-expo",
+        "userIdentity": {
+          "type": "Root",
+          "accountId": "123456789012",
+          "arn": "arn:aws:iam::123456789012:root"
+        },
+        "requestParameters": {
+          "bucketName": "alumni-giving-exports",
+          "PublicAccessBlockConfiguration": {
+            "BlockPublicAcls": false,
+            "IgnorePublicAcls": false,
+            "BlockPublicPolicy": false,
+            "RestrictPublicBuckets": false
+          }
+        },
+        "readOnly": false,
+        "eventType": "AwsApiCall"
+      }
+    },
+    {
+      "id": "ct-estate-13-research-irb-conse",
+      "source": "aws.s3",
+      "detail-type": "AWS API Call via CloudTrail",
+      "time": "2026-04-05T19:11:00Z",
+      "region": "us-east-1",
+      "detail": {
+        "eventVersion": "1.11",
+        "eventSource": "s3.amazonaws.com",
+        "eventName": "PutBucketAcl",
+        "eventTime": "2026-04-05T19:11:00Z",
+        "awsRegion": "us-east-1",
+        "eventID": "ct-estate-13-research-irb-conse",
+        "userIdentity": {
+          "type": "Root",
+          "accountId": "123456789012",
+          "arn": "arn:aws:iam::123456789012:root"
+        },
+        "requestParameters": {
+          "bucketName": "research-irb-consents",
+          "x-amz-acl": "public-read"
+        },
+        "readOnly": false,
+        "eventType": "AwsApiCall"
+      }
+    },
+    {
+      "id": "ct-estate-14-clinic-billing-ext",
+      "source": "aws.s3",
+      "detail-type": "AWS API Call via CloudTrail",
+      "time": "2026-04-05T19:18:00Z",
+      "region": "us-east-1",
+      "detail": {
+        "eventVersion": "1.11",
+        "eventSource": "s3.amazonaws.com",
+        "eventName": "DeleteBucketEncryption",
+        "eventTime": "2026-04-05T19:18:00Z",
+        "awsRegion": "us-east-1",
+        "eventID": "ct-estate-14-clinic-billing-ext",
+        "userIdentity": {
+          "type": "Root",
+          "accountId": "123456789012",
+          "arn": "arn:aws:iam::123456789012:root"
+        },
+        "requestParameters": {
+          "bucketName": "clinic-billing-extracts"
+        },
+        "readOnly": false,
+        "eventType": "AwsApiCall"
+      }
+    },
+    {
+      "id": "ct-estate-15-library-patron-hol",
+      "source": "aws.s3",
+      "detail-type": "AWS API Call via CloudTrail",
+      "time": "2026-04-05T19:25:00Z",
+      "region": "us-east-1",
+      "detail": {
+        "eventVersion": "1.11",
+        "eventSource": "s3.amazonaws.com",
+        "eventName": "DeleteBucketPolicy",
+        "eventTime": "2026-04-05T19:25:00Z",
+        "awsRegion": "us-east-1",
+        "eventID": "ct-estate-15-library-patron-hol",
+        "userIdentity": {
+          "type": "Root",
+          "accountId": "123456789012",
+          "arn": "arn:aws:iam::123456789012:root"
+        },
+        "requestParameters": {
+          "bucketName": "library-patron-holds"
+        },
+        "readOnly": false,
+        "eventType": "AwsApiCall"
+      }
+    },
+    {
+      "id": "ct-estate-16-its-cloudtrail-arc",
+      "source": "aws.s3",
+      "detail-type": "AWS API Call via CloudTrail",
+      "time": "2026-04-05T19:32:00Z",
+      "region": "us-east-1",
+      "detail": {
+        "eventVersion": "1.11",
+        "eventSource": "s3.amazonaws.com",
+        "eventName": "PutBucketVersioning",
+        "eventTime": "2026-04-05T19:32:00Z",
+        "awsRegion": "us-east-1",
+        "eventID": "ct-estate-16-its-cloudtrail-arc",
+        "userIdentity": {
+          "type": "Root",
+          "accountId": "123456789012",
+          "arn": "arn:aws:iam::123456789012:root"
+        },
+        "requestParameters": {
+          "bucketName": "its-cloudtrail-archive",
+          "VersioningConfiguration": {
+            "Status": "Suspended"
+          }
+        },
+        "readOnly": false,
+        "eventType": "AwsApiCall"
+      }
+    },
+    {
+      "id": "ct-estate-17-its-vpc-flow-logs",
+      "source": "aws.s3",
+      "detail-type": "AWS API Call via CloudTrail",
+      "time": "2026-04-05T19:39:00Z",
+      "region": "us-east-1",
+      "detail": {
+        "eventVersion": "1.11",
+        "eventSource": "s3.amazonaws.com",
+        "eventName": "DeleteBucketPolicy",
+        "eventTime": "2026-04-05T19:39:00Z",
+        "awsRegion": "us-east-1",
+        "eventID": "ct-estate-17-its-vpc-flow-logs",
+        "userIdentity": {
+          "type": "Root",
+          "accountId": "123456789012",
+          "arn": "arn:aws:iam::123456789012:root"
+        },
+        "requestParameters": {
+          "bucketName": "its-vpc-flow-logs"
+        },
+        "readOnly": false,
+        "eventType": "AwsApiCall"
+      }
+    },
+    {
+      "id": "ct-estate-18-its-config-snapsho",
+      "source": "aws.s3",
+      "detail-type": "AWS API Call via CloudTrail",
+      "time": "2026-04-05T19:46:00Z",
+      "region": "us-east-1",
+      "detail": {
+        "eventVersion": "1.11",
+        "eventSource": "s3.amazonaws.com",
+        "eventName": "DeleteBucketEncryption",
+        "eventTime": "2026-04-05T19:46:00Z",
+        "awsRegion": "us-east-1",
+        "eventID": "ct-estate-18-its-config-snapsho",
+        "userIdentity": {
+          "type": "Root",
+          "accountId": "123456789012",
+          "arn": "arn:aws:iam::123456789012:root"
+        },
+        "requestParameters": {
+          "bucketName": "its-config-snapshots"
+        },
+        "readOnly": false,
+        "eventType": "AwsApiCall"
+      }
+    },
+    {
+      "id": "ct-estate-19-backup-rds-snapsho",
+      "source": "aws.s3",
+      "detail-type": "AWS API Call via CloudTrail",
+      "time": "2026-04-05T19:53:00Z",
+      "region": "us-east-1",
+      "detail": {
+        "eventVersion": "1.11",
+        "eventSource": "s3.amazonaws.com",
+        "eventName": "CreateBucket",
+        "eventTime": "2026-04-05T19:53:00Z",
+        "awsRegion": "us-east-1",
+        "eventID": "ct-estate-19-backup-rds-snapsho",
+        "userIdentity": {
+          "type": "Root",
+          "accountId": "123456789012",
+          "arn": "arn:aws:iam::123456789012:root"
+        },
+        "requestParameters": {
+          "bucketName": "backup-rds-snapshots-s3"
+        },
+        "readOnly": false,
+        "eventType": "AwsApiCall"
+      }
+    },
+    {
+      "id": "ct-estate-20-backup-home-direct",
+      "source": "aws.s3",
+      "detail-type": "AWS API Call via CloudTrail",
+      "time": "2026-04-05T20:00:00Z",
+      "region": "us-east-1",
+      "detail": {
+        "eventVersion": "1.11",
+        "eventSource": "s3.amazonaws.com",
+        "eventName": "PutBucketPublicAccessBlock",
+        "eventTime": "2026-04-05T20:00:00Z",
+        "awsRegion": "us-east-1",
+        "eventID": "ct-estate-20-backup-home-direct",
+        "userIdentity": {
+          "type": "Root",
+          "accountId": "123456789012",
+          "arn": "arn:aws:iam::123456789012:root"
+        },
+        "requestParameters": {
+          "bucketName": "backup-home-directories",
+          "PublicAccessBlockConfiguration": {
+            "BlockPublicAcls": false,
+            "IgnorePublicAcls": false,
+            "BlockPublicPolicy": false,
+            "RestrictPublicBuckets": false
+          }
+        },
+        "readOnly": false,
+        "eventType": "AwsApiCall"
+      }
+    },
+    {
+      "id": "ct-estate-21-analytics-clickstr",
+      "source": "aws.s3",
+      "detail-type": "AWS API Call via CloudTrail",
+      "time": "2026-04-05T20:07:00Z",
+      "region": "us-east-1",
+      "detail": {
+        "eventVersion": "1.11",
+        "eventSource": "s3.amazonaws.com",
+        "eventName": "DeleteBucketEncryption",
+        "eventTime": "2026-04-05T20:07:00Z",
+        "awsRegion": "us-east-1",
+        "eventID": "ct-estate-21-analytics-clickstr",
+        "userIdentity": {
+          "type": "Root",
+          "accountId": "123456789012",
+          "arn": "arn:aws:iam::123456789012:root"
+        },
+        "requestParameters": {
+          "bucketName": "analytics-clickstream-raw"
+        },
+        "readOnly": false,
+        "eventType": "AwsApiCall"
+      }
+    },
+    {
+      "id": "ct-estate-22-analytics-sis-ware",
+      "source": "aws.s3",
+      "detail-type": "AWS API Call via CloudTrail",
+      "time": "2026-04-05T20:14:00Z",
+      "region": "us-east-1",
+      "detail": {
+        "eventVersion": "1.11",
+        "eventSource": "s3.amazonaws.com",
+        "eventName": "DeleteBucketPolicy",
+        "eventTime": "2026-04-05T20:14:00Z",
+        "awsRegion": "us-east-1",
+        "eventID": "ct-estate-22-analytics-sis-ware",
+        "userIdentity": {
+          "type": "Root",
+          "accountId": "123456789012",
+          "arn": "arn:aws:iam::123456789012:root"
+        },
+        "requestParameters": {
+          "bucketName": "analytics-sis-warehouse"
+        },
+        "readOnly": false,
+        "eventType": "AwsApiCall"
+      }
+    },
+    {
+      "id": "ct-estate-23-data-lake-landing-",
+      "source": "aws.s3",
+      "detail-type": "AWS API Call via CloudTrail",
+      "time": "2026-04-05T20:21:00Z",
+      "region": "us-east-1",
+      "detail": {
+        "eventVersion": "1.11",
+        "eventSource": "s3.amazonaws.com",
+        "eventName": "PutBucketPublicAccessBlock",
+        "eventTime": "2026-04-05T20:21:00Z",
+        "awsRegion": "us-east-1",
+        "eventID": "ct-estate-23-data-lake-landing-",
+        "userIdentity": {
+          "type": "Root",
+          "accountId": "123456789012",
+          "arn": "arn:aws:iam::123456789012:root"
+        },
+        "requestParameters": {
+          "bucketName": "data-lake-landing-zone",
+          "PublicAccessBlockConfiguration": {
+            "BlockPublicAcls": false,
+            "IgnorePublicAcls": false,
+            "BlockPublicPolicy": false,
+            "RestrictPublicBuckets": false
+          }
+        },
+        "readOnly": false,
+        "eventType": "AwsApiCall"
+      }
+    },
+    {
+      "id": "ct-estate-24-ml-feature-store-s",
+      "source": "aws.s3",
+      "detail-type": "AWS API Call via CloudTrail",
+      "time": "2026-04-05T20:28:00Z",
+      "region": "us-east-1",
+      "detail": {
+        "eventVersion": "1.11",
+        "eventSource": "s3.amazonaws.com",
+        "eventName": "DeleteBucketEncryption",
+        "eventTime": "2026-04-05T20:28:00Z",
+        "awsRegion": "us-east-1",
+        "eventID": "ct-estate-24-ml-feature-store-s",
+        "userIdentity": {
+          "type": "Root",
+          "accountId": "123456789012",
+          "arn": "arn:aws:iam::123456789012:root"
+        },
+        "requestParameters": {
+          "bucketName": "ml-feature-store-staging"
+        },
+        "readOnly": false,
+        "eventType": "AwsApiCall"
+      }
+    },
+    {
+      "id": "ct-estate-25-ci-artifacts-githu",
+      "source": "aws.s3",
+      "detail-type": "AWS API Call via CloudTrail",
+      "time": "2026-04-05T20:35:00Z",
+      "region": "us-east-1",
+      "detail": {
+        "eventVersion": "1.11",
+        "eventSource": "s3.amazonaws.com",
+        "eventName": "PutBucketAcl",
+        "eventTime": "2026-04-05T20:35:00Z",
+        "awsRegion": "us-east-1",
+        "eventID": "ct-estate-25-ci-artifacts-githu",
+        "userIdentity": {
+          "type": "Root",
+          "accountId": "123456789012",
+          "arn": "arn:aws:iam::123456789012:root"
+        },
+        "requestParameters": {
+          "bucketName": "ci-artifacts-github-runners",
+          "x-amz-acl": "public-read"
+        },
+        "readOnly": false,
+        "eventType": "AwsApiCall"
+      }
+    },
+    {
+      "id": "ct-estate-26-ci-cache-npm-wheel",
+      "source": "aws.s3",
+      "detail-type": "AWS API Call via CloudTrail",
+      "time": "2026-04-05T20:42:00Z",
+      "region": "us-east-1",
+      "detail": {
+        "eventVersion": "1.11",
+        "eventSource": "s3.amazonaws.com",
+        "eventName": "PutBucketVersioning",
+        "eventTime": "2026-04-05T20:42:00Z",
+        "awsRegion": "us-east-1",
+        "eventID": "ct-estate-26-ci-cache-npm-wheel",
+        "userIdentity": {
+          "type": "Root",
+          "accountId": "123456789012",
+          "arn": "arn:aws:iam::123456789012:root"
+        },
+        "requestParameters": {
+          "bucketName": "ci-cache-npm-wheels",
+          "VersioningConfiguration": {
+            "Status": "Suspended"
+          }
+        },
+        "readOnly": false,
+        "eventType": "AwsApiCall"
+      }
+    },
+    {
+      "id": "ct-estate-27-app-uploads-studen",
+      "source": "aws.s3",
+      "detail-type": "AWS API Call via CloudTrail",
+      "time": "2026-04-05T20:49:00Z",
+      "region": "us-east-1",
+      "detail": {
+        "eventVersion": "1.11",
+        "eventSource": "s3.amazonaws.com",
+        "eventName": "CreateBucket",
+        "eventTime": "2026-04-05T20:49:00Z",
+        "awsRegion": "us-east-1",
+        "eventID": "ct-estate-27-app-uploads-studen",
+        "userIdentity": {
+          "type": "Root",
+          "accountId": "123456789012",
+          "arn": "arn:aws:iam::123456789012:root"
+        },
+        "requestParameters": {
+          "bucketName": "app-uploads-student-portal"
+        },
+        "readOnly": false,
+        "eventType": "AwsApiCall"
+      }
+    },
+    {
+      "id": "ct-estate-28-app-static-marketi",
+      "source": "aws.s3",
+      "detail-type": "AWS API Call via CloudTrail",
+      "time": "2026-04-05T20:56:00Z",
+      "region": "us-east-1",
+      "detail": {
+        "eventVersion": "1.11",
+        "eventSource": "s3.amazonaws.com",
+        "eventName": "DeleteBucketPolicy",
+        "eventTime": "2026-04-05T20:56:00Z",
+        "awsRegion": "us-east-1",
+        "eventID": "ct-estate-28-app-static-marketi",
+        "userIdentity": {
+          "type": "Root",
+          "accountId": "123456789012",
+          "arn": "arn:aws:iam::123456789012:root"
+        },
+        "requestParameters": {
+          "bucketName": "app-static-marketing-site"
+        },
+        "readOnly": false,
+        "eventType": "AwsApiCall"
+      }
+    },
+    {
+      "id": "ct-estate-29-media-commencement",
+      "source": "aws.s3",
+      "detail-type": "AWS API Call via CloudTrail",
+      "time": "2026-04-05T21:03:00Z",
+      "region": "us-east-1",
+      "detail": {
+        "eventVersion": "1.11",
+        "eventSource": "s3.amazonaws.com",
+        "eventName": "DeleteBucketEncryption",
+        "eventTime": "2026-04-05T21:03:00Z",
+        "awsRegion": "us-east-1",
+        "eventID": "ct-estate-29-media-commencement",
+        "userIdentity": {
+          "type": "Root",
+          "accountId": "123456789012",
+          "arn": "arn:aws:iam::123456789012:root"
+        },
+        "requestParameters": {
+          "bucketName": "media-commencement-video"
+        },
+        "readOnly": false,
+        "eventType": "AwsApiCall"
+      }
+    },
+    {
+      "id": "ct-estate-30-finance-1098t-batc",
+      "source": "aws.s3",
+      "detail-type": "AWS API Call via CloudTrail",
+      "time": "2026-04-05T21:10:00Z",
+      "region": "us-east-1",
+      "detail": {
+        "eventVersion": "1.11",
+        "eventSource": "s3.amazonaws.com",
+        "eventName": "CreateBucket",
+        "eventTime": "2026-04-05T21:10:00Z",
+        "awsRegion": "us-east-1",
+        "eventID": "ct-estate-30-finance-1098t-batc",
+        "userIdentity": {
+          "type": "Root",
+          "accountId": "123456789012",
+          "arn": "arn:aws:iam::123456789012:root"
+        },
+        "requestParameters": {
+          "bucketName": "finance-1098t-batch"
+        },
+        "readOnly": false,
+        "eventType": "AwsApiCall"
+      }
+    },
+    {
+      "id": "ct-estate-31-legal-hold-ediscov",
+      "source": "aws.s3",
+      "detail-type": "AWS API Call via CloudTrail",
+      "time": "2026-04-05T21:17:00Z",
+      "region": "us-east-1",
+      "detail": {
+        "eventVersion": "1.11",
+        "eventSource": "s3.amazonaws.com",
+        "eventName": "PutBucketPublicAccessBlock",
+        "eventTime": "2026-04-05T21:17:00Z",
+        "awsRegion": "us-east-1",
+        "eventID": "ct-estate-31-legal-hold-ediscov",
+        "userIdentity": {
+          "type": "Root",
+          "accountId": "123456789012",
+          "arn": "arn:aws:iam::123456789012:root"
+        },
+        "requestParameters": {
+          "bucketName": "legal-hold-ediscovery",
+          "PublicAccessBlockConfiguration": {
+            "BlockPublicAcls": false,
+            "IgnorePublicAcls": false,
+            "BlockPublicPolicy": false,
+            "RestrictPublicBuckets": false
+          }
+        },
+        "readOnly": false,
+        "eventType": "AwsApiCall"
+      }
+    },
+    {
+      "id": "ct-estate-32-vendor-sftp-dropbo",
+      "source": "aws.s3",
+      "detail-type": "AWS API Call via CloudTrail",
+      "time": "2026-04-05T21:24:00Z",
+      "region": "us-east-1",
+      "detail": {
+        "eventVersion": "1.11",
+        "eventSource": "s3.amazonaws.com",
+        "eventName": "PutBucketAcl",
+        "eventTime": "2026-04-05T21:24:00Z",
+        "awsRegion": "us-east-1",
+        "eventID": "ct-estate-32-vendor-sftp-dropbo",
+        "userIdentity": {
+          "type": "Root",
+          "accountId": "123456789012",
+          "arn": "arn:aws:iam::123456789012:root"
+        },
+        "requestParameters": {
+          "bucketName": "vendor-sftp-dropbox",
+          "x-amz-acl": "public-read"
+        },
+        "readOnly": false,
+        "eventType": "AwsApiCall"
+      }
+    },
+    {
+      "id": "ct-estate-33-shared-scratch-san",
+      "source": "aws.s3",
+      "detail-type": "AWS API Call via CloudTrail",
+      "time": "2026-04-05T21:31:00Z",
+      "region": "us-east-1",
+      "detail": {
+        "eventVersion": "1.11",
+        "eventSource": "s3.amazonaws.com",
+        "eventName": "CreateBucket",
+        "eventTime": "2026-04-05T21:31:00Z",
+        "awsRegion": "us-east-1",
+        "eventID": "ct-estate-33-shared-scratch-san",
+        "userIdentity": {
+          "type": "Root",
+          "accountId": "123456789012",
+          "arn": "arn:aws:iam::123456789012:root"
+        },
+        "requestParameters": {
+          "bucketName": "shared-scratch-sandbox"
+        },
+        "readOnly": false,
+        "eventType": "AwsApiCall"
+      }
+    },
+    {
+      "id": "ct-estate-34-old-glacier-restor",
+      "source": "aws.s3",
+      "detail-type": "AWS API Call via CloudTrail",
+      "time": "2026-04-05T21:38:00Z",
+      "region": "us-east-1",
+      "detail": {
+        "eventVersion": "1.11",
+        "eventSource": "s3.amazonaws.com",
+        "eventName": "PutBucketVersioning",
+        "eventTime": "2026-04-05T21:38:00Z",
+        "awsRegion": "us-east-1",
+        "eventID": "ct-estate-34-old-glacier-restor",
+        "userIdentity": {
+          "type": "Root",
+          "accountId": "123456789012",
+          "arn": "arn:aws:iam::123456789012:root"
+        },
+        "requestParameters": {
+          "bucketName": "old-glacier-restore-cache",
+          "VersioningConfiguration": {
+            "Status": "Suspended"
+          }
+        },
+        "readOnly": false,
+        "eventType": "AwsApiCall"
+      }
+    },
+    {
+      "id": "ct-estate-35-observability-otel",
+      "source": "aws.s3",
+      "detail-type": "AWS API Call via CloudTrail",
+      "time": "2026-04-05T21:45:00Z",
+      "region": "us-east-1",
+      "detail": {
+        "eventVersion": "1.11",
+        "eventSource": "s3.amazonaws.com",
+        "eventName": "DeleteBucketPolicy",
+        "eventTime": "2026-04-05T21:45:00Z",
+        "awsRegion": "us-east-1",
+        "eventID": "ct-estate-35-observability-otel",
+        "userIdentity": {
+          "type": "Root",
+          "accountId": "123456789012",
+          "arn": "arn:aws:iam::123456789012:root"
+        },
+        "requestParameters": {
+          "bucketName": "observability-otel-export"
+        },
+        "readOnly": false,
+        "eventType": "AwsApiCall"
+      }
+    },
+    {
+      "id": "ct-estate-36-terraform-state-sh",
+      "source": "aws.s3",
+      "detail-type": "AWS API Call via CloudTrail",
+      "time": "2026-04-05T21:52:00Z",
+      "region": "us-east-1",
+      "detail": {
+        "eventVersion": "1.11",
+        "eventSource": "s3.amazonaws.com",
+        "eventName": "DeleteBucketEncryption",
+        "eventTime": "2026-04-05T21:52:00Z",
+        "awsRegion": "us-east-1",
+        "eventID": "ct-estate-36-terraform-state-sh",
+        "userIdentity": {
+          "type": "Root",
+          "accountId": "123456789012",
+          "arn": "arn:aws:iam::123456789012:root"
+        },
+        "requestParameters": {
+          "bucketName": "terraform-state-shared"
+        },
+        "readOnly": false,
+        "eventType": "AwsApiCall"
+      }
+    },
+    {
+      "id": "ct-estate-37-lambda-deployment-",
+      "source": "aws.s3",
+      "detail-type": "AWS API Call via CloudTrail",
+      "time": "2026-04-05T21:59:00Z",
+      "region": "us-east-1",
+      "detail": {
+        "eventVersion": "1.11",
+        "eventSource": "s3.amazonaws.com",
+        "eventName": "PutBucketVersioning",
+        "eventTime": "2026-04-05T21:59:00Z",
+        "awsRegion": "us-east-1",
+        "eventID": "ct-estate-37-lambda-deployment-",
+        "userIdentity": {
+          "type": "Root",
+          "accountId": "123456789012",
+          "arn": "arn:aws:iam::123456789012:root"
+        },
+        "requestParameters": {
+          "bucketName": "lambda-deployment-zips",
+          "VersioningConfiguration": {
+            "Status": "Suspended"
+          }
+        },
+        "readOnly": false,
+        "eventType": "AwsApiCall"
+      }
+    },
+    {
+      "id": "ct-estate-38-quarantine-macie-f",
+      "source": "aws.s3",
+      "detail-type": "AWS API Call via CloudTrail",
+      "time": "2026-04-05T22:06:00Z",
+      "region": "us-east-1",
+      "detail": {
+        "eventVersion": "1.11",
+        "eventSource": "s3.amazonaws.com",
+        "eventName": "PutBucketPublicAccessBlock",
+        "eventTime": "2026-04-05T22:06:00Z",
+        "awsRegion": "us-east-1",
+        "eventID": "ct-estate-38-quarantine-macie-f",
+        "userIdentity": {
+          "type": "Root",
+          "accountId": "123456789012",
+          "arn": "arn:aws:iam::123456789012:root"
+        },
+        "requestParameters": {
+          "bucketName": "quarantine-macie-findings",
+          "PublicAccessBlockConfiguration": {
+            "BlockPublicAcls": false,
+            "IgnorePublicAcls": false,
+            "BlockPublicPolicy": false,
+            "RestrictPublicBuckets": false
+          }
+        },
+        "readOnly": false,
+        "eventType": "AwsApiCall"
+      }
+    },
+    {
+      "id": "ct-estate-39-dr-replica-us-west",
+      "source": "aws.s3",
+      "detail-type": "AWS API Call via CloudTrail",
+      "time": "2026-04-05T22:13:00Z",
+      "region": "us-east-1",
+      "detail": {
+        "eventVersion": "1.11",
+        "eventSource": "s3.amazonaws.com",
+        "eventName": "DeleteBucketPolicy",
+        "eventTime": "2026-04-05T22:13:00Z",
+        "awsRegion": "us-east-1",
+        "eventID": "ct-estate-39-dr-replica-us-west",
+        "userIdentity": {
+          "type": "Root",
+          "accountId": "123456789012",
+          "arn": "arn:aws:iam::123456789012:root"
+        },
+        "requestParameters": {
+          "bucketName": "dr-replica-us-west-exp"
+        },
+        "readOnly": false,
+        "eventType": "AwsApiCall"
+      }
+    },
+    {
+      "id": "ct-estate-40-tmp-data-science-s",
+      "source": "aws.s3",
+      "detail-type": "AWS API Call via CloudTrail",
+      "time": "2026-04-05T22:20:00Z",
+      "region": "us-east-1",
+      "detail": {
+        "eventVersion": "1.11",
+        "eventSource": "s3.amazonaws.com",
+        "eventName": "CreateBucket",
+        "eventTime": "2026-04-05T22:20:00Z",
+        "awsRegion": "us-east-1",
+        "eventID": "ct-estate-40-tmp-data-science-s",
+        "userIdentity": {
+          "type": "Root",
+          "accountId": "123456789012",
+          "arn": "arn:aws:iam::123456789012:root"
+        },
+        "requestParameters": {
+          "bucketName": "tmp-data-science-scratch"
+        },
+        "readOnly": false,
+        "eventType": "AwsApiCall"
+      }
+    },
+    {
+      "id": "ct-estate-41-security-aspare-au",
+      "source": "aws.s3",
+      "detail-type": "AWS API Call via CloudTrail",
+      "time": "2026-04-05T22:27:00Z",
+      "region": "us-east-1",
+      "detail": {
+        "eventVersion": "1.11",
+        "eventSource": "s3.amazonaws.com",
+        "eventName": "CreateBucket",
+        "eventTime": "2026-04-05T22:27:00Z",
+        "awsRegion": "us-east-1",
+        "eventID": "ct-estate-41-security-aspare-au",
+        "userIdentity": {
+          "type": "Root",
+          "accountId": "123456789012",
+          "arn": "arn:aws:iam::123456789012:root"
+        },
+        "requestParameters": {
+          "bucketName": "security-aspare-audit-safe"
+        },
+        "readOnly": false,
+        "eventType": "AwsApiCall"
+      }
+    },
+    {
+      "id": "ct-estate-42-security-config-ba",
+      "source": "aws.s3",
+      "detail-type": "AWS API Call via CloudTrail",
+      "time": "2026-04-05T22:34:00Z",
+      "region": "us-east-1",
+      "detail": {
+        "eventVersion": "1.11",
+        "eventSource": "s3.amazonaws.com",
+        "eventName": "CreateBucket",
+        "eventTime": "2026-04-05T22:34:00Z",
+        "awsRegion": "us-east-1",
+        "eventID": "ct-estate-42-security-config-ba",
+        "userIdentity": {
+          "type": "Root",
+          "accountId": "123456789012",
+          "arn": "arn:aws:iam::123456789012:root"
+        },
+        "requestParameters": {
+          "bucketName": "security-config-baseline-safe"
+        },
+        "readOnly": false,
+        "eventType": "AwsApiCall"
+      }
+    }
+  ]
+}
