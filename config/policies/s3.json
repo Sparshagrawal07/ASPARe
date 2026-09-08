@@ -1,0 +1,98 @@
+{
+  "version": "1.0",
+  "provider": "aws",
+  "resource_type": "s3_bucket",
+  "policies": [
+    {
+      "policy_id": "POL-S3-PUBLIC-ACCESS",
+      "title": "S3 public access must be blocked",
+      "description": "Amazon S3 buckets must enable all four Public Access Block controls so anonymous or unexpected public access cannot be introduced through ACLs or bucket policies.",
+      "control_objective": "Prevent unintended public exposure of cloud storage objects and bucket listings.",
+      "resource_type": "s3_bucket",
+      "rule_id": "S3_PUBLIC_ACCESS",
+      "expected_evidence": [
+        "public_access_block.present",
+        "public_access_block.block_public_acls",
+        "public_access_block.ignore_public_acls",
+        "public_access_block.block_public_policy",
+        "public_access_block.restrict_public_buckets"
+      ],
+      "severity": "CRITICAL",
+      "remediation_action": "S3_BLOCK_PUBLIC_ACCESS",
+      "auto_remediable": true,
+      "verification_rule": "S3_PUBLIC_ACCESS",
+      "standards": ["CIS AWS Foundations 2.1.4", "AWS FSBP S3.8"],
+      "enabled": true
+    },
+    {
+      "policy_id": "POL-S3-ENCRYPTION",
+      "title": "S3 default encryption must be configured",
+      "description": "Buckets must declare a compliant default server-side encryption configuration (AES256 or KMS). ASPARe records the modern S3 baseline-encryption caveat: AWS may encrypt new objects even when GetBucketEncryption reports no explicit customer configuration.",
+      "control_objective": "Ensure objects inherit an explicit, policy-approved server-side encryption configuration.",
+      "resource_type": "s3_bucket",
+      "rule_id": "S3_ENCRYPTION_DISABLED",
+      "expected_evidence": [
+        "encryption.present",
+        "encryption.algorithm"
+      ],
+      "severity": "HIGH",
+      "remediation_action": "S3_ENABLE_DEFAULT_ENCRYPTION",
+      "auto_remediable": true,
+      "verification_rule": "S3_ENCRYPTION_DISABLED",
+      "standards": ["CIS AWS Foundations 2.1.1", "AWS FSBP S3.4"],
+      "enabled": true
+    },
+    {
+      "policy_id": "POL-S3-VERSIONING",
+      "title": "S3 versioning must be enabled",
+      "description": "Object versioning must be enabled so accidental deletes or overwrites can be recovered. Default risk policy alerts rather than auto-remediates this medium-severity control.",
+      "control_objective": "Preserve object history and support recovery from destructive changes.",
+      "resource_type": "s3_bucket",
+      "rule_id": "S3_VERSIONING_DISABLED",
+      "expected_evidence": [
+        "versioning.status"
+      ],
+      "severity": "MEDIUM",
+      "remediation_action": "S3_ENABLE_VERSIONING",
+      "auto_remediable": true,
+      "verification_rule": "S3_VERSIONING_DISABLED",
+      "standards": ["CIS AWS Foundations 2.1.3", "AWS FSBP S3.14"],
+      "enabled": true
+    },
+    {
+      "policy_id": "POL-S3-HTTPS",
+      "title": "S3 must enforce HTTPS (TLS) in transit",
+      "description": "The bucket policy must contain an explicit Deny for requests where aws:SecureTransport is false, covering the bucket ARN and object ARNs.",
+      "control_objective": "Prevent unencrypted transport of storage API requests and object data.",
+      "resource_type": "s3_bucket",
+      "rule_id": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "expected_evidence": [
+        "policy.document.Statement.Condition.Bool.aws:SecureTransport"
+      ],
+      "severity": "HIGH",
+      "remediation_action": "S3_ENFORCE_HTTPS",
+      "auto_remediable": true,
+      "verification_rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "standards": ["CIS AWS Foundations 2.1.2", "AWS FSBP S3.5"],
+      "enabled": true
+    },
+    {
+      "policy_id": "POL-S3-PUBLIC-ACL",
+      "title": "S3 ACLs must not grant public or authenticated-user access",
+      "description": "Bucket ACLs must not grant AllUsers or AuthenticatedUsers permissions. Buckets using BucketOwnerEnforced object ownership have ACLs disabled and are treated as compliant for this control.",
+      "control_objective": "Eliminate public ACL exposure of cloud storage.",
+      "resource_type": "s3_bucket",
+      "rule_id": "S3_PUBLIC_ACL_EXPOSURE",
+      "expected_evidence": [
+        "acl.grants",
+        "ownership.object_ownership"
+      ],
+      "severity": "CRITICAL",
+      "remediation_action": "S3_REMOVE_PUBLIC_ACL",
+      "auto_remediable": true,
+      "verification_rule": "S3_PUBLIC_ACL_EXPOSURE",
+      "standards": ["CIS AWS Foundations 2.1.5", "AWS FSBP S3.1"],
+      "enabled": true
+    }
+  ]
+}
