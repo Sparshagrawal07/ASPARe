@@ -1,9 +1,0 @@
-{
-    "Name": "IAMrule",
-    "Arn": "arn:aws:events:us-east-1:398351901202:rule/IAMrule",
-    "EventPattern": "{\"source\":[\"aws.iam\"],\"detail-type\":[\"AWS API Call via CloudTrail\"],\"detail\":{\"eventSource\":[\"iam.amazonaws.com\"],\"eventName\":[\"AttachUserPolicy\",\"PutUserPolicy\"]}}",
-    "State": "DISABLED",
-    "Description": "",
-    "EventBusName": "default",
-    "CreatedBy": "398351901202"
-}

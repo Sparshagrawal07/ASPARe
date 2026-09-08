@@ -1,9 +1,0 @@
-{
-    "Name": "macie-findings-to-recorder",
-    "Arn": "arn:aws:events:us-east-1:398351901202:rule/macie-findings-to-recorder",
-    "EventPattern": "{\"source\":[\"aws.macie\"],\"detail-type\":[\"Macie Finding\"]}",
-    "State": "ENABLED",
-    "Description": "",
-    "EventBusName": "default",
-    "CreatedBy": "398351901202"
-}

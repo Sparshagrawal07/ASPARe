@@ -1,6 +1,0 @@
-sleep $((RANDOM % 241 + 60))
-aws s3api put-public-access-block \
-  --bucket ferpa-student-record-demo-for-cap \
-  --public-access-block-configuration BlockPublicAcls=false,IgnorePublicAcls=false,BlockPublicPolicy=false,RestrictPublicBuckets=false
-
-# manual detect cloudshell

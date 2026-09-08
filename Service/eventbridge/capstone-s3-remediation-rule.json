@@ -1,9 +1,0 @@
-{
-    "Name": "capstone-s3-remediation-rule",
-    "Arn": "arn:aws:events:us-east-1:398351901202:rule/capstone-s3-remediation-rule",
-    "EventPattern": "{\"source\":[\"aws.s3\"],\"detail-type\":[\"AWS API Call via CloudTrail\"],\"detail\":{\"eventSource\":[\"s3.amazonaws.com\"]}}",
-    "State": "DISABLED",
-    "Description": "Triggers Lambda for S3 misconfiguration remediation",
-    "EventBusName": "default",
-    "CreatedBy": "398351901202"
-}

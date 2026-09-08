@@ -1,9 +1,0 @@
-{
-    "Name": "guardduty-findings-to-recorder",
-    "Arn": "arn:aws:events:us-east-1:398351901202:rule/guardduty-findings-to-recorder",
-    "EventPattern": "{\"source\":[\"aws.guardduty\"],\"detail-type\":[\"GuardDuty Finding\"]}",
-    "State": "ENABLED",
-    "Description": "Sends GuardDuty findings to capstone-finding-recorder",
-    "EventBusName": "default",
-    "CreatedBy": "398351901202"
-}

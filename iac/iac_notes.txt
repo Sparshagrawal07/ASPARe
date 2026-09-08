@@ -1,7 +1,0 @@
-Capstone IaC scope:
-- Models the findings intake architecture
-- GuardDuty -> EventBridge -> capstone-finding-recorder
-- Macie -> EventBridge -> capstone-finding-recorder
-- Includes Lambda invoke permissions for both EventBridge rules
-- Uses existing recorder Lambda and existing results bucket
-- Intended as a reproducibility artifact for the architecture actually implemented
