@@ -1,0 +1,296 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: >
+  ASPARe demonstration-grade AWS infrastructure for the deterministic 50% milestone.
+  Deploys an audit bucket, custom EventBridge bus, detection and remediation Lambdas,
+  and least-privilege demo roles. An enabled CloudTrail management-event trail is a
+  documented prerequisite and is not created here.
+
+Parameters:
+  AllowedBucketName:
+    Type: String
+    Description: The only S3 bucket ASPARe is permitted to inspect and remediate.
+  AuditBucketName:
+    Type: String
+    Description: Bucket that stores append-only ASPARe audit JSON objects.
+  CodeBucket:
+    Type: String
+    Description: Bucket containing the packaged ASPARe Lambda zip.
+  CodeKey:
+    Type: String
+    Default: aspare/lambda.zip
+  LambdaRuntime:
+    Type: String
+    Default: python3.14
+  EventBusName:
+    Type: String
+    Default: aspare-findings
+  ScheduleEnabled:
+    Type: String
+    Default: DISABLED
+    AllowedValues: [ENABLED, DISABLED]
+  DetectionRuleState:
+    Type: String
+    Default: DISABLED
+    AllowedValues: [ENABLED, DISABLED]
+
+Resources:
+  AuditBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Ref AuditBucketName
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        IgnorePublicAcls: true
+        BlockPublicPolicy: true
+        RestrictPublicBuckets: true
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+      VersioningConfiguration:
+        Status: Enabled
+
+  FindingBus:
+    Type: AWS::Events::EventBus
+    Properties:
+      Name: !Ref EventBusName
+
+  DetectionLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: /aws/lambda/aspare-detection
+      RetentionInDays: 30
+
+  RemediationLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: /aws/lambda/aspare-remediation
+      RetentionInDays: 30
+
+  DetectionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: aspare-detection-role
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: aspare-detection-least-privilege
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action:
+                  - logs:CreateLogStream
+                  - logs:PutLogEvents
+                Resource: !GetAtt DetectionLogGroup.Arn
+              - Effect: Allow
+                Action:
+                  - s3:ListBucket
+                  - s3:GetBucketLocation
+                  - s3:GetBucketTagging
+                  - s3:GetBucketAcl
+                  - s3:GetBucketPolicy
+                  - s3:GetBucketVersioning
+                  - s3:GetBucketEncryption
+                  - s3:GetBucketPublicAccessBlock
+                  - s3:GetBucketOwnershipControls
+                  - s3:HeadBucket
+                Resource:
+                  - !Sub arn:aws:s3:::${AllowedBucketName}
+              - Effect: Allow
+                Action:
+                  - s3:ListAllMyBuckets
+                Resource: "*"
+              - Effect: Allow
+                Action:
+                  - s3:PutObject
+                Resource: !Sub arn:aws:s3:::${AuditBucketName}/audit/*
+              - Effect: Allow
+                Action:
+                  - events:PutEvents
+                Resource: !GetAtt FindingBus.Arn
+
+  RemediationRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: aspare-remediation-role
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: aspare-remediation-least-privilege
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action:
+                  - logs:CreateLogStream
+                  - logs:PutLogEvents
+                Resource: !GetAtt RemediationLogGroup.Arn
+              - Effect: Allow
+                Action:
+                  - s3:ListBucket
+                  - s3:GetBucketLocation
+                  - s3:GetBucketTagging
+                  - s3:GetBucketAcl
+                  - s3:GetBucketPolicy
+                  - s3:GetBucketVersioning
+                  - s3:GetBucketEncryption
+                  - s3:GetBucketPublicAccessBlock
+                  - s3:GetBucketOwnershipControls
+                  - s3:HeadBucket
+                  - s3:PutBucketPublicAccessBlock
+                  - s3:PutEncryptionConfiguration
+                  - s3:PutBucketEncryption
+                  - s3:PutBucketVersioning
+                  - s3:PutBucketPolicy
+                  - s3:PutBucketAcl
+                Resource:
+                  - !Sub arn:aws:s3:::${AllowedBucketName}
+              - Effect: Allow
+                Action:
+                  - s3:PutObject
+                Resource: !Sub arn:aws:s3:::${AuditBucketName}/audit/*
+
+  DetectionFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: aspare-detection
+      Runtime: !Ref LambdaRuntime
+      Handler: aspare.handlers.detection.lambda_handler
+      Role: !GetAtt DetectionRole.Arn
+      Timeout: 30
+      MemorySize: 256
+      Code:
+        S3Bucket: !Ref CodeBucket
+        S3Key: !Ref CodeKey
+      Environment:
+        Variables:
+          ASPARE_ALLOWED_BUCKETS: !Ref AllowedBucketName
+          ASPARE_REQUIRE_DEMO_TAG: "true"
+          ASPARE_AUDIT_BACKEND: s3
+          ASPARE_AUDIT_BUCKET: !Ref AuditBucketName
+          ASPARE_EVENT_BUS_NAME: !Ref EventBusName
+          ASPARE_REGION: !Ref AWS::Region
+
+  RemediationFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: aspare-remediation
+      Runtime: !Ref LambdaRuntime
+      Handler: aspare.handlers.remediation.lambda_handler
+      Role: !GetAtt RemediationRole.Arn
+      Timeout: 30
+      MemorySize: 256
+      Code:
+        S3Bucket: !Ref CodeBucket
+        S3Key: !Ref CodeKey
+      Environment:
+        Variables:
+          ASPARE_ALLOWED_BUCKETS: !Ref AllowedBucketName
+          ASPARE_REQUIRE_DEMO_TAG: "true"
+          ASPARE_AUDIT_BACKEND: s3
+          ASPARE_AUDIT_BUCKET: !Ref AuditBucketName
+          ASPARE_REGION: !Ref AWS::Region
+
+  S3MisconfigurationRule:
+    Type: AWS::Events::Rule
+    Properties:
+      Name: aspare-s3-detection
+      Description: Narrow S3 CloudTrail management events that can change storage posture
+      EventBusName: default
+      State: !Ref DetectionRuleState
+      EventPattern:
+        source: [aws.s3]
+        detail-type: ["AWS API Call via CloudTrail"]
+        detail:
+          eventSource: [s3.amazonaws.com]
+          eventName:
+            - PutBucketPublicAccessBlock
+            - DeletePublicAccessBlock
+            - PutBucketPolicy
+            - DeleteBucketPolicy
+            - PutBucketAcl
+            - PutBucketEncryption
+            - DeleteBucketEncryption
+            - PutBucketVersioning
+            - PutBucketOwnershipControls
+            - CreateBucket
+      Targets:
+        - Id: ASPAReDetection
+          Arn: !GetAtt DetectionFunction.Arn
+
+  ScheduledScanRule:
+    Type: AWS::Events::Rule
+    Properties:
+      Name: aspare-scheduled-scan
+      Description: Optional inventory scan of the allowlisted demo bucket
+      EventBusName: default
+      State: !Ref ScheduleEnabled
+      ScheduleExpression: rate(1 hour)
+      Targets:
+        - Id: ASPAReScheduledDetection
+          Arn: !GetAtt DetectionFunction.Arn
+          Input: !Sub |
+            {"source":"aspare.scheduler","detail-type":"ASPARe Scheduled Inventory Scan","detail":{"buckets":["${AllowedBucketName}"]}}
+
+  FindingRemediationRule:
+    Type: AWS::Events::Rule
+    Properties:
+      Name: aspare-finding-remediation
+      Description: AUTO_REMEDIATE findings published by the detection Lambda
+      EventBusName: !Ref FindingBus
+      State: ENABLED
+      EventPattern:
+        source: [aspare.detection]
+        detail-type: ["ASPARe Finding For Remediation"]
+      Targets:
+        - Id: ASPAReRemediation
+          Arn: !GetAtt RemediationFunction.Arn
+
+  DetectionInvokePermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      FunctionName: !Ref DetectionFunction
+      Action: lambda:InvokeFunction
+      Principal: events.amazonaws.com
+      SourceArn: !GetAtt S3MisconfigurationRule.Arn
+
+  ScheduledInvokePermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      FunctionName: !Ref DetectionFunction
+      Action: lambda:InvokeFunction
+      Principal: events.amazonaws.com
+      SourceArn: !GetAtt ScheduledScanRule.Arn
+
+  RemediationInvokePermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      FunctionName: !Ref RemediationFunction
+      Action: lambda:InvokeFunction
+      Principal: events.amazonaws.com
+      SourceArn: !GetAtt FindingRemediationRule.Arn
+
+Outputs:
+  DetectionFunctionName:
+    Value: !Ref DetectionFunction
+  RemediationFunctionName:
+    Value: !Ref RemediationFunction
+  FindingBusName:
+    Value: !Ref FindingBus
+  AuditBucketNameOutput:
+    Value: !Ref AuditBucket
+  AllowedBucket:
+    Value: !Ref AllowedBucketName
+  DashboardNote:
+    Value: The Streamlit dashboard is local/demo-grade and is not deployed by this template.

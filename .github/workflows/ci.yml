@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.14"
+      - name: Install
+        run: pip install -e ".[dev,dashboard]"
+      - name: Ruff
+        run: ruff check src tests dashboard scripts
+      - name: Tests
+        run: pytest
+      - name: Validate CloudFormation markers
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          text = Path("infrastructure/aws/template.yaml").read_text()
+          assert "aspare.handlers.detection.lambda_handler" in text
+          assert "aspare.handlers.remediation.lambda_handler" in text
+          assert "PutBucketPublicAccessBlock" in text
+          print("template markers ok")
+          PY
+      - name: Documentation and Mermaid fences
+        run: python tests/check_docs.py
+      - name: Mocked demo smoke
+        run: python -m aspare.cli --mode mocked
