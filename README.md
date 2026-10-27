@@ -11,6 +11,9 @@
 The intelligence layer is deliberately **advisory where it matters**: fusion can lower an automatic fix to an alert but
 never raise one to automatic, and the LLM only explains and recommends, it never acts.
 
+**Use it:** <https://aspare.vercel.app>. Sign in, press one button in your AWS console, done. Details in
+[docs/HOSTED.md](docs/HOSTED.md). The sections below describe the engine and the self-hosted tooling.
+
 ## What is in the box
 
 | Area | What it does | Verified how |

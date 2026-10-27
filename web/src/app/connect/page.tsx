@@ -46,7 +46,7 @@ export default function ConnectPage() {
           </article>
           <article className="card bg-lilac-100 p-6">
             <div className="flex items-center gap-2"><Wrench aria-hidden="true" /><h3 className="text-2xl font-extrabold">Fix role</h3><Chip tone="lilac" className="ml-auto">optional</Chip></div>
-            <p className="mt-2 text-[15px] text-muted">Changes five settings, and only on buckets you tag <code className="font-mono">aspare-autofix=true</code>. AWS itself enforces the tag, not just us.</p>
+            <p className="mt-2 text-[15px] text-muted">Changes five settings, and only on buckets you tag <code className="font-mono">aspare-autofix=true</code>. ASPARe checks the tag too, so there are two locks.</p>
             <ul className="mt-4 flex flex-wrap gap-2">{WRITE.map((a) => <li key={a} className="rounded-lg border-2 border-ink bg-white px-2 py-1 font-mono text-xs">{a}</li>)}</ul>
             <a className="mt-5 inline-block text-sm font-extrabold text-peri underline underline-offset-4" href="/templates/aspare-autofix.yaml" target="_blank" rel="noreferrer">Read the template</a>
           </article>

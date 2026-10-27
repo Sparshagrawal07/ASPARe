@@ -8,6 +8,7 @@ This documentation is written for a professor evaluating the implementation, a d
 
 1. [Architecture overview](architecture/overview.md) — original prototype versus ASPARe, and why the layers exist.
 2. [Implementation status](IMPLEMENTATION_STATUS.md) — what actually works.
+3. [Hosted product](HOSTED.md) — the website, sign-in and one-click AWS connection.
 3. [Going live on AWS](GOING_LIVE.md) — credentials, test bucket, deploy.
 3. [Going live on AWS](GOING_LIVE.md) — the steps that need your AWS account.
 4. [Demo guide](DEMO_GUIDE.md) — reproduce detection → remediation → verification without guessing.

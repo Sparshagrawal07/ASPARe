@@ -123,6 +123,24 @@ export function Overview() {
           <WaitlistCard provider="gcp" label="Google Cloud Storage" tone="bg-mint-100" />
         </div>
       </section>
+      <section className="mt-16 border-t-2 border-ink/15 pt-6" aria-label="Account">
+        <p className="text-sm text-muted">
+          Want out? Deleting your account erases your connections, scan history and audit log from ASPARe. It does not touch AWS: delete the ASPARe stacks there too.
+        </p>
+        <Button
+          tone="white"
+          className="mt-3 !text-bad"
+          onClick={async () => {
+            if (!confirm("Delete your ASPARe account and all of its data? This cannot be undone.")) return;
+            await fetch("/api/me", { method: "DELETE" });
+            await authClient.signOut().catch(() => undefined);
+            // eslint-disable-next-line @next/next/no-location-assign-relative-destination -- full reload on purpose: wipes client state
+            window.location.assign("/");
+          }}
+        >
+          Delete my account
+        </Button>
+      </section>
     </div>
   );
 }

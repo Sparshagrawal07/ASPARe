@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 };
 
 const GUARANTEES = [
-  ["Tag gate, enforced by AWS", "The fix role can only change buckets tagged aspare-autofix=true. AWS enforces it, and so does ASPARe, with an optional allow-list on top."],
+  ["Tag gate on every fix", "ASPARe only changes buckets tagged aspare-autofix=true, plus an optional allow-list. The fix role also carries a matching tag condition as a second lock."],
   ["Context can only lower, never raise", "Fusion can turn an automatic fix into an alert. It can never turn an alert into an automatic fix."],
   ["Verify, do not trust", "A fix counts only when ASPARe re-reads the bucket and the original rule no longer fires."],
   ["Order-aware fixes", "Policy edits run before the Public Access Block, because S3 refuses to save a public policy once it is blocked. Found on a real account."],
@@ -18,7 +18,8 @@ const GUARANTEES = [
 
 const STATUS: [string, string, string, "ok" | "warn"][] = [
   ["AWS S3 detect, fix and verify", "Real AWS account: live scans, tag-gated fixes, deployed pipeline", "", "ok"],
-  ["Sign-in and one-click AWS connection", "Cross-account role with external id, tested against a real account", "Accounts beyond the project team's own", "warn"],
+  ["Sign-in and one-click AWS connection", "Cross-account read-only role with external id, scanned a real account end to end", "Accounts beyond the project team's own", "warn"],
+  ["Fixing on a real connected account", "Fix logic and the tag gate tested on simulated AWS and on a real account in the earlier showcase", "The tag condition inside the fix role on real buckets, and the hosted fix flow on real AWS", "warn"],
   ["Fusion and anomaly scoring", "Unit tests and a synthetic benchmark", "Real-world accuracy (labels are project-authored)", "warn"],
   ["Azure and Google Cloud", "Mapping and fixes tested against simulated APIs; demo above", "Real accounts: connections are on the waitlist", "warn"],
 ];
