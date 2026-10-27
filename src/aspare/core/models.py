@@ -140,6 +140,7 @@ class StorageResource:
     ownership: OwnershipState
     inspected_at: datetime
     inspection_errors: tuple[str, ...] = ()
+    https_only: bool | None = None  # provider-native 'secure transfer required' flag (Azure); None = use bucket policy
 
     def snapshot(self) -> dict[str, Any]:
         return to_jsonable(
@@ -156,6 +157,7 @@ class StorageResource:
                 "acl": self.acl,
                 "ownership": self.ownership,
                 "inspection_errors": self.inspection_errors,
+                "https_only": self.https_only,
             }
         )
 

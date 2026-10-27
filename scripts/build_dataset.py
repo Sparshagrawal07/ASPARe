@@ -165,17 +165,89 @@ def main() -> None:
     ]
     for name, purpose, data_class, profile, env in specs:
         if profile == "pab":
-            extras.append(bucket(name, purpose, data_class, pab=PAB_OFF, encryption=AES, versioning=None, policy=None, acl="private", env=env))
+            extras.append(
+                bucket(
+                    name,
+                    purpose,
+                    data_class,
+                    pab=PAB_OFF,
+                    encryption=AES,
+                    versioning=None,
+                    policy=None,
+                    acl="private",
+                    env=env,
+                )
+            )
         elif profile == "enc":
-            extras.append(bucket(name, purpose, data_class, pab=PAB_ON, encryption=None, versioning=None, policy=None, acl="private", env=env))
+            extras.append(
+                bucket(
+                    name,
+                    purpose,
+                    data_class,
+                    pab=PAB_ON,
+                    encryption=None,
+                    versioning=None,
+                    policy=None,
+                    acl="private",
+                    env=env,
+                )
+            )
         elif profile == "https":
-            extras.append(bucket(name, purpose, data_class, pab=PAB_ON, encryption=AES, versioning="Enabled", policy=None, acl="private", env=env))
+            extras.append(
+                bucket(
+                    name,
+                    purpose,
+                    data_class,
+                    pab=PAB_ON,
+                    encryption=AES,
+                    versioning="Enabled",
+                    policy=None,
+                    acl="private",
+                    env=env,
+                )
+            )
         elif profile == "vers":
-            extras.append(bucket(name, purpose, data_class, pab=PAB_ON, encryption=AES, versioning=None, policy=https_policy(name), acl="private", env=env))
+            extras.append(
+                bucket(
+                    name,
+                    purpose,
+                    data_class,
+                    pab=PAB_ON,
+                    encryption=AES,
+                    versioning=None,
+                    policy=https_policy(name),
+                    acl="private",
+                    env=env,
+                )
+            )
         elif profile == "acl":
-            extras.append(bucket(name, purpose, data_class, pab=PAB_OFF, encryption=AES, versioning=None, policy=None, acl="public-read", env=env))
+            extras.append(
+                bucket(
+                    name,
+                    purpose,
+                    data_class,
+                    pab=PAB_OFF,
+                    encryption=AES,
+                    versioning=None,
+                    policy=None,
+                    acl="public-read",
+                    env=env,
+                )
+            )
         elif profile == "full":
-            extras.append(bucket(name, purpose, data_class, pab=PAB_OFF, encryption=None, versioning=None, policy=None, acl="private", env=env))
+            extras.append(
+                bucket(
+                    name,
+                    purpose,
+                    data_class,
+                    pab=PAB_OFF,
+                    encryption=None,
+                    versioning=None,
+                    policy=None,
+                    acl="private",
+                    env=env,
+                )
+            )
         else:
             raise ValueError(profile)
 

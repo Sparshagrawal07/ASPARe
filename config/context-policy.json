@@ -1,0 +1,45 @@
+{
+  "version": "1.0",
+  "description": "Declarative business-context rules. Each rule can adjust confidence, cap the response, or raise priority. Rules never raise a decision to AUTO_REMEDIATE.",
+  "sensitive_data_classes": ["FERPA", "PHI", "FINANCIAL", "PII", "SECRETS"],
+  "rules": [
+    {
+      "id": "intended-public-content",
+      "description": "Marketing/media buckets are meant to be read publicly; blind auto-blocking would break a website, so a human decides.",
+      "when": {
+        "tags": { "DataClass": ["PUBLIC"] },
+        "rules": ["S3_PUBLIC_ACCESS", "S3_PUBLIC_ACL_EXPOSURE"]
+      },
+      "confidence_delta": -0.45,
+      "cap_decision": "ALERT_AND_LOG",
+      "reason": "Bucket is tagged DataClass=PUBLIC, so public readability may be intentional. ASPARe alerts instead of auto-blocking."
+    },
+    {
+      "id": "ephemeral-data",
+      "description": "Scratch/cache buckets hold re-creatable data; missing versioning is low value.",
+      "when": {
+        "tag_contains": { "Purpose": ["scratch", "cache", "restore", "otel"] },
+        "rules": ["S3_VERSIONING_DISABLED"]
+      },
+      "confidence_delta": -0.4,
+      "cap_decision": "LOG_ONLY",
+      "reason": "Purpose indicates re-creatable data (scratch/cache); versioning adds cost with little protection."
+    },
+    {
+      "id": "sensitive-data-exposure",
+      "description": "Regulated data raises priority; never lowers a finding.",
+      "when": {
+        "tags_any_sensitive": true
+      },
+      "priority_multiplier": 1.5,
+      "reason": "Bucket holds a regulated data class, so the same weakness has a larger blast radius."
+    },
+    {
+      "id": "production-environment",
+      "description": "Production changes matter more.",
+      "when": { "tags": { "Environment": ["prod", "production"] } },
+      "priority_multiplier": 1.2,
+      "reason": "Production environment."
+    }
+  ]
+}

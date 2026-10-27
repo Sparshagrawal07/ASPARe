@@ -4,7 +4,7 @@ from enum import StrEnum
 
 
 class Provider(StrEnum):
-    """Cloud provider identity. Only AWS is implemented in this milestone."""
+    """Cloud provider identity."""
 
     AWS = "aws"
     AZURE = "azure"
@@ -12,10 +12,11 @@ class Provider(StrEnum):
 
 
 class ResourceType(StrEnum):
-    """Storage resource kinds. Azure/GCP values exist as future extension points."""
+    """Storage resource kinds."""
 
     S3_BUCKET = "s3_bucket"
     AZURE_BLOB_CONTAINER = "azure_blob_container"
+    AZURE_STORAGE_ACCOUNT = "azure_storage_account"
     GCS_BUCKET = "gcs_bucket"
 
 
@@ -73,6 +74,7 @@ class AuditAction(StrEnum):
     SCAN_COMPLETED = "SCAN_COMPLETED"
     FINDING_DETECTED = "FINDING_DETECTED"
     RISK_EVALUATED = "RISK_EVALUATED"
+    FUSION_EVALUATED = "FUSION_EVALUATED"
     REMEDIATION_APPROVED = "REMEDIATION_APPROVED"
     REMEDIATION_STARTED = "REMEDIATION_STARTED"
     REMEDIATION_EXECUTED = "REMEDIATION_EXECUTED"

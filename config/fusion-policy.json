@@ -1,0 +1,29 @@
+{
+  "version": "1.0",
+  "description": "Weights for evidence-weighted confidence and priority. Heuristic, documented, deterministic: these are NOT calibrated probabilities.",
+  "direct_read_confidence": 0.97,
+  "inspection_error_confidence": 0.6,
+  "anomaly_corroboration_weight": 0.5,
+  "min_confidence_for_auto_remediation": 0.65,
+  "anomaly_priority_bonus": 15,
+  "anomaly_escalation_threshold": 0.7,
+  "severity_weights": { "CRITICAL": 100, "HIGH": 75, "MEDIUM": 50, "LOW": 25 },
+  "anomaly": {
+    "signal_weights": { "privileged_actor": 0.6, "risky_action": 0.7, "burst": 0.8, "novel_actor": 0.5, "off_hours": 0.3 },
+    "action_risk": {
+      "DeletePublicAccessBlock": 0.9,
+      "PutBucketPublicAccessBlock": 0.35,
+      "DeleteBucketEncryption": 0.7,
+      "PutBucketAcl": 0.6,
+      "PutBucketPolicy": 0.5,
+      "DeleteBucketPolicy": 0.4,
+      "PutBucketVersioning": 0.2,
+      "CreateBucket": 0.1
+    },
+    "burst_window_minutes": 15,
+    "burst_min_events": 3,
+    "min_history_for_novelty": 5,
+    "min_events_for_hour_profile": 10,
+    "default_active_hours_utc": [7, 21]
+  }
+}

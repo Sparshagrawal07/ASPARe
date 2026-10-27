@@ -50,7 +50,7 @@ flowchart TB
 
 ```mermaid
 flowchart TB
-    subgraph phase1["CURRENT 50% — DETERMINISTIC BASELINE"]
+    subgraph phase1["DETERMINISTIC CORE"]
         Discovery["AWS S3 Discovery & Inventory"]
         Normalize["CloudTrail & Scan Event Normalization"]
         PolicyKB["Deterministic Policy Knowledge Base"]
@@ -73,7 +73,7 @@ flowchart TB
         Verify --> Audit
         ManualReview --> Audit
     end
-    subgraph phase2["REMAINING 50% — INTELLIGENT SECURITY LAYER"]
+    subgraph phase2["INTELLIGENCE LAYER (implemented)"]
         Anomaly["Anomaly & Behavioral Detection"]
         LLM["LLM Context Analysis"]
         Fusion["Rule, Anomaly & Context Fusion"]
@@ -106,7 +106,7 @@ flowchart TB
 | Verification | None (`status=success` after API) | Re-read + re-run originating rule |
 | Risk evaluation | None | Policy file maps severity to decision |
 | Audit | Ad-hoc result JSON | Structured `AuditRecord` JSONL/S3 |
-| Extensibility | Hard-coded S3/IAM/SG branches | Provider protocols; Azure/GCP reserved |
+| Extensibility | Hard-coded S3/IAM/SG branches | Provider protocols; Azure and GCS adapters behind a routing layer |
 | Dashboard | None | Streamlit over audit records |
 | Tests | None | Unit + mocked AWS integration |
 
@@ -114,6 +114,9 @@ flowchart TB
 
 | Concern | Package |
 | --- | --- |
+| Fusion, anomaly, LLM reasoner, benchmark | `aspare.intelligence` |
+| Least-privilege policy generation | `aspare.policygen` |
+| Azure / GCS adapters, routing | `aspare.providers.azure`, `aspare.providers.gcp`, `aspare.providers.routing` |
 | Domain types | `aspare.core` |
 | Settings | `aspare.config` |
 | Events | `aspare.events` |
@@ -136,4 +139,4 @@ Architecture invariants are enforced in unit tests (rules never call boto3) and 
 
 ## Future improvements
 
-The remaining 50% attaches to `Finding`, `AuditRecord`, and `PolicyDefinition` rather than rewriting inspectors. See [future work](../roadmap/future-work.md).
+The intelligence layer attaches to `Finding`, `AuditRecord`, and `PolicyDefinition` rather than rewriting inspectors. See [intelligence](intelligence.md), [multi-cloud](multi-cloud.md) and the remaining limits in [future work](../roadmap/future-work.md).

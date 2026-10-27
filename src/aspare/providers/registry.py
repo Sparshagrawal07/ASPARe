@@ -1,4 +1,4 @@
-"""Provider adapters. Only AWS S3 is implemented in this milestone."""
+"""Provider registry: AWS S3 always; Azure Blob Storage and Google Cloud Storage when configured."""
 
 from aspare.core.enums import Provider, ResourceType
 from aspare.core.interfaces import StorageInspector, StorageProvider, StorageRemediator
@@ -18,9 +18,9 @@ class ProviderRegistry:
     def get(self, provider: Provider) -> StorageProvider:
         if provider not in self._providers:
             raise UnsupportedProviderError(
-                f"{provider.value} storage adapter is not implemented in the current ASPARe "
-                "milestone. AWS S3 is the only active provider; Azure Blob Storage and Google "
-                "Cloud Storage remain extension points for the remaining 50%."
+                f"{provider.value} storage adapter is not configured. Set ASPARE_AZURE_SUBSCRIPTION_ID + "
+                "ASPARE_AZURE_RESOURCE_GROUP for Azure Blob Storage, or ASPARE_GCP_ENABLED=true for Google "
+                "Cloud Storage (install aspare[azure] / aspare[gcp])."
             )
         return self._providers[provider]
 

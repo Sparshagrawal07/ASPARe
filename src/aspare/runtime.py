@@ -12,17 +12,22 @@ from aspare.audit.repository import (
     S3AuditRepository,
 )
 from aspare.config.settings import Settings
+from aspare.core.enums import Provider, ResourceType
 from aspare.core.interfaces import AuditRepository, FindingPublisher
 from aspare.detection.engine import DetectionEngine
 from aspare.detection.rules.s3 import default_s3_rules
 from aspare.events.normalizer import EventNormalizer
+from aspare.intelligence.fusion import FusionEngine
 from aspare.inventory.service import InventoryService
 from aspare.policy.registry import PolicyRegistry
 from aspare.providers.aws import AwsS3Provider
 from aspare.providers.aws.client import s3_client
 from aspare.providers.aws.s3_inspector import S3Inspector
 from aspare.providers.aws.s3_remediator import S3Remediator
+from aspare.providers.azure import AzureInspector, AzureRemediator
+from aspare.providers.gcp import GcsInspector, GcsRemediator
 from aspare.providers.registry import ProviderRegistry
+from aspare.providers.routing import RoutingInspector, RoutingRemediator, SimpleProvider
 from aspare.remediation.actions.s3 import default_s3_actions
 from aspare.remediation.engine import RemediationEngine
 from aspare.remediation.safety import SafetyGate
@@ -45,6 +50,7 @@ class Runtime:
     pipeline: Pipeline
     inspector: S3Inspector
     remediator: S3Remediator
+    fusion: FusionEngine | None = None
 
 
 def build_audit(settings: Settings, client: Any | None = None) -> AuditRepository:
@@ -59,12 +65,30 @@ def build_audit(settings: Settings, client: Any | None = None) -> AuditRepositor
     return FallbackAuditRepository(primary)
 
 
+def _azure_from_settings(settings: Settings) -> Any | None:
+    if not (settings.azure_subscription_id and settings.azure_resource_group):
+        return None
+    from aspare.providers.azure.sdk import SdkAzureStorageApi
+
+    return SdkAzureStorageApi(settings.azure_subscription_id, settings.azure_resource_group)
+
+
+def _gcs_from_settings(settings: Settings) -> Any | None:
+    if not settings.gcp_enabled:
+        return None
+    from aspare.providers.gcp.sdk import SdkGcsApi
+
+    return SdkGcsApi(settings.gcp_project)
+
+
 def build_runtime(
     settings: Settings | None = None,
     client: Any | None = None,
     publisher: FindingPublisher | None = None,
     events_client: Any | None = None,
     sns_client: Any | None = None,
+    azure_api: Any | None = None,
+    gcs_api: Any | None = None,
 ) -> Runtime:
     settings = settings or Settings.from_env()
     s3 = client or s3_client(settings.region)
@@ -72,6 +96,21 @@ def build_runtime(
     remediator = S3Remediator(s3, settings.region)
     providers = ProviderRegistry()
     providers.register(AwsS3Provider(inspector, remediator))
+    inspectors: dict[Provider, Any] = {Provider.AWS: inspector}
+    remediators: dict[Provider, Any] = {Provider.AWS: remediator}
+    azure_api = azure_api or _azure_from_settings(settings)
+    gcs_api = gcs_api or _gcs_from_settings(settings)
+    if azure_api is not None:
+        az_i, az_r = AzureInspector(azure_api), AzureRemediator(azure_api)
+        providers.register(SimpleProvider(Provider.AZURE, ResourceType.AZURE_STORAGE_ACCOUNT, az_i, az_r))
+        inspectors[Provider.AZURE], remediators[Provider.AZURE] = az_i, az_r
+    if gcs_api is not None:
+        gc_i, gc_r = GcsInspector(gcs_api), GcsRemediator(gcs_api)
+        providers.register(SimpleProvider(Provider.GCP, ResourceType.GCS_BUCKET, gc_i, gc_r))
+        inspectors[Provider.GCP], remediators[Provider.GCP] = gc_i, gc_r
+    multi = len(inspectors) > 1
+    route_inspector: Any = RoutingInspector(inspectors) if multi else inspector
+    route_remediator: Any = RoutingRemediator(remediators) if multi else remediator
     policy = PolicyRegistry.from_path(settings.policy_path)
     detection = DetectionEngine(default_s3_rules(policy, settings))
     risk = RiskEvaluator(RiskPolicy.from_path(settings.risk_policy_path))
@@ -91,10 +130,13 @@ def build_runtime(
 
         alerter = SnsAlerter(sns_client or boto3.client("sns", region_name=settings.region), settings.alert_topic_arn)
     inventory = InventoryService(providers, settings)
-    detection_workflow = DetectionWorkflow(EventNormalizer(), inventory, detection, risk, audit, publisher, alerter)
+    fusion = FusionEngine() if settings.fusion_enabled else None
+    detection_workflow = DetectionWorkflow(
+        EventNormalizer(), inventory, detection, risk, audit, publisher, alerter, fusion
+    )
     remediation_workflow = RemediationWorkflow(
-        RemediationEngine(default_s3_actions(remediator, settings, SafetyGate(settings))),
-        VerificationEngine(inspector, detection),
+        RemediationEngine(default_s3_actions(route_remediator, settings, SafetyGate(settings))),
+        VerificationEngine(route_inspector, detection),
         audit,
     )
     pipeline_publisher = in_process if isinstance(publisher, InProcessPublisher) else InProcessPublisher()
@@ -102,7 +144,9 @@ def build_runtime(
         pipeline = Pipeline(detection_workflow, remediation_workflow, publisher)
     else:
         pipeline = Pipeline(
-            DetectionWorkflow(EventNormalizer(), inventory, detection, risk, audit, pipeline_publisher, alerter),
+            DetectionWorkflow(
+                EventNormalizer(), inventory, detection, risk, audit, pipeline_publisher, alerter, fusion
+            ),
             remediation_workflow,
             pipeline_publisher,
         )
@@ -116,4 +160,5 @@ def build_runtime(
         pipeline=pipeline,
         inspector=inspector,
         remediator=remediator,
+        fusion=fusion,
     )

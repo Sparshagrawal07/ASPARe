@@ -3,23 +3,27 @@
 **Automated Security Posture Assessment & Remediation Engine**  
 *Automated Cloud Storage Misconfiguration Detection & Remediation*
 
-> ASPARe is a deterministic cloud-storage security platform. This repository is the **approximately 50% milestone**: a working AWS S3 baseline that discovers buckets, normalizes events, detects misconfigurations with reviewed policies, classifies risk, remediates automatically where allowed, verifies the result, and records an audit trail that a local dashboard can display.
+> ASPARe discovers cloud storage buckets, detects misconfigurations with reviewed policies, fuses rule evidence with
+> behavioural and business-context evidence into a confidence and priority, remediates automatically where it is safe,
+> verifies every fix by re-reading the cloud, and records an audit trail. It runs on **AWS S3** (verified on a real
+> account), **Azure Blob Storage** and **Google Cloud Storage** (adapter logic tested against simulated APIs).
 
-This is **not** an LLM product yet. Review I calls for contextual analysis, anomaly detection, finding fusion, and multi-cloud coverage. Those capabilities are reserved for the remaining 50% and consume the evidence model built here.
+The intelligence layer is deliberately **advisory where it matters**: fusion can lower an automatic fix to an alert but
+never raise one to automatic, and the LLM only explains and recommends, it never acts.
 
-## Implementation status
+## What is in the box
 
-**Approximately 50% — deterministic baseline.**
+| Area | What it does | Verified how |
+| --- | --- | --- |
+| Detection + risk + remediation + verification + audit | Five controls across three clouds, safety gate (allowlist + tag), re-read verification | Unit/integration tests; live AWS runs |
+| Fusion engine | Behavioural anomaly signals, context rules, evidence-weighted confidence, priority, incident correlation | Tests + [benchmark](docs/research/benchmark.md) (synthetic, see caveats) |
+| LLM analysis | Claude explains root cause, impact and recommendation; offline fallback when no key | Fake-client tests; **not run live without your API key** |
+| Least-privilege policy generator | Minimal IAM policies from the actions ASPARe really runs; drift test against the deployed template | Test records every real S3 API call |
+| Azure + GCS adapters | Same rules, fusion and remediation through a routing layer | Simulated APIs; real SDK wrappers **not run against live Azure/GCP** |
+| Live Showcase + Intelligence dashboard | Break a real bucket and watch ASPARe fix it, with reasoning | Run against a real AWS account |
+| AWS deployment | Two Lambdas, finding bus, SNS alerts, audit bucket | Deployed; scheduled/manual path verified, see [GOING_LIVE](docs/GOING_LIVE.md) for the CloudTrail caveat |
 
-| Implemented now | Reserved for the remaining 50% |
-| --- | --- |
-| AWS S3 discovery, inventory, CloudTrail/event normalization | LLM contextual analysis and recommendations |
-| Five S3 detection rules and a Policy Knowledge Base | Anomaly detection, fusion, false-positive reduction |
-| Risk evaluation, remediation, verification, audit, dashboard (lab + live AWS) | Azure Blob Storage and Google Cloud Storage |
-| Manual approval workflow, SNS alerting, Lambda packaging + deploy scripts | |
-| Unit tests, mocked AWS tests, guarded live demo | Dynamic least-privilege policy generation |
-
-See [docs/IMPLEMENTATION_STATUS.md](docs/IMPLEMENTATION_STATUS.md) and [docs/roadmap/future-work.md](docs/roadmap/future-work.md).
+See [docs/IMPLEMENTATION_STATUS.md](docs/IMPLEMENTATION_STATUS.md) for the honest per-item status and limits.
 
 ## Quick start
 

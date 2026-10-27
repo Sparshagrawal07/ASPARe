@@ -8,6 +8,7 @@ from aspare.core.enums import EventType, Provider, ResourceType
 from aspare.core.ids import correlation_id
 from aspare.core.models import StorageEvent
 from aspare.core.timeutil import parse_timestamp, utcnow
+from aspare.providers.routing import identity_for
 
 
 def parse_scheduled(raw: dict[str, Any]) -> list[StorageEvent]:
@@ -35,12 +36,13 @@ def parse_scheduled(raw: dict[str, Any]) -> list[StorageEvent]:
     events: list[StorageEvent] = []
     for bucket in buckets:
         eid = f"{event_id}:{bucket}"
+        provider, resource_type = identity_for(str(bucket))
         events.append(
             StorageEvent(
                 event_id=eid,
-                provider=Provider.AWS,
+                provider=provider,
                 event_type=EventType.SCHEDULED_SCAN,
-                resource_type=ResourceType.S3_BUCKET,
+                resource_type=resource_type,
                 resource_id=str(bucket),
                 actor=actor,
                 timestamp=timestamp or utcnow(),

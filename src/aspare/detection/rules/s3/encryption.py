@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-from aspare.core.enums import ResourceType
 from aspare.core.models import Finding, PolicyDefinition, StorageResource
 from aspare.detection.normalizer import normalize_finding
+from aspare.detection.rules.common import is_storage
 
 
 class EncryptionDisabledRule:
@@ -20,7 +20,7 @@ class EncryptionDisabledRule:
         self.accepted_algorithms = tuple(item.upper() for item in accepted_algorithms)
 
     def supports(self, resource: StorageResource) -> bool:
-        return resource.resource_type is ResourceType.S3_BUCKET
+        return is_storage(resource)
 
     def detect(self, resource: StorageResource) -> Finding | None:
         encryption = resource.encryption

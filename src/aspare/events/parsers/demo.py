@@ -4,10 +4,11 @@ from __future__ import annotations
 
 from typing import Any
 
-from aspare.core.enums import EventType, Provider, ResourceType
+from aspare.core.enums import EventType
 from aspare.core.ids import correlation_id
 from aspare.core.models import StorageEvent
 from aspare.core.timeutil import parse_timestamp, utcnow
+from aspare.providers.routing import identity_for
 
 
 def parse_demo(raw: dict[str, Any]) -> StorageEvent:
@@ -20,11 +21,12 @@ def parse_demo(raw: dict[str, Any]) -> StorageEvent:
     timestamp = parse_timestamp(raw.get("time") or detail.get("timestamp"))
     region = str(detail.get("region") or raw.get("region") or "us-east-1")
     event_type = EventType.DEMO if (raw.get("source") == "aspare.demo") else EventType.DIRECT_SCAN
+    provider, resource_type = identity_for(bucket)
     return StorageEvent(
         event_id=event_id,
-        provider=Provider.AWS,
+        provider=provider,
         event_type=event_type,
-        resource_type=ResourceType.S3_BUCKET,
+        resource_type=resource_type,
         resource_id=bucket,
         actor=actor,
         timestamp=timestamp or utcnow(),

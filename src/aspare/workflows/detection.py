@@ -2,13 +2,16 @@
 
 from __future__ import annotations
 
+from typing import Any
+
 from aspare.audit.repository import build_record
 from aspare.core.enums import AuditAction, FindingStatus, RiskDecision
 from aspare.core.interfaces import AuditRepository, FindingAlerter, FindingPublisher
 from aspare.core.lifecycle import InvalidLifecycleTransition, status_for_decision, transition
-from aspare.core.models import ClassifiedFinding, DetectionOutcome, Finding, StorageEvent
+from aspare.core.models import ClassifiedFinding, DetectionOutcome, Finding, StorageEvent, StorageResource
 from aspare.detection.engine import DetectionEngine
 from aspare.events.normalizer import EventNormalizer
+from aspare.intelligence.fusion import FusionEngine, FusionResult
 from aspare.inventory.service import InventoryService
 from aspare.logging import get_logger, log_event
 from aspare.risk.evaluator import RiskEvaluator
@@ -24,6 +27,7 @@ class DetectionWorkflow:
         audit: AuditRepository,
         publisher: FindingPublisher,
         alerter: FindingAlerter | None = None,
+        fusion: FusionEngine | None = None,
     ) -> None:
         self._normalizer = normalizer
         self._inventory = inventory
@@ -32,6 +36,7 @@ class DetectionWorkflow:
         self._audit = audit
         self._publisher = publisher
         self._alerter = alerter
+        self._fusion = fusion
         self._logger = get_logger("aspare.detection")
 
     def run_raw(self, raw_event: dict) -> DetectionOutcome:
@@ -66,6 +71,7 @@ class DetectionWorkflow:
             )
             return DetectionOutcome(event=event, resources=[], findings=[], classified=[], errors=errors)
 
+        assessment = self._fusion.observe(event) if self._fusion else None
         findings: list[Finding] = []
         classified: list[ClassifiedFinding] = []
         for resource in resources:
@@ -83,7 +89,7 @@ class DetectionWorkflow:
                         event_id=event.event_id,
                     )
                 )
-                item = self._classify(finding, event.actor)
+                item = self._classify(finding, event.actor, resource, assessment, event)
                 classified.append(item)
 
         self._audit.append(
@@ -115,13 +121,22 @@ class DetectionWorkflow:
             errors=errors,
         )
 
-    def _classify(self, finding: Finding, actor: str) -> ClassifiedFinding:
+    def _classify(
+        self,
+        finding: Finding,
+        actor: str,
+        resource: StorageResource | None = None,
+        assessment: Any = None,
+        event: StorageEvent | None = None,
+    ) -> ClassifiedFinding:
         try:
             transition(finding, FindingStatus.CLASSIFIED)
         except InvalidLifecycleTransition:
             finding.status = FindingStatus.CLASSIFIED
         decision = self._risk.evaluate(finding)
         finding.decision = decision
+        if self._fusion is not None:
+            decision = self._fuse(finding, actor, resource, assessment, event)
         try:
             transition(finding, status_for_decision(decision))
         except InvalidLifecycleTransition:
@@ -146,3 +161,29 @@ class DetectionWorkflow:
             except Exception as exc:  # noqa: BLE001 - alerting must never abort detection
                 log_event(self._logger, "alert_failed", error=str(exc), resource=finding.resource_id)
         return ClassifiedFinding(finding=finding, decision=decision)
+
+    def _fuse(
+        self,
+        finding: Finding,
+        actor: str,
+        resource: StorageResource | None,
+        assessment: Any,
+        event: StorageEvent | None,
+    ) -> RiskDecision:
+        assert self._fusion is not None
+        result: FusionResult = self._fusion.evaluate(finding, resource, assessment, event)
+        finding.metadata["fusion"] = result.to_dict()
+        finding.decision = result.adjusted_decision
+        self._audit.append(
+            build_record(
+                action=AuditAction.FUSION_EVALUATED.value,
+                result=result.adjusted_decision.value,
+                resource_id=finding.resource_id,
+                correlation_id=finding.correlation_id,
+                finding=finding,
+                actor=actor,
+                event_id=finding.event_id,
+                details=result.to_dict(),
+            )
+        )
+        return result.adjusted_decision

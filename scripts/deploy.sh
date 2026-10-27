@@ -11,6 +11,7 @@ AUDIT=${3:?audit bucket (created by the stack)}
 EMAIL=${4:-}
 REGION=${AWS_REGION:-${AWS_DEFAULT_REGION:-us-east-1}}
 STACK=${STACK_NAME:-aspare}
+RUNTIME=${LAMBDA_RUNTIME:-python3.13}
 
 aws sts get-caller-identity >/dev/null
 aws s3api head-bucket --bucket "$CODE" 2>/dev/null || {
@@ -24,6 +25,6 @@ aws s3 cp dist/lambda.zip "s3://$CODE/aspare/lambda.zip"
 aws cloudformation deploy --region "$REGION" --stack-name "$STACK" \
   --template-file infrastructure/aws/template.yaml --capabilities CAPABILITY_NAMED_IAM \
   --parameter-overrides AllowedBucketName="$ALLOWED" AuditBucketName="$AUDIT" CodeBucket="$CODE" \
-    ScheduleEnabled=ENABLED DetectionRuleState=ENABLED AlertEmail="$EMAIL"
+    ScheduleEnabled=ENABLED DetectionRuleState=ENABLED AlertEmail="$EMAIL" LambdaRuntime="$RUNTIME"
 aws cloudformation describe-stacks --region "$REGION" --stack-name "$STACK" --query "Stacks[0].Outputs" --output table
 echo "Done. Confirm the SNS e-mail subscription if you passed an address."

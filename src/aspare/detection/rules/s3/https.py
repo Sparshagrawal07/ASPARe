@@ -16,9 +16,18 @@ class HttpsEnforcementRule:
         self.description = policy.description
 
     def supports(self, resource: StorageResource) -> bool:
-        return resource.resource_type is ResourceType.S3_BUCKET
+        # GCS has no per-bucket plain-HTTP switch (enforced by org policy / VPC-SC), so the control does not apply.
+        return resource.resource_type in {ResourceType.S3_BUCKET, ResourceType.AZURE_STORAGE_ACCOUNT}
 
     def detect(self, resource: StorageResource) -> Finding | None:
+        if resource.https_only is not None:
+            if resource.https_only:
+                return None
+            return normalize_finding(
+                resource,
+                self.policy,
+                {"https_only": False, "mechanism": "provider 'secure transfer required' setting"},
+            )
         policy_state = resource.policy
         if policy_state.error:
             return None

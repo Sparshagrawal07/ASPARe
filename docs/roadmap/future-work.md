@@ -1,36 +1,30 @@
-# Future work — remaining 50%
+# Future work
 
-> The deterministic baseline is the evaluation substrate for the intelligent/research layer described in Review I.
+> The Review I capability list is implemented. This page records what remains, honestly.
 
-## Reserved capabilities
+## Implemented from the original roadmap
 
-- LLM-assisted contextual analysis and misconfiguration reasoning
-- LLM-assisted remediation recommendations
-- Dynamic least-privilege policy generation (with human review)
-- Anomaly and behavioral detection
-- Rule + anomaly + context fusion
-- Confidence scoring from multiple **real** evidence sources (not dummy scores)
-- Advanced false-positive reduction and finding correlation
-- Azure Blob Storage and Google Cloud Storage adapters
-- Expanded CSPM/compliance libraries
-- Production persistence, distributed scanning, approval UX, alert delivery
-- Research benchmarks comparing rule-only vs fused detection
+LLM-assisted analysis and recommendations, least-privilege policy generation (with human review), anomaly signals,
+rule + anomaly + context fusion, evidence-weighted confidence, false-positive reduction and correlation, Azure Blob and
+Google Cloud Storage adapters, alert delivery (SNS), approval UX, and a rule-only vs fused benchmark. See
+[intelligence](../architecture/intelligence.md) and [multi-cloud](../architecture/multi-cloud.md).
 
-## Extension points already present
+## Still open
 
-- `Provider` enum values `azure` and `gcp`
-- `StorageProvider` / `StorageInspector` / `StorageRemediator` protocols
-- `Finding` and `AuditRecord` schemas
-- `PolicyRegistry` as a versioned knowledge base
-
-Do not add cosmetic AI modules in the meantime.
+- Run the Azure and GCS SDK wrappers against live accounts and add their cloud-specific controls (for example Azure
+  minimum TLS version, GCS retention policies).
+- Persist the anomaly baseline (DynamoDB or the audit bucket) so it survives Lambda cold starts.
+- Independent labels for the benchmark and a larger case set, to move from regression checks to measured accuracy.
+- Dashboard authentication and hosting; multi-account scanning; dead-letter queues.
+- A provider-neutral rule id scheme (today Azure/GCS findings reuse `S3_*` ids).
+- Fully managed CloudTrail trail inside the CloudFormation template.
 
 ```mermaid
 flowchart TB
     Abstraction[StorageAbstraction]
-    Abstraction --> AWS[AWS_S3_IMPLEMENTED]
-    Abstraction --> Azure[AzureBlob_FUTURE]
-    Abstraction --> GCP[GCS_FUTURE]
+    Abstraction --> AWS[AWS_S3_VERIFIED_LIVE]
+    Abstraction --> Azure[AzureBlob_SIMULATED_TESTS]
+    Abstraction --> GCP[GCS_SIMULATED_TESTS]
     AWS --> Common[CommonDetectionFramework]
     Azure --> Common
     GCP --> Common

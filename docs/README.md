@@ -1,6 +1,6 @@
 # ASPARe documentation
 
-> Technical documentation for the deterministic 50% milestone of **ASPARe — Automated Security Posture Assessment & Remediation Engine**.
+> Technical documentation for **ASPARe — Automated Security Posture Assessment & Remediation Engine**.
 
 This documentation is written for a professor evaluating the implementation, a developer reviewing the code, a security engineer analyzing the architecture, and a student presenting the project.
 
@@ -22,6 +22,8 @@ This documentation is written for a professor evaluating the implementation, a d
 - [Remediation engine](architecture/remediation-engine.md)
 - [Verification](architecture/verification.md)
 - [Infrastructure](architecture/infrastructure.md)
+- [Intelligence layer: anomaly, fusion, LLM](architecture/intelligence.md)
+- [Multi-cloud](architecture/multi-cloud.md)
 
 
 
@@ -40,6 +42,8 @@ This documentation is written for a professor evaluating the implementation, a d
 - [Remediation rules](implementation/remediation-rules.md)
 - [Risk engine](implementation/risk-engine.md)
 - [Audit system](implementation/audit-system.md)
+- [Least-privilege policy generation](implementation/policy-generation.md)
+- [Benchmark: rule-only vs fused](research/benchmark.md)
 
 
 

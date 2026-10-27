@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-from aspare.core.enums import ResourceType
 from aspare.core.models import Finding, PolicyDefinition, StorageResource
 from aspare.detection.normalizer import normalize_finding
+from aspare.detection.rules.common import is_storage
 from aspare.s3.https_policy import PUBLIC_ACL_URIS
 
 
@@ -16,7 +16,7 @@ class PublicAclRule:
         self.description = policy.description
 
     def supports(self, resource: StorageResource) -> bool:
-        return resource.resource_type is ResourceType.S3_BUCKET
+        return is_storage(resource)
 
     def detect(self, resource: StorageResource) -> Finding | None:
         if resource.ownership.acls_disabled():

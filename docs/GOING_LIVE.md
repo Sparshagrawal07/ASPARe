@@ -83,7 +83,44 @@ Point the dashboard at the audit bucket: `ASPARE_AUDIT_BACKEND=s3 ASPARE_AUDIT_B
 Clean up with `scripts/teardown.sh` (empty the versioned audit bucket first if you want it removed) and delete the
 test bucket.
 
+## 4. Optional: Claude analysis, Azure and Google Cloud
+
+**Claude (LLM analysis).** Create an API key in the Anthropic Console and export it before starting the dashboard:
+
+```bash
+pip install -e ".[llm]"
+export ANTHROPIC_API_KEY=...        # never commit this
+export ASPARE_LLM_MODEL=claude-opus-5-5   # optional; this is the default
+```
+
+The Intelligence page then shows "Reasoner: Claude". Without a key it shows the offline reasoner. Each *Analyse* click
+is one API call, so cost is under your control.
+
+**Azure Blob Storage.** `pip install -e ".[azure]"`, `az login`, then:
+
+```bash
+export ASPARE_AZURE_SUBSCRIPTION_ID=<subscription-id>
+export ASPARE_AZURE_RESOURCE_GROUP=<resource-group>
+export ASPARE_ALLOWED_BUCKETS="azure://<storage-account>"
+```
+
+Tag the storage account `ASPAReDemo=true`. Needs Reader for scanning and Storage Account Contributor to remediate.
+
+**Google Cloud Storage.** `pip install -e ".[gcp]"`, `gcloud auth application-default login`, then:
+
+```bash
+export ASPARE_GCP_ENABLED=true ASPARE_GCP_PROJECT=<project-id>
+export ASPARE_ALLOWED_BUCKETS="gcs://<bucket>"
+```
+
+Label the bucket `asparedemo=true`. **The Azure and GCP SDK wrappers have only been tested against simulated APIs**, so
+treat the first live run as a test and start with `--dry-run` style review of the findings.
+
 ## Known account-level caveats
+
+- **CloudTrail to EventBridge in the test account:** the rule pattern matches a sample event and the trail logs and
+  delivers to S3, but real-time delivery to the Lambda did not fire within 15 minutes there. A manual or hourly
+  scheduled scan does fix the bucket. If real-time matters for your demo, verify it in your account before relying on it.
 
 - **Region restrictions:** managed/sandbox accounts can restrict regions or services with organization policies.
   If `CreateBucket` returns `explicit deny in a service control policy`, try another region your organization allows.

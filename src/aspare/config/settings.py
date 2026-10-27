@@ -41,6 +41,11 @@ class Settings:
     event_bus_name: str | None = None
     scan_all_allowlisted: bool = True
     alert_topic_arn: str | None = None
+    fusion_enabled: bool = True
+    azure_subscription_id: str | None = None
+    azure_resource_group: str | None = None
+    gcp_project: str | None = None
+    gcp_enabled: bool = False
 
     @classmethod
     def from_env(cls) -> Settings:
@@ -69,6 +74,11 @@ class Settings:
             event_bus_name=os.environ.get("ASPARE_EVENT_BUS_NAME") or None,
             scan_all_allowlisted=_bool(os.environ.get("ASPARE_SCAN_ALL_ALLOWLISTED"), True),
             alert_topic_arn=os.environ.get("ASPARE_ALERT_TOPIC_ARN") or None,
+            fusion_enabled=_bool(os.environ.get("ASPARE_FUSION"), True),
+            azure_subscription_id=os.environ.get("ASPARE_AZURE_SUBSCRIPTION_ID") or None,
+            azure_resource_group=os.environ.get("ASPARE_AZURE_RESOURCE_GROUP") or None,
+            gcp_project=os.environ.get("ASPARE_GCP_PROJECT") or None,
+            gcp_enabled=_bool(os.environ.get("ASPARE_GCP_ENABLED"), False),
         )
 
     def is_bucket_allowed(self, bucket: str, tags: dict[str, str] | None = None) -> bool:

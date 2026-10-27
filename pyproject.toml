@@ -27,8 +27,18 @@ dev = [
 dashboard = [
     "streamlit>=1.40",
 ]
+llm = [
+    "anthropic>=1.0",
+]
+azure = [
+    "azure-identity>=1.17",
+    "azure-mgmt-storage>=21.2",
+]
+gcp = [
+    "google-cloud-storage>=2.18",
+]
 all = [
-    "aspare[dev,dashboard]",
+    "aspare[dev,dashboard,llm,azure,gcp]",
 ]
 
 [project.scripts]
