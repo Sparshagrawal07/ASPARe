@@ -7,13 +7,12 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
-_REPO = Path(__file__).resolve().parents[3]
-DEFAULT_PATH = _REPO / "config" / "explainers.json"
+from aspare.config.paths import config_dir
 
 
 @lru_cache(maxsize=1)
 def load_explainers(path: str | None = None) -> dict[str, dict[str, Any]]:
-    target = Path(path) if path else DEFAULT_PATH
+    target = Path(path) if path else config_dir() / "explainers.json"
     payload = json.loads(target.read_text())
     if not isinstance(payload, dict):
         raise ValueError("explainers.json must be an object keyed by rule_id")

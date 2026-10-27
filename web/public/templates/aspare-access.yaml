@@ -1,0 +1,63 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: >
+  ASPARe read-only access. Creates one IAM role that ASPARe can assume to read the configuration of your S3 buckets.
+  It cannot read objects and it cannot change anything. Delete this stack to end access immediately.
+
+Parameters:
+  ExternalId:
+    Type: String
+    Description: Unique to your ASPARe connection; protects against the confused-deputy problem.
+    MinLength: 16
+  RoleName:
+    Type: String
+    Description: Name of the role to create.
+  TrustAccountId:
+    Type: String
+    Description: The AWS account ASPARe runs in.
+    AllowedPattern: "[0-9]{12}"
+
+Resources:
+  AccessRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: !Ref RoleName
+      Description: Read-only S3 configuration access for ASPARe
+      MaxSessionDuration: 3600
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              AWS: !Sub arn:${AWS::Partition}:iam::${TrustAccountId}:root
+            Action: sts:AssumeRole
+            Condition:
+              StringEquals:
+                sts:ExternalId: !Ref ExternalId
+      Policies:
+        - PolicyName: aspare-read-bucket-configuration
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Sid: ListBucketNames
+                Effect: Allow
+                Action:
+                  - s3:ListAllMyBuckets
+                Resource: "*"
+              - Sid: InspectBucketConfiguration
+                Effect: Allow
+                Action:
+                  - s3:ListBucket
+                  - s3:GetBucketLocation
+                  - s3:GetBucketTagging
+                  - s3:GetBucketAcl
+                  - s3:GetBucketPolicy
+                  - s3:GetBucketVersioning
+                  - s3:GetEncryptionConfiguration
+                  - s3:GetBucketPublicAccessBlock
+                  - s3:GetBucketOwnershipControls
+                Resource: !Sub arn:${AWS::Partition}:s3:::*
+
+Outputs:
+  RoleArn:
+    Description: The role ASPARe assumes
+    Value: !GetAtt AccessRole.Arn

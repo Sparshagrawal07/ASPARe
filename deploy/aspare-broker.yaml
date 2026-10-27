@@ -1,0 +1,59 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: >
+  ASPARe broker identity. Lets the ASPARe application on Vercel (and only that project, in production) obtain
+  short-lived AWS credentials through OIDC federation, with no stored access keys. The role can do exactly two
+  things: assume the ASPARe customer roles (ASPAReAccess-* and ASPAReFix-*), and read the two CloudFormation
+  templates from the private template bucket.
+
+Parameters:
+  VercelTeamSlug:
+    Type: String
+    Default: sparsh-agrawals-projects
+    Description: Used for the provider URL. The condition keys below are literal because CloudFormation cannot substitute into keys.
+  TemplateBucket:
+    Type: String
+    Default: aspare-connect-templates-780017222905
+
+Resources:
+  VercelOidcProvider:
+    Type: AWS::IAM::OIDCProvider
+    Properties:
+      Url: !Sub https://oidc.vercel.com/${VercelTeamSlug}
+      ClientIdList:
+        - !Sub https://vercel.com/${VercelTeamSlug}
+
+  BrokerRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: aspare-vercel-broker
+      MaxSessionDuration: 3600
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Federated: !GetAtt VercelOidcProvider.Arn
+            Action: sts:AssumeRoleWithWebIdentity
+            Condition:
+              StringEquals:
+                oidc.vercel.com/sparsh-agrawals-projects:aud: https://vercel.com/sparsh-agrawals-projects
+                oidc.vercel.com/sparsh-agrawals-projects:sub: owner:sparsh-agrawals-projects:project:aspare:environment:production
+      Policies:
+        - PolicyName: aspare-broker
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Sid: AssumeCustomerRoles
+                Effect: Allow
+                Action: sts:AssumeRole
+                Resource:
+                  - arn:aws:iam::*:role/ASPAReAccess-*
+                  - arn:aws:iam::*:role/ASPAReFix-*
+              - Sid: ReadConnectTemplates
+                Effect: Allow
+                Action: s3:GetObject
+                Resource: !Sub arn:aws:s3:::${TemplateBucket}/aspare-*.yaml
+
+Outputs:
+  BrokerRoleArn:
+    Value: !GetAtt BrokerRole.Arn

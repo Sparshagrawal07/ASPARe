@@ -1,0 +1,75 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: >
+  ASPARe fix access (optional). Creates a separate role that can change only the five security settings ASPARe fixes,
+  and only on buckets you have tagged aspare-autofix=true. Delete this stack to remove the ability to change anything.
+
+Parameters:
+  ExternalId:
+    Type: String
+    MinLength: 16
+  RoleName:
+    Type: String
+  TrustAccountId:
+    Type: String
+    AllowedPattern: "[0-9]{12}"
+
+Resources:
+  FixRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: !Ref RoleName
+      Description: Tag-gated S3 remediation access for ASPARe
+      MaxSessionDuration: 3600
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              AWS: !Sub arn:${AWS::Partition}:iam::${TrustAccountId}:root
+            Action: sts:AssumeRole
+            Condition:
+              StringEquals:
+                sts:ExternalId: !Ref ExternalId
+      Policies:
+        - PolicyName: aspare-read-bucket-configuration
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Sid: ListBucketNames
+                Effect: Allow
+                Action:
+                  - s3:ListAllMyBuckets
+                Resource: "*"
+              - Sid: InspectBucketConfiguration
+                Effect: Allow
+                Action:
+                  - s3:ListBucket
+                  - s3:GetBucketLocation
+                  - s3:GetBucketTagging
+                  - s3:GetBucketAcl
+                  - s3:GetBucketPolicy
+                  - s3:GetBucketVersioning
+                  - s3:GetEncryptionConfiguration
+                  - s3:GetBucketPublicAccessBlock
+                  - s3:GetBucketOwnershipControls
+                Resource: !Sub arn:${AWS::Partition}:s3:::*
+        - PolicyName: aspare-fix-tagged-buckets
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Sid: ApplyReviewedFixesToOptedInBuckets
+                Effect: Allow
+                Action:
+                  - s3:PutBucketPublicAccessBlock
+                  - s3:PutEncryptionConfiguration
+                  - s3:PutBucketVersioning
+                  - s3:PutBucketPolicy
+                  - s3:PutBucketAcl
+                Resource: !Sub arn:${AWS::Partition}:s3:::*
+                Condition:
+                  StringEquals:
+                    aws:ResourceTag/aspare-autofix: "true"
+
+Outputs:
+  RoleArn:
+    Value: !GetAtt FixRole.Arn

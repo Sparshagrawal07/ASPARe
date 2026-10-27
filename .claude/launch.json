@@ -4,8 +4,29 @@
     {
       "name": "aspare-dashboard",
       "runtimeExecutable": "/bin/sh",
-      "runtimeArgs": ["-c", "ASPARE_REGION=ap-southeast-2 .venv/bin/streamlit run dashboard/app.py --server.headless true --server.port 8501"],
+      "runtimeArgs": [
+        "-c",
+        "ASPARE_REGION=ap-southeast-2 .venv/bin/streamlit run dashboard/app.py --server.headless true --server.port 8501"
+      ],
       "port": 8501
+    },
+    {
+      "name": "web-api",
+      "runtimeExecutable": "/bin/sh",
+      "runtimeArgs": [
+        "-c",
+        ".venv/bin/python web/scripts/dev_api.py"
+      ],
+      "port": 8000
+    },
+    {
+      "name": "web",
+      "runtimeExecutable": "/bin/sh",
+      "runtimeArgs": [
+        "-c",
+        "NODE_USE_ENV_PROXY=1 npm --prefix web run dev"
+      ],
+      "port": 3000
     }
   ]
 }

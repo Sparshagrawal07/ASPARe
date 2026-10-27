@@ -1,0 +1,15 @@
+{
+  "version": "1.0",
+  "description": "Deterministic severity-to-response policy. These weights are not anomaly scores or ML confidence.",
+  "auto_remediate_severities": ["CRITICAL", "HIGH"],
+  "alert_severities": ["MEDIUM"],
+  "log_only_severities": ["LOW"],
+  "require_auto_remediable_for_auto": true,
+  "manual_review_when_not_auto_remediable": true,
+  "severity_weights": {
+    "CRITICAL": 100,
+    "HIGH": 75,
+    "MEDIUM": 50,
+    "LOW": 25
+  }
+}

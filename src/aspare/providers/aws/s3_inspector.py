@@ -28,6 +28,7 @@ _ABSENT_CODES = {
     "ServerSideEncryptionConfigurationNotFoundError",
     "OwnershipControlsNotFoundError",
     "NoSuchLifecycleConfiguration",
+    "NoSuchTagSet",  # an untagged bucket is normal, not an inspection failure
 }
 
 
@@ -38,8 +39,28 @@ class S3Inspector:
     def __init__(self, client: Any | None = None, region: str = "us-east-1") -> None:
         self._client = client or s3_client(region)
         self._region = region
+        self._prefetched: dict[str, StorageResource] = {}
+
+    def prefetch(self, resource_ids: list[str], workers: int = 8) -> dict[str, StorageResource]:
+        """Inspect many buckets in parallel; the next inspect() of each id returns the snapshot once."""
+        from concurrent.futures import ThreadPoolExecutor
+
+        def safe(rid: str) -> StorageResource | None:
+            try:
+                return self.inspect(rid)
+            except Exception:  # noqa: BLE001 - one unreadable bucket must not abort the scan
+                return None
+
+        with ThreadPoolExecutor(max_workers=max(1, workers)) as pool:
+            for rid, res in zip(resource_ids, pool.map(safe, resource_ids), strict=True):
+                if res is not None:
+                    self._prefetched[rid] = res
+        return dict(self._prefetched)
 
     def inspect(self, resource_id: str, region: str | None = None) -> StorageResource:
+        cached = self._prefetched.pop(resource_id, None)
+        if cached is not None:
+            return cached
         try:
             self._client.head_bucket(Bucket=resource_id)
         except ClientError as exc:

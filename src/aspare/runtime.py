@@ -51,6 +51,7 @@ class Runtime:
     inspector: S3Inspector
     remediator: S3Remediator
     fusion: FusionEngine | None = None
+    storage_inspector: Any = None  # routes to the right cloud by resource id
 
 
 def build_audit(settings: Settings, client: Any | None = None) -> AuditRepository:
@@ -161,4 +162,5 @@ def build_runtime(
         inspector=inspector,
         remediator=remediator,
         fusion=fusion,
+        storage_inspector=route_inspector,
     )

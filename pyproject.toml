@@ -58,6 +58,7 @@ addopts = "-q --strict-markers"
 [tool.ruff]
 line-length = 120
 target-version = "py311"
+extend-exclude = ["web/api/_engine", "web/node_modules", "web/.next"]
 src = ["src", "tests", "dashboard", "scripts"]
 
 [tool.ruff.lint]
