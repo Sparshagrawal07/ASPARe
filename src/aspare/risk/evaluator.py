@@ -38,12 +38,8 @@ class RiskPolicy:
             auto_remediate_severities=_sev("auto_remediate_severities"),
             alert_severities=_sev("alert_severities"),
             log_only_severities=_sev("log_only_severities"),
-            require_auto_remediable_for_auto=bool(
-                payload.get("require_auto_remediable_for_auto", True)
-            ),
-            manual_review_when_not_auto_remediable=bool(
-                payload.get("manual_review_when_not_auto_remediable", True)
-            ),
+            require_auto_remediable_for_auto=bool(payload.get("require_auto_remediable_for_auto", True)),
+            manual_review_when_not_auto_remediable=bool(payload.get("manual_review_when_not_auto_remediable", True)),
             weights=weights,
         )
 

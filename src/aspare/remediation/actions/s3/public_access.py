@@ -12,9 +12,7 @@ from aspare.remediation.safety import SafetyGate
 class BlockPublicAccessAction:
     action_id = "S3_BLOCK_PUBLIC_ACCESS"
 
-    def __init__(
-        self, remediator: StorageRemediator, settings: Settings, gate: SafetyGate
-    ) -> None:
+    def __init__(self, remediator: StorageRemediator, settings: Settings, gate: SafetyGate) -> None:
         self._remediator = remediator
         self._settings = settings
         self._gate = gate

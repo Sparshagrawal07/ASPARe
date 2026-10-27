@@ -56,6 +56,7 @@ def _settings_for(bucket: str, audit_path: str) -> Settings:
         audit_backend="jsonl",
         audit_path=type(base.audit_path)(audit_path),
         event_bus_name=None,
+        alert_topic_arn=None,
     )
 
 
@@ -68,7 +69,7 @@ def _run_against_client(client: Any, bucket: str, audit_path: str) -> dict[str, 
         "detail": {"bucket": bucket, "actor": "aspare.demo", "region": "us-east-1"},
     }
     result = runtime.pipeline.run_raw(event)
-    summary = {
+    summary: dict[str, Any] = {
         "bucket": bucket,
         "resources": [item.resource_id for item in result.detection.resources],
         "findings": [

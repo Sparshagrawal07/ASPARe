@@ -17,8 +17,12 @@ jobs:
         run: pip install -e ".[dev,dashboard]"
       - name: Ruff
         run: ruff check src tests dashboard scripts
+      - name: Mypy
+        run: mypy
       - name: Tests
         run: pytest
+      - name: CloudFormation lint
+        run: pip install cfn-lint && cfn-lint infrastructure/aws/template.yaml
       - name: Validate CloudFormation markers
         run: |
           python - <<'PY'

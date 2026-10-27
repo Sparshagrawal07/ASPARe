@@ -42,15 +42,11 @@ class StorageRemediator(Protocol):
 
     def enable_public_access_block(self, resource_id: str) -> dict[str, Any]: ...
 
-    def enable_default_encryption(
-        self, resource_id: str, algorithm: str, kms_key_id: str | None
-    ) -> dict[str, Any]: ...
+    def enable_default_encryption(self, resource_id: str, algorithm: str, kms_key_id: str | None) -> dict[str, Any]: ...
 
     def enable_versioning(self, resource_id: str) -> dict[str, Any]: ...
 
-    def merge_secure_transport_policy(
-        self, resource_id: str, statement: dict[str, Any]
-    ) -> dict[str, Any]: ...
+    def merge_secure_transport_policy(self, resource_id: str, statement: dict[str, Any]) -> dict[str, Any]: ...
 
     def remove_public_acl_grants(self, resource_id: str) -> dict[str, Any]: ...
 
@@ -87,6 +83,11 @@ class AuditRepository(Protocol):
 @runtime_checkable
 class FindingPublisher(Protocol):
     def publish(self, finding: Finding) -> None: ...
+
+
+@runtime_checkable
+class FindingAlerter(Protocol):
+    def alert(self, finding: Finding) -> None: ...
 
 
 @runtime_checkable

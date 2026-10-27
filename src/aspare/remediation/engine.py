@@ -6,6 +6,15 @@ from aspare.core.enums import ActionResultStatus
 from aspare.core.interfaces import RemediationAction
 from aspare.core.models import Finding, RemediationActionResult
 
+# S3 refuses to save a bucket policy that still contains a public statement once BlockPublicPolicy is on,
+# so the Public Access Block must be applied after any policy edit made for the same bucket.
+_LAST_ACTIONS = ("S3_BLOCK_PUBLIC_ACCESS",)
+
+
+def safe_remediation_order(findings: list[Finding]) -> list[Finding]:
+    """Stable sort that runs policy-editing fixes before the Public Access Block."""
+    return sorted(findings, key=lambda item: item.remediation_action in _LAST_ACTIONS)
+
 
 class RemediationEngine:
     def __init__(self, actions: list[RemediationAction]) -> None:

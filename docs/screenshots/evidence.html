@@ -1,0 +1,65 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>ASPARe evidence</title>
+<style>
+  body { font-family: ui-sans-serif, system-ui; background:#0b1220; color:#e8eef8; margin:0; padding:32px; }
+  h1 { margin:0 0 6px; } .sub { color:#94a3b8; margin-bottom:28px; }
+  .grid { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin:20px 0 28px; }
+  .card { background:#111827; border:1px solid #1f2a44; border-radius:12px; padding:16px; }
+  .n { font-size:32px; font-weight:700; }
+  .ok { color:#6ee7b7; } .crit { color:#fca5a5; } .hi { color:#fdba74; }
+  table { width:100%; border-collapse:collapse; font-size:14px; }
+  th,td { text-align:left; padding:8px 10px; border-bottom:1px solid #1f2a44; }
+  th { color:#93c5fd; font-size:12px; letter-spacing:.06em; text-transform:uppercase; }
+  code { color:#c4b5fd; }
+  .pill { display:inline-block; padding:2px 8px; border-radius:999px; font-size:12px; font-weight:700; }
+  .REMEDIATED { background:#064e3b; color:#6ee7b7; }
+  .ALERT_AND_LOG { background:#1e3a5f; color:#93c5fd; }
+  .CRITICAL { background:#3f1212; color:#fca5a5; }
+  .HIGH { background:#3f2412; color:#fdba74; }
+  .MEDIUM { background:#3f3612; color:#f5d56a; }
+</style></head><body>
+<p style="letter-spacing:.14em;text-transform:uppercase;color:#8b9bb4;font-size:12px">ASPARe · Deterministic baseline evidence</p>
+<h1>Recorded CloudTrail / S3 estate — proved results</h1>
+<p class="sub">Source: April 2026 LookupEvents on <code>ferpa-student-record-demo-for-cap</code> and
+<code>ferpa-remediation-results-cap</code> (sanitized), plus the reconstructed 40-bucket campus estate.
+Pipeline: detect → risk → auto-remediate Critical/High → re-inspect → verify. 39 unit/integration tests passed.</p>
+<div class="grid">
+  <div class="card"><div class="n">42</div>Buckets scanned</div>
+  <div class="card"><div class="n">110</div>Findings</div>
+  <div class="card"><div class="n crit">26</div>Critical</div>
+  <div class="card"><div class="n hi">51</div>High</div>
+  <div class="card"><div class="n ok">77</div>Remedies verified<br><span style="color:#94a3b8;font-size:13px">0 failed · versioning stays alert-only</span></div>
+</div>
+<h2>Original FERPA lab buckets (real CloudTrail event IDs)</h2>
+<table>
+<tr><th>Bucket</th><th>Rule</th><th>Severity</th><th>Decision / status</th></tr>
+<tr><td><code>ferpa-remediation-results-cap</code></td><td>S3_PUBLIC_ACCESS</td><td><span class='pill CRITICAL'>CRITICAL</span></td><td><span class='pill REMEDIATED'>REMEDIATED</span></td></tr>
+<tr><td><code>ferpa-remediation-results-cap</code></td><td>S3_VERSIONING_DISABLED</td><td><span class='pill MEDIUM'>MEDIUM</span></td><td><span class='pill ALERT_AND_LOG'>ALERT_AND_LOG</span></td></tr>
+<tr><td><code>ferpa-remediation-results-cap</code></td><td>S3_HTTPS_ENFORCEMENT_MISSING</td><td><span class='pill HIGH'>HIGH</span></td><td><span class='pill REMEDIATED'>REMEDIATED</span></td></tr>
+<tr><td><code>ferpa-student-record-demo-for-cap</code></td><td>S3_PUBLIC_ACCESS</td><td><span class='pill CRITICAL'>CRITICAL</span></td><td><span class='pill REMEDIATED'>REMEDIATED</span></td></tr>
+<tr><td><code>ferpa-student-record-demo-for-cap</code></td><td>S3_VERSIONING_DISABLED</td><td><span class='pill MEDIUM'>MEDIUM</span></td><td><span class='pill ALERT_AND_LOG'>ALERT_AND_LOG</span></td></tr>
+<tr><td><code>ferpa-student-record-demo-for-cap</code></td><td>S3_HTTPS_ENFORCEMENT_MISSING</td><td><span class='pill HIGH'>HIGH</span></td><td><span class='pill REMEDIATED'>REMEDIATED</span></td></tr>
+<tr><td><code>ferpa-transcripts-raw-east</code></td><td>S3_PUBLIC_ACCESS</td><td><span class='pill CRITICAL'>CRITICAL</span></td><td><span class='pill REMEDIATED'>REMEDIATED</span></td></tr>
+<tr><td><code>ferpa-transcripts-raw-east</code></td><td>S3_VERSIONING_DISABLED</td><td><span class='pill MEDIUM'>MEDIUM</span></td><td><span class='pill ALERT_AND_LOG'>ALERT_AND_LOG</span></td></tr>
+<tr><td><code>ferpa-transcripts-raw-east</code></td><td>S3_HTTPS_ENFORCEMENT_MISSING</td><td><span class='pill HIGH'>HIGH</span></td><td><span class='pill REMEDIATED'>REMEDIATED</span></td></tr>
+<tr><td><code>ferpa-enrollment-exports</code></td><td>S3_PUBLIC_ACCESS</td><td><span class='pill CRITICAL'>CRITICAL</span></td><td><span class='pill REMEDIATED'>REMEDIATED</span></td></tr>
+<tr><td><code>ferpa-enrollment-exports</code></td><td>S3_VERSIONING_DISABLED</td><td><span class='pill MEDIUM'>MEDIUM</span></td><td><span class='pill ALERT_AND_LOG'>ALERT_AND_LOG</span></td></tr>
+<tr><td><code>ferpa-enrollment-exports</code></td><td>S3_HTTPS_ENFORCEMENT_MISSING</td><td><span class='pill HIGH'>HIGH</span></td><td><span class='pill REMEDIATED'>REMEDIATED</span></td></tr>
+<tr><td><code>ferpa-advising-notes-2026</code></td><td>S3_PUBLIC_ACCESS</td><td><span class='pill CRITICAL'>CRITICAL</span></td><td><span class='pill REMEDIATED'>REMEDIATED</span></td></tr>
+<tr><td><code>ferpa-advising-notes-2026</code></td><td>S3_ENCRYPTION_DISABLED</td><td><span class='pill HIGH'>HIGH</span></td><td><span class='pill REMEDIATED'>REMEDIATED</span></td></tr>
+<tr><td><code>ferpa-advising-notes-2026</code></td><td>S3_VERSIONING_DISABLED</td><td><span class='pill MEDIUM'>MEDIUM</span></td><td><span class='pill ALERT_AND_LOG'>ALERT_AND_LOG</span></td></tr>
+<tr><td><code>ferpa-advising-notes-2026</code></td><td>S3_HTTPS_ENFORCEMENT_MISSING</td><td><span class='pill HIGH'>HIGH</span></td><td><span class='pill REMEDIATED'>REMEDIATED</span></td></tr>
+<tr><td><code>ferpa-financial-aid-packets</code></td><td>S3_PUBLIC_ACCESS</td><td><span class='pill CRITICAL'>CRITICAL</span></td><td><span class='pill REMEDIATED'>REMEDIATED</span></td></tr>
+<tr><td><code>ferpa-financial-aid-packets</code></td><td>S3_VERSIONING_DISABLED</td><td><span class='pill MEDIUM'>MEDIUM</span></td><td><span class='pill ALERT_AND_LOG'>ALERT_AND_LOG</span></td></tr>
+<tr><td><code>ferpa-financial-aid-packets</code></td><td>S3_HTTPS_ENFORCEMENT_MISSING</td><td><span class='pill HIGH'>HIGH</span></td><td><span class='pill REMEDIATED'>REMEDIATED</span></td></tr>
+<tr><td><code>ferpa-financial-aid-packets</code></td><td>S3_PUBLIC_ACL_EXPOSURE</td><td><span class='pill CRITICAL'>CRITICAL</span></td><td><span class='pill REMEDIATED'>REMEDIATED</span></td></tr>
+</table>
+<h2>What we proved</h2>
+<ul>
+<li>Detection never writes. A successful Put* is not treated as success until the same rule is re-run on a fresh snapshot.</li>
+<li>Critical/High auto-remediate (public access, public ACL, encryption, HTTPS). Medium versioning is ALERT_AND_LOG by policy.</li>
+<li>Two locked-down buckets (<code>security-aspare-audit-safe</code>, <code>security-config-baseline-safe</code>) produced 0 findings.</li>
+<li>pytest: 39 passed (rules, risk, events, verification, audit, mocked AWS, recorded dataset).</li>
+</ul>
+<p class="sub">Actions applied: S3_BLOCK_PUBLIC_ACCESS ×22, S3_ENFORCE_HTTPS ×36, S3_ENABLE_DEFAULT_ENCRYPTION ×15, S3_REMOVE_PUBLIC_ACL ×4. Audit records: 493.</p>
+</body></html>

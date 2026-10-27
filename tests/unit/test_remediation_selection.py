@@ -41,9 +41,7 @@ def _finding(resource="demo-bucket") -> Finding:
 
 def test_action_selection_and_execution(settings: Settings):
     remediator = RecordingRemediator()
-    engine = RemediationEngine(
-        [BlockPublicAccessAction(remediator, settings, SafetyGate(settings))]
-    )
+    engine = RemediationEngine([BlockPublicAccessAction(remediator, settings, SafetyGate(settings))])
     finding = _finding()
     selected = engine.select(finding)
     assert selected is not None
@@ -55,9 +53,7 @@ def test_action_selection_and_execution(settings: Settings):
 
 def test_safety_gate_denies_unlisted_bucket(settings: Settings):
     remediator = RecordingRemediator()
-    engine = RemediationEngine(
-        [BlockPublicAccessAction(remediator, settings, SafetyGate(settings))]
-    )
+    engine = RemediationEngine([BlockPublicAccessAction(remediator, settings, SafetyGate(settings))])
     result = engine.execute(_finding("other-bucket"))
     assert result.status is ActionResultStatus.DENIED
     assert remediator.calls == []

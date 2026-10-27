@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "aspare-dashboard",
+      "runtimeExecutable": "/bin/sh",
+      "runtimeArgs": ["-c", "ASPARE_REGION=ap-southeast-2 .venv/bin/streamlit run dashboard/app.py --server.headless true --server.port 8501"],
+      "port": 8501
+    }
+  ]
+}

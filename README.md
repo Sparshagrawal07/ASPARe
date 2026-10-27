@@ -15,7 +15,8 @@ This is **not** an LLM product yet. Review I calls for contextual analysis, anom
 | --- | --- |
 | AWS S3 discovery, inventory, CloudTrail/event normalization | LLM contextual analysis and recommendations |
 | Five S3 detection rules and a Policy Knowledge Base | Anomaly detection, fusion, false-positive reduction |
-| Risk evaluation, remediation, verification, audit, dashboard | Azure Blob Storage and Google Cloud Storage |
+| Risk evaluation, remediation, verification, audit, dashboard (lab + live AWS) | Azure Blob Storage and Google Cloud Storage |
+| Manual approval workflow, SNS alerting, Lambda packaging + deploy scripts | |
 | Unit tests, mocked AWS tests, guarded live demo | Dynamic least-privilege policy generation |
 
 See [docs/IMPLEMENTATION_STATUS.md](docs/IMPLEMENTATION_STATUS.md) and [docs/roadmap/future-work.md](docs/roadmap/future-work.md).
@@ -31,6 +32,18 @@ pytest
 python -m aspare.cli --mode dataset
 streamlit run dashboard/app.py
 ```
+
+```bash
+make check        # ruff + mypy + pytest + docs
+make dashboard    # Streamlit: Recorded lab (no AWS needed) or Live AWS
+```
+
+The **Live Showcase** page (`make showcase`) breaks a throwaway bucket in your AWS account on purpose and streams ASPARe
+detecting, reasoning about, fixing and verifying it in real time.
+
+The dashboard has two data sources: a **recorded lab** (42-bucket estate on a mocked S3, needs no AWS account) and
+**Live AWS** (read-only scan of your account with per-finding human approval). See
+[docs/GOING_LIVE.md](docs/GOING_LIVE.md) for the AWS steps only you can perform.
 
 The mocked demo creates an isolated insecure bucket with [moto](https://docs.getmoto.org/), runs the real pipeline, and writes `var/audit/aspare.jsonl`. Refresh the dashboard after the demo.
 
@@ -82,6 +95,7 @@ Detection never receives a write-capable AWS client. A successful `Put*` API res
 - [Permissions](docs/security/permissions.md)
 - [Detection rules](docs/implementation/detection-rules.md)
 - [Remediation rules](docs/implementation/remediation-rules.md)
+- [Going live on AWS](docs/GOING_LIVE.md)
 - [Demo guide](docs/DEMO_GUIDE.md)
 - [Glossary](docs/GLOSSARY.md)
 - [Legacy prototype](legacy/README.md)

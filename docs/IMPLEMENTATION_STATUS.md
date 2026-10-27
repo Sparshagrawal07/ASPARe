@@ -13,15 +13,19 @@
 - Post-remediation verification
 - JSONL / memory / S3 audit repositories
 - In-process pipeline, split Lambda handlers, CloudFormation template
-- Streamlit dashboard
+- Streamlit dashboard: recorded lab and **Live AWS** mode (read-only scan, per-finding approval, dry-run default)
+- Live Showcase page: five real-AWS scenarios with streamed reasoning, before/after proof and cleanup
+- Manual approval workflow (audited `REMEDIATION_APPROVED`, safety gate still enforced)
+- SNS alerting for findings that are not auto-remediated
+- Lambda packaging, deploy and teardown scripts; cfn-lint + mypy in CI
 - Mocked demo and guarded live demo
 - Unit and mocked integration tests
 - Replacement documentation; prototype archived under `legacy/`
 
 ## Partially completed
 
-- **Dashboard:** functional local UI, no auth, no deploy, no approval buttons (~70%)
-- **Event-driven AWS deploy:** template exists; packaging/upload and CloudTrail prerequisite are operator steps (~60%)
+- **Dashboard:** local UI with live mode and approvals; no authentication and not hosted (~90%)
+- **Event-driven AWS deploy:** template lint-clean, packaging/deploy scripts provided; running it needs your AWS account and a CloudTrail trail ([GOING_LIVE](GOING_LIVE.md)) (~85%)
 - **HTTPS/ACL on all AWS accounts:** moto and some orgs block public ACLs; PAB + HTTPS remain the guaranteed demo pair (~90% of intended S3 controls in code)
 
 ## Not yet implemented
@@ -29,8 +33,7 @@
 - LLM analysis, recommendations, or policy generation
 - Anomaly detection, fusion, dummy or real confidence scores
 - Azure Blob Storage / GCS implementations
-- Production alerting, DLQ operations, multi-account scale
-- Interactive manual-approval workflow
+- DLQ operations, multi-account scale, dashboard authentication
 
 ## Current architecture coverage
 
@@ -44,8 +47,8 @@
 | Remediation | Implemented | 100% |
 | Verification | Implemented | 100% |
 | Audit logging | Implemented | 100% |
-| Dashboard | Implemented | 70% |
-| AWS IaC | Partial | 60% |
+| Dashboard | Implemented | 90% |
+| AWS IaC | Implemented, not deployed by CI | 85% |
 | Multi-cloud | Planned | 0% |
 | LLM / anomaly layer | Planned | 0% |
 

@@ -58,9 +58,7 @@ def main() -> int:
             # Allow historical mentions only in glossary / legacy notes.
             if path.as_posix().endswith("legacy/README.md"):
                 continue
-            if "CloudSentinel" in text and "internal codename" not in text.lower() and path.name not in {
-                "GLOSSARY.md"
-            }:
+            if "CloudSentinel" in text and "internal codename" not in text.lower() and path.name not in {"GLOSSARY.md"}:
                 if path == ROOT / "legacy" / "README.md":
                     continue
     print(f"checked {len(REQUIRED)} required docs; mermaid fences scanned in {len(mermaid_docs)} files")

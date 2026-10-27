@@ -37,22 +37,16 @@ class S3Remediator:
         )
         return dict(FULL_PUBLIC_ACCESS_BLOCK)
 
-    def enable_default_encryption(
-        self, resource_id: str, algorithm: str, kms_key_id: str | None
-    ) -> dict[str, Any]:
+    def enable_default_encryption(self, resource_id: str, algorithm: str, kms_key_id: str | None) -> dict[str, Any]:
         rule: dict[str, Any] = {"ApplyServerSideEncryptionByDefault": {"SSEAlgorithm": algorithm}}
         if kms_key_id and algorithm.lower().startswith("aws:kms"):
             rule["ApplyServerSideEncryptionByDefault"]["KMSMasterKeyID"] = kms_key_id
             rule["BucketKeyEnabled"] = True
-        self._client.put_bucket_encryption(
-            Bucket=resource_id, ServerSideEncryptionConfiguration={"Rules": [rule]}
-        )
+        self._client.put_bucket_encryption(Bucket=resource_id, ServerSideEncryptionConfiguration={"Rules": [rule]})
         return rule
 
     def enable_versioning(self, resource_id: str) -> dict[str, Any]:
-        self._client.put_bucket_versioning(
-            Bucket=resource_id, VersioningConfiguration={"Status": "Enabled"}
-        )
+        self._client.put_bucket_versioning(Bucket=resource_id, VersioningConfiguration={"Status": "Enabled"})
         return {"Status": "Enabled"}
 
     def merge_secure_transport_policy(
@@ -75,7 +69,16 @@ class S3Remediator:
             "Version": document.get("Version") or "2012-10-17",
             "Statement": merged,
         }
-        self._client.put_bucket_policy(Bucket=resource_id, Policy=json.dumps(document))
+        try:
+            self._client.put_bucket_policy(Bucket=resource_id, Policy=json.dumps(document))
+        except ClientError as exc:
+            if exc.response.get("Error", {}).get("Code") == "AccessDenied":
+                raise RuntimeError(
+                    "S3 rejected the policy update (AccessDenied). If BlockPublicPolicy is on, S3 refuses any policy "
+                    "that still contains a public statement: remove that statement, then re-run. "
+                    f"Original error: {exc}"
+                ) from exc
+            raise
         return document
 
     def remove_public_acl_grants(self, resource_id: str) -> dict[str, Any]:

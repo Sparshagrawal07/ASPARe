@@ -111,7 +111,7 @@ class S3Inspector:
         rules = (response.get("ServerSideEncryptionConfiguration") or {}).get("Rules") or []
         if not rules:
             return EncryptionState(present=True, enabled=False)
-        apply = (rules[0].get("ApplyServerSideEncryptionByDefault") or {})
+        apply = rules[0].get("ApplyServerSideEncryptionByDefault") or {}
         algorithm = apply.get("SSEAlgorithm")
         return EncryptionState(
             enabled=bool(algorithm),

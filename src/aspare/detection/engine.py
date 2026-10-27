@@ -12,9 +12,7 @@ class DetectionEngine:
         self._rules = list(rules)
         self._by_id = {rule.rule_id: rule for rule in self._rules}
 
-    def evaluate(
-        self, resource: StorageResource, event: StorageEvent | None = None
-    ) -> list[Finding]:
+    def evaluate(self, resource: StorageResource, event: StorageEvent | None = None) -> list[Finding]:
         findings: list[Finding] = []
         for rule in self._rules:
             if not rule.supports(resource):

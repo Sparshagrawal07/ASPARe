@@ -40,6 +40,7 @@ class Settings:
     risk_policy_path: Path = _REPO_ROOT / "config" / "risk-policy.json"
     event_bus_name: str | None = None
     scan_all_allowlisted: bool = True
+    alert_topic_arn: str | None = None
 
     @classmethod
     def from_env(cls) -> Settings:
@@ -58,21 +59,16 @@ class Settings:
             audit_prefix=os.environ.get("ASPARE_AUDIT_PREFIX", "audit/"),
             accepted_encryption_algorithms=tuple(
                 item.strip()
-                for item in os.environ.get(
-                    "ASPARE_ACCEPTED_ENCRYPTION", "AES256,aws:kms,aws:kms:dsse"
-                ).split(",")
+                for item in os.environ.get("ASPARE_ACCEPTED_ENCRYPTION", "AES256,aws:kms,aws:kms:dsse").split(",")
                 if item.strip()
             ),
             encryption_algorithm=os.environ.get("ASPARE_ENCRYPTION_ALGORITHM", "AES256"),
             encryption_kms_key_id=os.environ.get("ASPARE_KMS_KEY_ID") or None,
-            policy_path=Path(
-                os.environ.get("ASPARE_POLICY_PATH", str(repo / "config" / "policies" / "s3.json"))
-            ),
-            risk_policy_path=Path(
-                os.environ.get("ASPARE_RISK_POLICY_PATH", str(repo / "config" / "risk-policy.json"))
-            ),
+            policy_path=Path(os.environ.get("ASPARE_POLICY_PATH", str(repo / "config" / "policies" / "s3.json"))),
+            risk_policy_path=Path(os.environ.get("ASPARE_RISK_POLICY_PATH", str(repo / "config" / "risk-policy.json"))),
             event_bus_name=os.environ.get("ASPARE_EVENT_BUS_NAME") or None,
             scan_all_allowlisted=_bool(os.environ.get("ASPARE_SCAN_ALL_ALLOWLISTED"), True),
+            alert_topic_arn=os.environ.get("ASPARE_ALERT_TOPIC_ARN") or None,
         )
 
     def is_bucket_allowed(self, bucket: str, tags: dict[str, str] | None = None) -> bool:

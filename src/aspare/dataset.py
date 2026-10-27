@@ -13,6 +13,7 @@ import boto3
 from aspare.config.settings import Settings
 from aspare.core.enums import RiskDecision
 from aspare.core.models import Finding, RemediationOutcome
+from aspare.remediation.engine import safe_remediation_order
 from aspare.runtime import Runtime, build_runtime
 
 _REPO = Path(__file__).resolve().parents[2]
@@ -84,6 +85,7 @@ def settings_for_dataset(buckets: list[str], audit_path: str) -> Settings:
         audit_backend="jsonl",
         audit_path=Path(audit_path),
         event_bus_name=None,
+        alert_topic_arn=None,
     )
 
 
@@ -131,7 +133,7 @@ def detect(lab: dict[str, Any]) -> list[Finding]:
 def remediate(lab: dict[str, Any], findings: list[Finding]) -> list[RemediationOutcome]:
     runtime: Runtime = lab["runtime"]
     results: list[RemediationOutcome] = []
-    for finding in findings:
+    for finding in safe_remediation_order(findings):
         if finding.decision is RiskDecision.AUTO_REMEDIATE:
             results.append(runtime.remediation_workflow.run(finding))
     return results

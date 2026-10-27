@@ -51,7 +51,7 @@ def detection_handler(event: dict[str, Any], context: Any | None = None) -> dict
 
 def remediation_handler(event: dict[str, Any], context: Any | None = None) -> dict[str, Any]:
     runtime = get_runtime()
-    detail = event.get("detail") if isinstance(event.get("detail"), dict) else event
+    detail: Any = event.get("detail") if isinstance(event.get("detail"), dict) else event
     if isinstance(detail, str):
         detail = json.loads(detail)
     finding = Finding.from_dict(detail if "finding_id" in detail else event)

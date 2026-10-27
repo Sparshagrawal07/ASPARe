@@ -5,10 +5,9 @@ from __future__ import annotations
 from typing import Any
 
 import boto3
-from botocore.client import BaseClient
 
 
-def s3_client(region: str | None = None, session: Any | None = None) -> BaseClient:
+def s3_client(region: str | None = None, session: Any | None = None) -> Any:
     if session is not None:
         return session.client("s3", region_name=region)
     if region:

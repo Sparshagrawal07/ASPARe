@@ -32,6 +32,13 @@ Parameters:
     Type: String
     Default: DISABLED
     AllowedValues: [ENABLED, DISABLED]
+  AlertEmail:
+    Type: String
+    Default: ""
+    Description: Optional e-mail address that receives alerts for findings ASPARe will not auto-remediate.
+
+Conditions:
+  HasAlertEmail: !Not [!Equals [!Ref AlertEmail, ""]]
 
 Resources:
   AuditBucket:
@@ -49,6 +56,19 @@ Resources:
               SSEAlgorithm: AES256
       VersioningConfiguration:
         Status: Enabled
+
+  AlertTopic:
+    Type: AWS::SNS::Topic
+    Properties:
+      TopicName: aspare-alerts
+
+  AlertSubscription:
+    Type: AWS::SNS::Subscription
+    Condition: HasAlertEmail
+    Properties:
+      TopicArn: !Ref AlertTopic
+      Protocol: email
+      Endpoint: !Ref AlertEmail
 
   FindingBus:
     Type: AWS::Events::EventBus
@@ -96,10 +116,9 @@ Resources:
                   - s3:GetBucketAcl
                   - s3:GetBucketPolicy
                   - s3:GetBucketVersioning
-                  - s3:GetBucketEncryption
+                  - s3:GetEncryptionConfiguration
                   - s3:GetBucketPublicAccessBlock
                   - s3:GetBucketOwnershipControls
-                  - s3:HeadBucket
                 Resource:
                   - !Sub arn:aws:s3:::${AllowedBucketName}
               - Effect: Allow
@@ -114,6 +133,10 @@ Resources:
                 Action:
                   - events:PutEvents
                 Resource: !GetAtt FindingBus.Arn
+              - Effect: Allow
+                Action:
+                  - sns:Publish
+                Resource: !Ref AlertTopic
 
   RemediationRole:
     Type: AWS::IAM::Role
@@ -144,13 +167,11 @@ Resources:
                   - s3:GetBucketAcl
                   - s3:GetBucketPolicy
                   - s3:GetBucketVersioning
-                  - s3:GetBucketEncryption
+                  - s3:GetEncryptionConfiguration
                   - s3:GetBucketPublicAccessBlock
                   - s3:GetBucketOwnershipControls
-                  - s3:HeadBucket
                   - s3:PutBucketPublicAccessBlock
                   - s3:PutEncryptionConfiguration
-                  - s3:PutBucketEncryption
                   - s3:PutBucketVersioning
                   - s3:PutBucketPolicy
                   - s3:PutBucketAcl
@@ -180,6 +201,8 @@ Resources:
           ASPARE_AUDIT_BACKEND: s3
           ASPARE_AUDIT_BUCKET: !Ref AuditBucketName
           ASPARE_EVENT_BUS_NAME: !Ref EventBusName
+          ASPARE_ALERT_TOPIC_ARN: !Ref AlertTopic
+          ASPARE_ROOT: /var/task
           ASPARE_REGION: !Ref AWS::Region
 
   RemediationFunction:
@@ -200,6 +223,7 @@ Resources:
           ASPARE_REQUIRE_DEMO_TAG: "true"
           ASPARE_AUDIT_BACKEND: s3
           ASPARE_AUDIT_BUCKET: !Ref AuditBucketName
+          ASPARE_ROOT: /var/task
           ASPARE_REGION: !Ref AWS::Region
 
   S3MisconfigurationRule:
@@ -292,5 +316,7 @@ Outputs:
     Value: !Ref AuditBucket
   AllowedBucket:
     Value: !Ref AllowedBucketName
+  AlertTopicArn:
+    Value: !Ref AlertTopic
   DashboardNote:
     Value: The Streamlit dashboard is local/demo-grade and is not deployed by this template.

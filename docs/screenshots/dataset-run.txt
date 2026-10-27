@@ -1,0 +1,1734 @@
+{"errors": [], "event": "scan_completed", "findings": 3, "resource": "ferpa-remediation-results-cap"}
+{"errors": [], "event": "scan_completed", "findings": 3, "resource": "ferpa-student-record-demo-for-cap"}
+{"errors": [], "event": "scan_completed", "findings": 3, "resource": "ferpa-transcripts-raw-east"}
+{"errors": [], "event": "scan_completed", "findings": 3, "resource": "ferpa-enrollment-exports"}
+{"errors": [], "event": "scan_completed", "findings": 4, "resource": "ferpa-advising-notes-2026"}
+{"errors": [], "event": "scan_completed", "findings": 4, "resource": "ferpa-financial-aid-packets"}
+{"errors": [], "event": "scan_completed", "findings": 4, "resource": "campus-id-card-photos"}
+{"errors": [], "event": "scan_completed", "findings": 3, "resource": "registrar-degree-audit"}
+{"errors": [], "event": "scan_completed", "findings": 3, "resource": "housing-contracts-scan"}
+{"errors": [], "event": "scan_completed", "findings": 1, "resource": "hr-onboarding-docs"}
+{"errors": [], "event": "scan_completed", "findings": 4, "resource": "payroll-yearend-archive"}
+{"errors": [], "event": "scan_completed", "findings": 3, "resource": "alumni-giving-exports"}
+{"errors": [], "event": "scan_completed", "findings": 4, "resource": "research-irb-consents"}
+{"errors": [], "event": "scan_completed", "findings": 3, "resource": "clinic-billing-extracts"}
+{"errors": [], "event": "scan_completed", "findings": 1, "resource": "library-patron-holds"}
+{"errors": [], "event": "scan_completed", "findings": 1, "resource": "its-cloudtrail-archive"}
+{"errors": [], "event": "scan_completed", "findings": 1, "resource": "its-vpc-flow-logs"}
+{"errors": [], "event": "scan_completed", "findings": 3, "resource": "its-config-snapshots"}
+{"errors": [], "event": "scan_completed", "findings": 4, "resource": "backup-rds-snapshots-s3"}
+{"errors": [], "event": "scan_completed", "findings": 3, "resource": "backup-home-directories"}
+{"errors": [], "event": "scan_completed", "findings": 3, "resource": "analytics-clickstream-raw"}
+{"errors": [], "event": "scan_completed", "findings": 1, "resource": "analytics-sis-warehouse"}
+{"errors": [], "event": "scan_completed", "findings": 3, "resource": "data-lake-landing-zone"}
+{"errors": [], "event": "scan_completed", "findings": 3, "resource": "ml-feature-store-staging"}
+{"errors": [], "event": "scan_completed", "findings": 4, "resource": "ci-artifacts-github-runners"}
+{"errors": [], "event": "scan_completed", "findings": 1, "resource": "ci-cache-npm-wheels"}
+{"errors": [], "event": "scan_completed", "findings": 4, "resource": "app-uploads-student-portal"}
+{"errors": [], "event": "scan_completed", "findings": 1, "resource": "app-static-marketing-site"}
+{"errors": [], "event": "scan_completed", "findings": 3, "resource": "media-commencement-video"}
+{"errors": [], "event": "scan_completed", "findings": 4, "resource": "finance-1098t-batch"}
+{"errors": [], "event": "scan_completed", "findings": 3, "resource": "legal-hold-ediscovery"}
+{"errors": [], "event": "scan_completed", "findings": 4, "resource": "vendor-sftp-dropbox"}
+{"errors": [], "event": "scan_completed", "findings": 4, "resource": "shared-scratch-sandbox"}
+{"errors": [], "event": "scan_completed", "findings": 1, "resource": "old-glacier-restore-cache"}
+{"errors": [], "event": "scan_completed", "findings": 1, "resource": "observability-otel-export"}
+{"errors": [], "event": "scan_completed", "findings": 3, "resource": "terraform-state-shared"}
+{"errors": [], "event": "scan_completed", "findings": 1, "resource": "lambda-deployment-zips"}
+{"errors": [], "event": "scan_completed", "findings": 3, "resource": "quarantine-macie-findings"}
+{"errors": [], "event": "scan_completed", "findings": 1, "resource": "dr-replica-us-west-exp"}
+{"errors": [], "event": "scan_completed", "findings": 4, "resource": "tmp-data-science-scratch"}
+{"errors": [], "event": "scan_completed", "findings": 0, "resource": "security-aspare-audit-safe"}
+{"errors": [], "event": "scan_completed", "findings": 0, "resource": "security-config-baseline-safe"}
+{"action": "S3_BLOCK_PUBLIC_ACCESS", "event": "remediation_complete", "finding_id": "fnd-5cbdae0a228f77bc", "status": "REMEDIATED", "verified": true}
+{"action": "S3_ENFORCE_HTTPS", "event": "remediation_complete", "finding_id": "fnd-05dcd53ed15dd43b", "status": "REMEDIATED", "verified": true}
+{"action": "S3_BLOCK_PUBLIC_ACCESS", "event": "remediation_complete", "finding_id": "fnd-5bb4a904536a3210", "status": "REMEDIATED", "verified": true}
+{"action": "S3_ENFORCE_HTTPS", "event": "remediation_complete", "finding_id": "fnd-b2bbb67cf1703580", "status": "REMEDIATED", "verified": true}
+{"action": "S3_BLOCK_PUBLIC_ACCESS", "event": "remediation_complete", "finding_id": "fnd-88759fa2909106db", "status": "REMEDIATED", "verified": true}
+{"action": "S3_ENFORCE_HTTPS", "event": "remediation_complete", "finding_id": "fnd-30302ab79a08a936", "status": "REMEDIATED", "verified": true}
+{"action": "S3_BLOCK_PUBLIC_ACCESS", "event": "remediation_complete", "finding_id": "fnd-a81b040e2f246684", "status": "REMEDIATED", "verified": true}
+{"action": "S3_ENFORCE_HTTPS", "event": "remediation_complete", "finding_id": "fnd-1cc021bc301c46a9", "status": "REMEDIATED", "verified": true}
+{"action": "S3_BLOCK_PUBLIC_ACCESS", "event": "remediation_complete", "finding_id": "fnd-859404604488b335", "status": "REMEDIATED", "verified": true}
+{"action": "S3_ENABLE_DEFAULT_ENCRYPTION", "event": "remediation_complete", "finding_id": "fnd-9815e2d892823d60", "status": "REMEDIATED", "verified": true}
+{"action": "S3_ENFORCE_HTTPS", "event": "remediation_complete", "finding_id": "fnd-16324f5b72fe4262", "status": "REMEDIATED", "verified": true}
+{"action": "S3_BLOCK_PUBLIC_ACCESS", "event": "remediation_complete", "finding_id": "fnd-b2954c10976c0589", "status": "REMEDIATED", "verified": true}
+{"action": "S3_ENFORCE_HTTPS", "event": "remediation_complete", "finding_id": "fnd-1278f512a166017e", "status": "REMEDIATED", "verified": true}
+{"action": "S3_REMOVE_PUBLIC_ACL", "event": "remediation_complete", "finding_id": "fnd-bc8edaf01372ec1f", "status": "REMEDIATED", "verified": true}
+{"action": "S3_BLOCK_PUBLIC_ACCESS", "event": "remediation_complete", "finding_id": "fnd-e21c22cf6d0de441", "status": "REMEDIATED", "verified": true}
+{"action": "S3_ENABLE_DEFAULT_ENCRYPTION", "event": "remediation_complete", "finding_id": "fnd-f88c44587c82cf44", "status": "REMEDIATED", "verified": true}
+{"action": "S3_ENFORCE_HTTPS", "event": "remediation_complete", "finding_id": "fnd-51763a810dae2285", "status": "REMEDIATED", "verified": true}
+{"action": "S3_BLOCK_PUBLIC_ACCESS", "event": "remediation_complete", "finding_id": "fnd-b1b06f95f7086e4f", "status": "REMEDIATED", "verified": true}
+{"action": "S3_ENFORCE_HTTPS", "event": "remediation_complete", "finding_id": "fnd-5bb8f9b78cd3a80d", "status": "REMEDIATED", "verified": true}
+{"action": "S3_ENABLE_DEFAULT_ENCRYPTION", "event": "remediation_complete", "finding_id": "fnd-2e80223854a6099e", "status": "REMEDIATED", "verified": true}
+{"action": "S3_ENFORCE_HTTPS", "event": "remediation_complete", "finding_id": "fnd-13c692514c24d331", "status": "REMEDIATED", "verified": true}
+{"action": "S3_ENFORCE_HTTPS", "event": "remediation_complete", "finding_id": "fnd-508a99e5ba1fbbbf", "status": "REMEDIATED", "verified": true}
+{"action": "S3_BLOCK_PUBLIC_ACCESS", "event": "remediation_complete", "finding_id": "fnd-45c3d9f29e6e40e7", "status": "REMEDIATED", "verified": true}
+{"action": "S3_ENABLE_DEFAULT_ENCRYPTION", "event": "remediation_complete", "finding_id": "fnd-aa13e84fc47890cc", "status": "REMEDIATED", "verified": true}
+{"action": "S3_ENFORCE_HTTPS", "event": "remediation_complete", "finding_id": "fnd-b93a0539f4c4d0aa", "status": "REMEDIATED", "verified": true}
+{"action": "S3_BLOCK_PUBLIC_ACCESS", "event": "remediation_complete", "finding_id": "fnd-8ce64f07f9e7e9e9", "status": "REMEDIATED", "verified": true}
+{"action": "S3_ENFORCE_HTTPS", "event": "remediation_complete", "finding_id": "fnd-c34d35916eec6e8d", "status": "REMEDIATED", "verified": true}
+{"action": "S3_BLOCK_PUBLIC_ACCESS", "event": "remediation_complete", "finding_id": "fnd-50a7a228d8609796", "status": "REMEDIATED", "verified": true}
+{"action": "S3_ENFORCE_HTTPS", "event": "remediation_complete", "finding_id": "fnd-9d73e3c676b6cd54", "status": "REMEDIATED", "verified": true}
+{"action": "S3_REMOVE_PUBLIC_ACL", "event": "remediation_complete", "finding_id": "fnd-13d74d2d4c60b445", "status": "REMEDIATED", "verified": true}
+{"action": "S3_ENABLE_DEFAULT_ENCRYPTION", "event": "remediation_complete", "finding_id": "fnd-c41a05da3387b90f", "status": "REMEDIATED", "verified": true}
+{"action": "S3_ENFORCE_HTTPS", "event": "remediation_complete", "finding_id": "fnd-01acfc87e7d8d240", "status": "REMEDIATED", "verified": true}
+{"action": "S3_ENFORCE_HTTPS", "event": "remediation_complete", "finding_id": "fnd-f3550486f1ae091e", "status": "REMEDIATED", "verified": true}
+{"action": "S3_ENFORCE_HTTPS", "event": "remediation_complete", "finding_id": "fnd-43a2e00d893f0158", "status": "REMEDIATED", "verified": true}
+{"action": "S3_ENABLE_DEFAULT_ENCRYPTION", "event": "remediation_complete", "finding_id": "fnd-6a92600ba9b7a8be", "status": "REMEDIATED", "verified": true}
+{"action": "S3_ENFORCE_HTTPS", "event": "remediation_complete", "finding_id": "fnd-a35020adc169bc58", "status": "REMEDIATED", "verified": true}
+{"action": "S3_BLOCK_PUBLIC_ACCESS", "event": "remediation_complete", "finding_id": "fnd-efa35a722507c175", "status": "REMEDIATED", "verified": true}
+{"action": "S3_ENABLE_DEFAULT_ENCRYPTION", "event": "remediation_complete", "finding_id": "fnd-5846c0a8252c4f17", "status": "REMEDIATED", "verified": true}
+{"action": "S3_ENFORCE_HTTPS", "event": "remediation_complete", "finding_id": "fnd-e32672e9b95185e6", "status": "REMEDIATED", "verified": true}
+{"action": "S3_BLOCK_PUBLIC_ACCESS", "event": "remediation_complete", "finding_id": "fnd-57aa715fe9230d8d", "status": "REMEDIATED", "verified": true}
+{"action": "S3_ENFORCE_HTTPS", "event": "remediation_complete", "finding_id": "fnd-25d55c3091982846", "status": "REMEDIATED", "verified": true}
+{"action": "S3_ENABLE_DEFAULT_ENCRYPTION", "event": "remediation_complete", "finding_id": "fnd-3b11c448c3c896d4", "status": "REMEDIATED", "verified": true}
+{"action": "S3_ENFORCE_HTTPS", "event": "remediation_complete", "finding_id": "fnd-774ca6d55097005d", "status": "REMEDIATED", "verified": true}
+{"action": "S3_ENFORCE_HTTPS", "event": "remediation_complete", "finding_id": "fnd-3f06ecfa4b33e7a6", "status": "REMEDIATED", "verified": true}
+{"action": "S3_BLOCK_PUBLIC_ACCESS", "event": "remediation_complete", "finding_id": "fnd-1e02b61b5157c64a", "status": "REMEDIATED", "verified": true}
+{"action": "S3_ENFORCE_HTTPS", "event": "remediation_complete", "finding_id": "fnd-837e5c530880fafa", "status": "REMEDIATED", "verified": true}
+{"action": "S3_ENABLE_DEFAULT_ENCRYPTION", "event": "remediation_complete", "finding_id": "fnd-8e136a2c1b5ee9e3", "status": "REMEDIATED", "verified": true}
+{"action": "S3_ENFORCE_HTTPS", "event": "remediation_complete", "finding_id": "fnd-b912b98b980a9fff", "status": "REMEDIATED", "verified": true}
+{"action": "S3_BLOCK_PUBLIC_ACCESS", "event": "remediation_complete", "finding_id": "fnd-2f7c03871a9fd145", "status": "REMEDIATED", "verified": true}
+{"action": "S3_ENFORCE_HTTPS", "event": "remediation_complete", "finding_id": "fnd-0ff7a74dacef1d99", "status": "REMEDIATED", "verified": true}
+{"action": "S3_REMOVE_PUBLIC_ACL", "event": "remediation_complete", "finding_id": "fnd-9a30fe738d4ec282", "status": "REMEDIATED", "verified": true}
+{"action": "S3_BLOCK_PUBLIC_ACCESS", "event": "remediation_complete", "finding_id": "fnd-191a3297c0b5deb7", "status": "REMEDIATED", "verified": true}
+{"action": "S3_ENABLE_DEFAULT_ENCRYPTION", "event": "remediation_complete", "finding_id": "fnd-a1b38e17b75d02ab", "status": "REMEDIATED", "verified": true}
+{"action": "S3_ENFORCE_HTTPS", "event": "remediation_complete", "finding_id": "fnd-db82a865b170557a", "status": "REMEDIATED", "verified": true}
+{"action": "S3_ENFORCE_HTTPS", "event": "remediation_complete", "finding_id": "fnd-080777671e3abbf4", "status": "REMEDIATED", "verified": true}
+{"action": "S3_ENABLE_DEFAULT_ENCRYPTION", "event": "remediation_complete", "finding_id": "fnd-f1ac5ccfaaa66f99", "status": "REMEDIATED", "verified": true}
+{"action": "S3_ENFORCE_HTTPS", "event": "remediation_complete", "finding_id": "fnd-2e6c11ff5791708d", "status": "REMEDIATED", "verified": true}
+{"action": "S3_BLOCK_PUBLIC_ACCESS", "event": "remediation_complete", "finding_id": "fnd-0854389bd920743c", "status": "REMEDIATED", "verified": true}
+{"action": "S3_ENABLE_DEFAULT_ENCRYPTION", "event": "remediation_complete", "finding_id": "fnd-1cad432a133ec860", "status": "REMEDIATED", "verified": true}
+{"action": "S3_ENFORCE_HTTPS", "event": "remediation_complete", "finding_id": "fnd-8237421096aecbdd", "status": "REMEDIATED", "verified": true}
+{"action": "S3_BLOCK_PUBLIC_ACCESS", "event": "remediation_complete", "finding_id": "fnd-9b9a4e9a921b0a1d", "status": "REMEDIATED", "verified": true}
+{"action": "S3_ENFORCE_HTTPS", "event": "remediation_complete", "finding_id": "fnd-52321a7973bf0c0b", "status": "REMEDIATED", "verified": true}
+{"action": "S3_BLOCK_PUBLIC_ACCESS", "event": "remediation_complete", "finding_id": "fnd-c7decd777a5e6914", "status": "REMEDIATED", "verified": true}
+{"action": "S3_ENFORCE_HTTPS", "event": "remediation_complete", "finding_id": "fnd-952c4f73a8cfcc95", "status": "REMEDIATED", "verified": true}
+{"action": "S3_REMOVE_PUBLIC_ACL", "event": "remediation_complete", "finding_id": "fnd-4970fe1530ebba61", "status": "REMEDIATED", "verified": true}
+{"action": "S3_BLOCK_PUBLIC_ACCESS", "event": "remediation_complete", "finding_id": "fnd-983df313411b695b", "status": "REMEDIATED", "verified": true}
+{"action": "S3_ENABLE_DEFAULT_ENCRYPTION", "event": "remediation_complete", "finding_id": "fnd-76d14386759ed5ed", "status": "REMEDIATED", "verified": true}
+{"action": "S3_ENFORCE_HTTPS", "event": "remediation_complete", "finding_id": "fnd-bee9d469829659ad", "status": "REMEDIATED", "verified": true}
+{"action": "S3_ENFORCE_HTTPS", "event": "remediation_complete", "finding_id": "fnd-f34c130f17aea216", "status": "REMEDIATED", "verified": true}
+{"action": "S3_ENABLE_DEFAULT_ENCRYPTION", "event": "remediation_complete", "finding_id": "fnd-4750f66c60e45136", "status": "REMEDIATED", "verified": true}
+{"action": "S3_ENFORCE_HTTPS", "event": "remediation_complete", "finding_id": "fnd-3ad7d5059920e100", "status": "REMEDIATED", "verified": true}
+{"action": "S3_BLOCK_PUBLIC_ACCESS", "event": "remediation_complete", "finding_id": "fnd-374cf6f8dcbe35f5", "status": "REMEDIATED", "verified": true}
+{"action": "S3_ENFORCE_HTTPS", "event": "remediation_complete", "finding_id": "fnd-8ef9a514cffc2cc2", "status": "REMEDIATED", "verified": true}
+{"action": "S3_ENFORCE_HTTPS", "event": "remediation_complete", "finding_id": "fnd-d8c8c0f1341237d5", "status": "REMEDIATED", "verified": true}
+{"action": "S3_BLOCK_PUBLIC_ACCESS", "event": "remediation_complete", "finding_id": "fnd-e81e0a209321f40e", "status": "REMEDIATED", "verified": true}
+{"action": "S3_ENABLE_DEFAULT_ENCRYPTION", "event": "remediation_complete", "finding_id": "fnd-543e24fb337d95af", "status": "REMEDIATED", "verified": true}
+{"action": "S3_ENFORCE_HTTPS", "event": "remediation_complete", "finding_id": "fnd-e011f6678404bbd5", "status": "REMEDIATED", "verified": true}
+{
+  "source": "April 2026 CloudTrail LookupEvents and GetBucket* captures for the two FERPA lab buckets, plus a reconstructed 40-bucket campus estate using the same control fields.",
+  "buckets": [
+    "ferpa-student-record-demo-for-cap",
+    "ferpa-remediation-results-cap",
+    "ferpa-transcripts-raw-east",
+    "ferpa-enrollment-exports",
+    "ferpa-advising-notes-2026",
+    "ferpa-financial-aid-packets",
+    "campus-id-card-photos",
+    "registrar-degree-audit",
+    "housing-contracts-scan",
+    "hr-onboarding-docs",
+    "payroll-yearend-archive",
+    "alumni-giving-exports",
+    "research-irb-consents",
+    "clinic-billing-extracts",
+    "library-patron-holds",
+    "its-cloudtrail-archive",
+    "its-vpc-flow-logs",
+    "its-config-snapshots",
+    "backup-rds-snapshots-s3",
+    "backup-home-directories",
+    "analytics-clickstream-raw",
+    "analytics-sis-warehouse",
+    "data-lake-landing-zone",
+    "ml-feature-store-staging",
+    "ci-artifacts-github-runners",
+    "ci-cache-npm-wheels",
+    "app-uploads-student-portal",
+    "app-static-marketing-site",
+    "media-commencement-video",
+    "finance-1098t-batch",
+    "legal-hold-ediscovery",
+    "vendor-sftp-dropbox",
+    "shared-scratch-sandbox",
+    "old-glacier-restore-cache",
+    "observability-otel-export",
+    "terraform-state-shared",
+    "lambda-deployment-zips",
+    "quarantine-macie-findings",
+    "dr-replica-us-west-exp",
+    "tmp-data-science-scratch",
+    "security-aspare-audit-safe",
+    "security-config-baseline-safe"
+  ],
+  "events": [
+    {
+      "id": "d111de18-0cf9-4b6f-a96a-9c4612e3f417",
+      "event_name": "PutBucketPublicAccessBlock",
+      "bucket": "ferpa-remediation-results-cap",
+      "time": "2026-04-05T18:02:09Z"
+    },
+    {
+      "id": "029c58f6-38c2-4703-9ebb-b15c7d9d6f89",
+      "event_name": "PutBucketPublicAccessBlock",
+      "bucket": "ferpa-student-record-demo-for-cap",
+      "time": "2026-04-05T18:53:20Z"
+    },
+    {
+      "id": "ct-estate-03-ferpa-transcripts-",
+      "event_name": "PutBucketPublicAccessBlock",
+      "bucket": "ferpa-transcripts-raw-east",
+      "time": "2026-04-05T18:01:00Z"
+    },
+    {
+      "id": "ct-estate-04-ferpa-enrollment-e",
+      "event_name": "PutBucketPublicAccessBlock",
+      "bucket": "ferpa-enrollment-exports",
+      "time": "2026-04-05T18:08:00Z"
+    },
+    {
+      "id": "ct-estate-05-ferpa-advising-not",
+      "event_name": "CreateBucket",
+      "bucket": "ferpa-advising-notes-2026",
+      "time": "2026-04-05T18:15:00Z"
+    },
+    {
+      "id": "ct-estate-06-ferpa-financial-ai",
+      "event_name": "PutBucketAcl",
+      "bucket": "ferpa-financial-aid-packets",
+      "time": "2026-04-05T18:22:00Z"
+    },
+    {
+      "id": "ct-estate-07-campus-id-card-pho",
+      "event_name": "CreateBucket",
+      "bucket": "campus-id-card-photos",
+      "time": "2026-04-05T18:29:00Z"
+    },
+    {
+      "id": "ct-estate-08-registrar-degree-a",
+      "event_name": "PutBucketPublicAccessBlock",
+      "bucket": "registrar-degree-audit",
+      "time": "2026-04-05T18:36:00Z"
+    },
+    {
+      "id": "ct-estate-09-housing-contracts-",
+      "event_name": "DeleteBucketEncryption",
+      "bucket": "housing-contracts-scan",
+      "time": "2026-04-05T18:43:00Z"
+    },
+    {
+      "id": "ct-estate-10-hr-onboarding-docs",
+      "event_name": "DeleteBucketPolicy",
+      "bucket": "hr-onboarding-docs",
+      "time": "2026-04-05T18:50:00Z"
+    },
+    {
+      "id": "ct-estate-11-payroll-yearend-ar",
+      "event_name": "CreateBucket",
+      "bucket": "payroll-yearend-archive",
+      "time": "2026-04-05T18:57:00Z"
+    },
+    {
+      "id": "ct-estate-12-alumni-giving-expo",
+      "event_name": "PutBucketPublicAccessBlock",
+      "bucket": "alumni-giving-exports",
+      "time": "2026-04-05T19:04:00Z"
+    },
+    {
+      "id": "ct-estate-13-research-irb-conse",
+      "event_name": "PutBucketAcl",
+      "bucket": "research-irb-consents",
+      "time": "2026-04-05T19:11:00Z"
+    },
+    {
+      "id": "ct-estate-14-clinic-billing-ext",
+      "event_name": "DeleteBucketEncryption",
+      "bucket": "clinic-billing-extracts",
+      "time": "2026-04-05T19:18:00Z"
+    },
+    {
+      "id": "ct-estate-15-library-patron-hol",
+      "event_name": "DeleteBucketPolicy",
+      "bucket": "library-patron-holds",
+      "time": "2026-04-05T19:25:00Z"
+    },
+    {
+      "id": "ct-estate-16-its-cloudtrail-arc",
+      "event_name": "PutBucketVersioning",
+      "bucket": "its-cloudtrail-archive",
+      "time": "2026-04-05T19:32:00Z"
+    },
+    {
+      "id": "ct-estate-17-its-vpc-flow-logs",
+      "event_name": "DeleteBucketPolicy",
+      "bucket": "its-vpc-flow-logs",
+      "time": "2026-04-05T19:39:00Z"
+    },
+    {
+      "id": "ct-estate-18-its-config-snapsho",
+      "event_name": "DeleteBucketEncryption",
+      "bucket": "its-config-snapshots",
+      "time": "2026-04-05T19:46:00Z"
+    },
+    {
+      "id": "ct-estate-19-backup-rds-snapsho",
+      "event_name": "CreateBucket",
+      "bucket": "backup-rds-snapshots-s3",
+      "time": "2026-04-05T19:53:00Z"
+    },
+    {
+      "id": "ct-estate-20-backup-home-direct",
+      "event_name": "PutBucketPublicAccessBlock",
+      "bucket": "backup-home-directories",
+      "time": "2026-04-05T20:00:00Z"
+    },
+    {
+      "id": "ct-estate-21-analytics-clickstr",
+      "event_name": "DeleteBucketEncryption",
+      "bucket": "analytics-clickstream-raw",
+      "time": "2026-04-05T20:07:00Z"
+    },
+    {
+      "id": "ct-estate-22-analytics-sis-ware",
+      "event_name": "DeleteBucketPolicy",
+      "bucket": "analytics-sis-warehouse",
+      "time": "2026-04-05T20:14:00Z"
+    },
+    {
+      "id": "ct-estate-23-data-lake-landing-",
+      "event_name": "PutBucketPublicAccessBlock",
+      "bucket": "data-lake-landing-zone",
+      "time": "2026-04-05T20:21:00Z"
+    },
+    {
+      "id": "ct-estate-24-ml-feature-store-s",
+      "event_name": "DeleteBucketEncryption",
+      "bucket": "ml-feature-store-staging",
+      "time": "2026-04-05T20:28:00Z"
+    },
+    {
+      "id": "ct-estate-25-ci-artifacts-githu",
+      "event_name": "PutBucketAcl",
+      "bucket": "ci-artifacts-github-runners",
+      "time": "2026-04-05T20:35:00Z"
+    },
+    {
+      "id": "ct-estate-26-ci-cache-npm-wheel",
+      "event_name": "PutBucketVersioning",
+      "bucket": "ci-cache-npm-wheels",
+      "time": "2026-04-05T20:42:00Z"
+    },
+    {
+      "id": "ct-estate-27-app-uploads-studen",
+      "event_name": "CreateBucket",
+      "bucket": "app-uploads-student-portal",
+      "time": "2026-04-05T20:49:00Z"
+    },
+    {
+      "id": "ct-estate-28-app-static-marketi",
+      "event_name": "DeleteBucketPolicy",
+      "bucket": "app-static-marketing-site",
+      "time": "2026-04-05T20:56:00Z"
+    },
+    {
+      "id": "ct-estate-29-media-commencement",
+      "event_name": "DeleteBucketEncryption",
+      "bucket": "media-commencement-video",
+      "time": "2026-04-05T21:03:00Z"
+    },
+    {
+      "id": "ct-estate-30-finance-1098t-batc",
+      "event_name": "CreateBucket",
+      "bucket": "finance-1098t-batch",
+      "time": "2026-04-05T21:10:00Z"
+    },
+    {
+      "id": "ct-estate-31-legal-hold-ediscov",
+      "event_name": "PutBucketPublicAccessBlock",
+      "bucket": "legal-hold-ediscovery",
+      "time": "2026-04-05T21:17:00Z"
+    },
+    {
+      "id": "ct-estate-32-vendor-sftp-dropbo",
+      "event_name": "PutBucketAcl",
+      "bucket": "vendor-sftp-dropbox",
+      "time": "2026-04-05T21:24:00Z"
+    },
+    {
+      "id": "ct-estate-33-shared-scratch-san",
+      "event_name": "CreateBucket",
+      "bucket": "shared-scratch-sandbox",
+      "time": "2026-04-05T21:31:00Z"
+    },
+    {
+      "id": "ct-estate-34-old-glacier-restor",
+      "event_name": "PutBucketVersioning",
+      "bucket": "old-glacier-restore-cache",
+      "time": "2026-04-05T21:38:00Z"
+    },
+    {
+      "id": "ct-estate-35-observability-otel",
+      "event_name": "DeleteBucketPolicy",
+      "bucket": "observability-otel-export",
+      "time": "2026-04-05T21:45:00Z"
+    },
+    {
+      "id": "ct-estate-36-terraform-state-sh",
+      "event_name": "DeleteBucketEncryption",
+      "bucket": "terraform-state-shared",
+      "time": "2026-04-05T21:52:00Z"
+    },
+    {
+      "id": "ct-estate-37-lambda-deployment-",
+      "event_name": "PutBucketVersioning",
+      "bucket": "lambda-deployment-zips",
+      "time": "2026-04-05T21:59:00Z"
+    },
+    {
+      "id": "ct-estate-38-quarantine-macie-f",
+      "event_name": "PutBucketPublicAccessBlock",
+      "bucket": "quarantine-macie-findings",
+      "time": "2026-04-05T22:06:00Z"
+    },
+    {
+      "id": "ct-estate-39-dr-replica-us-west",
+      "event_name": "DeleteBucketPolicy",
+      "bucket": "dr-replica-us-west-exp",
+      "time": "2026-04-05T22:13:00Z"
+    },
+    {
+      "id": "ct-estate-40-tmp-data-science-s",
+      "event_name": "CreateBucket",
+      "bucket": "tmp-data-science-scratch",
+      "time": "2026-04-05T22:20:00Z"
+    },
+    {
+      "id": "ct-estate-41-security-aspare-au",
+      "event_name": "CreateBucket",
+      "bucket": "security-aspare-audit-safe",
+      "time": "2026-04-05T22:27:00Z"
+    },
+    {
+      "id": "ct-estate-42-security-config-ba",
+      "event_name": "CreateBucket",
+      "bucket": "security-config-baseline-safe",
+      "time": "2026-04-05T22:34:00Z"
+    }
+  ],
+  "findings": [
+    {
+      "resource": "ferpa-remediation-results-cap",
+      "rule": "S3_PUBLIC_ACCESS",
+      "severity": "CRITICAL",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "ferpa-remediation-results-cap",
+      "rule": "S3_VERSIONING_DISABLED",
+      "severity": "MEDIUM",
+      "decision": "ALERT_AND_LOG",
+      "status": "ALERT_AND_LOG"
+    },
+    {
+      "resource": "ferpa-remediation-results-cap",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "severity": "HIGH",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "ferpa-student-record-demo-for-cap",
+      "rule": "S3_PUBLIC_ACCESS",
+      "severity": "CRITICAL",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "ferpa-student-record-demo-for-cap",
+      "rule": "S3_VERSIONING_DISABLED",
+      "severity": "MEDIUM",
+      "decision": "ALERT_AND_LOG",
+      "status": "ALERT_AND_LOG"
+    },
+    {
+      "resource": "ferpa-student-record-demo-for-cap",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "severity": "HIGH",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "ferpa-transcripts-raw-east",
+      "rule": "S3_PUBLIC_ACCESS",
+      "severity": "CRITICAL",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "ferpa-transcripts-raw-east",
+      "rule": "S3_VERSIONING_DISABLED",
+      "severity": "MEDIUM",
+      "decision": "ALERT_AND_LOG",
+      "status": "ALERT_AND_LOG"
+    },
+    {
+      "resource": "ferpa-transcripts-raw-east",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "severity": "HIGH",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "ferpa-enrollment-exports",
+      "rule": "S3_PUBLIC_ACCESS",
+      "severity": "CRITICAL",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "ferpa-enrollment-exports",
+      "rule": "S3_VERSIONING_DISABLED",
+      "severity": "MEDIUM",
+      "decision": "ALERT_AND_LOG",
+      "status": "ALERT_AND_LOG"
+    },
+    {
+      "resource": "ferpa-enrollment-exports",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "severity": "HIGH",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "ferpa-advising-notes-2026",
+      "rule": "S3_PUBLIC_ACCESS",
+      "severity": "CRITICAL",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "ferpa-advising-notes-2026",
+      "rule": "S3_ENCRYPTION_DISABLED",
+      "severity": "HIGH",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "ferpa-advising-notes-2026",
+      "rule": "S3_VERSIONING_DISABLED",
+      "severity": "MEDIUM",
+      "decision": "ALERT_AND_LOG",
+      "status": "ALERT_AND_LOG"
+    },
+    {
+      "resource": "ferpa-advising-notes-2026",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "severity": "HIGH",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "ferpa-financial-aid-packets",
+      "rule": "S3_PUBLIC_ACCESS",
+      "severity": "CRITICAL",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "ferpa-financial-aid-packets",
+      "rule": "S3_VERSIONING_DISABLED",
+      "severity": "MEDIUM",
+      "decision": "ALERT_AND_LOG",
+      "status": "ALERT_AND_LOG"
+    },
+    {
+      "resource": "ferpa-financial-aid-packets",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "severity": "HIGH",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "ferpa-financial-aid-packets",
+      "rule": "S3_PUBLIC_ACL_EXPOSURE",
+      "severity": "CRITICAL",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "campus-id-card-photos",
+      "rule": "S3_PUBLIC_ACCESS",
+      "severity": "CRITICAL",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "campus-id-card-photos",
+      "rule": "S3_ENCRYPTION_DISABLED",
+      "severity": "HIGH",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "campus-id-card-photos",
+      "rule": "S3_VERSIONING_DISABLED",
+      "severity": "MEDIUM",
+      "decision": "ALERT_AND_LOG",
+      "status": "ALERT_AND_LOG"
+    },
+    {
+      "resource": "campus-id-card-photos",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "severity": "HIGH",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "registrar-degree-audit",
+      "rule": "S3_PUBLIC_ACCESS",
+      "severity": "CRITICAL",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "registrar-degree-audit",
+      "rule": "S3_VERSIONING_DISABLED",
+      "severity": "MEDIUM",
+      "decision": "ALERT_AND_LOG",
+      "status": "ALERT_AND_LOG"
+    },
+    {
+      "resource": "registrar-degree-audit",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "severity": "HIGH",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "housing-contracts-scan",
+      "rule": "S3_ENCRYPTION_DISABLED",
+      "severity": "HIGH",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "housing-contracts-scan",
+      "rule": "S3_VERSIONING_DISABLED",
+      "severity": "MEDIUM",
+      "decision": "ALERT_AND_LOG",
+      "status": "ALERT_AND_LOG"
+    },
+    {
+      "resource": "housing-contracts-scan",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "severity": "HIGH",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "hr-onboarding-docs",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "severity": "HIGH",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "payroll-yearend-archive",
+      "rule": "S3_PUBLIC_ACCESS",
+      "severity": "CRITICAL",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "payroll-yearend-archive",
+      "rule": "S3_ENCRYPTION_DISABLED",
+      "severity": "HIGH",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "payroll-yearend-archive",
+      "rule": "S3_VERSIONING_DISABLED",
+      "severity": "MEDIUM",
+      "decision": "ALERT_AND_LOG",
+      "status": "ALERT_AND_LOG"
+    },
+    {
+      "resource": "payroll-yearend-archive",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "severity": "HIGH",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "alumni-giving-exports",
+      "rule": "S3_PUBLIC_ACCESS",
+      "severity": "CRITICAL",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "alumni-giving-exports",
+      "rule": "S3_VERSIONING_DISABLED",
+      "severity": "MEDIUM",
+      "decision": "ALERT_AND_LOG",
+      "status": "ALERT_AND_LOG"
+    },
+    {
+      "resource": "alumni-giving-exports",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "severity": "HIGH",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "research-irb-consents",
+      "rule": "S3_PUBLIC_ACCESS",
+      "severity": "CRITICAL",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "research-irb-consents",
+      "rule": "S3_VERSIONING_DISABLED",
+      "severity": "MEDIUM",
+      "decision": "ALERT_AND_LOG",
+      "status": "ALERT_AND_LOG"
+    },
+    {
+      "resource": "research-irb-consents",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "severity": "HIGH",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "research-irb-consents",
+      "rule": "S3_PUBLIC_ACL_EXPOSURE",
+      "severity": "CRITICAL",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "clinic-billing-extracts",
+      "rule": "S3_ENCRYPTION_DISABLED",
+      "severity": "HIGH",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "clinic-billing-extracts",
+      "rule": "S3_VERSIONING_DISABLED",
+      "severity": "MEDIUM",
+      "decision": "ALERT_AND_LOG",
+      "status": "ALERT_AND_LOG"
+    },
+    {
+      "resource": "clinic-billing-extracts",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "severity": "HIGH",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "library-patron-holds",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "severity": "HIGH",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "its-cloudtrail-archive",
+      "rule": "S3_VERSIONING_DISABLED",
+      "severity": "MEDIUM",
+      "decision": "ALERT_AND_LOG",
+      "status": "ALERT_AND_LOG"
+    },
+    {
+      "resource": "its-vpc-flow-logs",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "severity": "HIGH",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "its-config-snapshots",
+      "rule": "S3_ENCRYPTION_DISABLED",
+      "severity": "HIGH",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "its-config-snapshots",
+      "rule": "S3_VERSIONING_DISABLED",
+      "severity": "MEDIUM",
+      "decision": "ALERT_AND_LOG",
+      "status": "ALERT_AND_LOG"
+    },
+    {
+      "resource": "its-config-snapshots",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "severity": "HIGH",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "backup-rds-snapshots-s3",
+      "rule": "S3_PUBLIC_ACCESS",
+      "severity": "CRITICAL",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "backup-rds-snapshots-s3",
+      "rule": "S3_ENCRYPTION_DISABLED",
+      "severity": "HIGH",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "backup-rds-snapshots-s3",
+      "rule": "S3_VERSIONING_DISABLED",
+      "severity": "MEDIUM",
+      "decision": "ALERT_AND_LOG",
+      "status": "ALERT_AND_LOG"
+    },
+    {
+      "resource": "backup-rds-snapshots-s3",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "severity": "HIGH",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "backup-home-directories",
+      "rule": "S3_PUBLIC_ACCESS",
+      "severity": "CRITICAL",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "backup-home-directories",
+      "rule": "S3_VERSIONING_DISABLED",
+      "severity": "MEDIUM",
+      "decision": "ALERT_AND_LOG",
+      "status": "ALERT_AND_LOG"
+    },
+    {
+      "resource": "backup-home-directories",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "severity": "HIGH",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "analytics-clickstream-raw",
+      "rule": "S3_ENCRYPTION_DISABLED",
+      "severity": "HIGH",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "analytics-clickstream-raw",
+      "rule": "S3_VERSIONING_DISABLED",
+      "severity": "MEDIUM",
+      "decision": "ALERT_AND_LOG",
+      "status": "ALERT_AND_LOG"
+    },
+    {
+      "resource": "analytics-clickstream-raw",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "severity": "HIGH",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "analytics-sis-warehouse",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "severity": "HIGH",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "data-lake-landing-zone",
+      "rule": "S3_PUBLIC_ACCESS",
+      "severity": "CRITICAL",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "data-lake-landing-zone",
+      "rule": "S3_VERSIONING_DISABLED",
+      "severity": "MEDIUM",
+      "decision": "ALERT_AND_LOG",
+      "status": "ALERT_AND_LOG"
+    },
+    {
+      "resource": "data-lake-landing-zone",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "severity": "HIGH",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "ml-feature-store-staging",
+      "rule": "S3_ENCRYPTION_DISABLED",
+      "severity": "HIGH",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "ml-feature-store-staging",
+      "rule": "S3_VERSIONING_DISABLED",
+      "severity": "MEDIUM",
+      "decision": "ALERT_AND_LOG",
+      "status": "ALERT_AND_LOG"
+    },
+    {
+      "resource": "ml-feature-store-staging",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "severity": "HIGH",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "ci-artifacts-github-runners",
+      "rule": "S3_PUBLIC_ACCESS",
+      "severity": "CRITICAL",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "ci-artifacts-github-runners",
+      "rule": "S3_VERSIONING_DISABLED",
+      "severity": "MEDIUM",
+      "decision": "ALERT_AND_LOG",
+      "status": "ALERT_AND_LOG"
+    },
+    {
+      "resource": "ci-artifacts-github-runners",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "severity": "HIGH",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "ci-artifacts-github-runners",
+      "rule": "S3_PUBLIC_ACL_EXPOSURE",
+      "severity": "CRITICAL",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "ci-cache-npm-wheels",
+      "rule": "S3_VERSIONING_DISABLED",
+      "severity": "MEDIUM",
+      "decision": "ALERT_AND_LOG",
+      "status": "ALERT_AND_LOG"
+    },
+    {
+      "resource": "app-uploads-student-portal",
+      "rule": "S3_PUBLIC_ACCESS",
+      "severity": "CRITICAL",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "app-uploads-student-portal",
+      "rule": "S3_ENCRYPTION_DISABLED",
+      "severity": "HIGH",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "app-uploads-student-portal",
+      "rule": "S3_VERSIONING_DISABLED",
+      "severity": "MEDIUM",
+      "decision": "ALERT_AND_LOG",
+      "status": "ALERT_AND_LOG"
+    },
+    {
+      "resource": "app-uploads-student-portal",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "severity": "HIGH",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "app-static-marketing-site",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "severity": "HIGH",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "media-commencement-video",
+      "rule": "S3_ENCRYPTION_DISABLED",
+      "severity": "HIGH",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "media-commencement-video",
+      "rule": "S3_VERSIONING_DISABLED",
+      "severity": "MEDIUM",
+      "decision": "ALERT_AND_LOG",
+      "status": "ALERT_AND_LOG"
+    },
+    {
+      "resource": "media-commencement-video",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "severity": "HIGH",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "finance-1098t-batch",
+      "rule": "S3_PUBLIC_ACCESS",
+      "severity": "CRITICAL",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "finance-1098t-batch",
+      "rule": "S3_ENCRYPTION_DISABLED",
+      "severity": "HIGH",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "finance-1098t-batch",
+      "rule": "S3_VERSIONING_DISABLED",
+      "severity": "MEDIUM",
+      "decision": "ALERT_AND_LOG",
+      "status": "ALERT_AND_LOG"
+    },
+    {
+      "resource": "finance-1098t-batch",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "severity": "HIGH",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "legal-hold-ediscovery",
+      "rule": "S3_PUBLIC_ACCESS",
+      "severity": "CRITICAL",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "legal-hold-ediscovery",
+      "rule": "S3_VERSIONING_DISABLED",
+      "severity": "MEDIUM",
+      "decision": "ALERT_AND_LOG",
+      "status": "ALERT_AND_LOG"
+    },
+    {
+      "resource": "legal-hold-ediscovery",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "severity": "HIGH",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "vendor-sftp-dropbox",
+      "rule": "S3_PUBLIC_ACCESS",
+      "severity": "CRITICAL",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "vendor-sftp-dropbox",
+      "rule": "S3_VERSIONING_DISABLED",
+      "severity": "MEDIUM",
+      "decision": "ALERT_AND_LOG",
+      "status": "ALERT_AND_LOG"
+    },
+    {
+      "resource": "vendor-sftp-dropbox",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "severity": "HIGH",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "vendor-sftp-dropbox",
+      "rule": "S3_PUBLIC_ACL_EXPOSURE",
+      "severity": "CRITICAL",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "shared-scratch-sandbox",
+      "rule": "S3_PUBLIC_ACCESS",
+      "severity": "CRITICAL",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "shared-scratch-sandbox",
+      "rule": "S3_ENCRYPTION_DISABLED",
+      "severity": "HIGH",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "shared-scratch-sandbox",
+      "rule": "S3_VERSIONING_DISABLED",
+      "severity": "MEDIUM",
+      "decision": "ALERT_AND_LOG",
+      "status": "ALERT_AND_LOG"
+    },
+    {
+      "resource": "shared-scratch-sandbox",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "severity": "HIGH",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "old-glacier-restore-cache",
+      "rule": "S3_VERSIONING_DISABLED",
+      "severity": "MEDIUM",
+      "decision": "ALERT_AND_LOG",
+      "status": "ALERT_AND_LOG"
+    },
+    {
+      "resource": "observability-otel-export",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "severity": "HIGH",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "terraform-state-shared",
+      "rule": "S3_ENCRYPTION_DISABLED",
+      "severity": "HIGH",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "terraform-state-shared",
+      "rule": "S3_VERSIONING_DISABLED",
+      "severity": "MEDIUM",
+      "decision": "ALERT_AND_LOG",
+      "status": "ALERT_AND_LOG"
+    },
+    {
+      "resource": "terraform-state-shared",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "severity": "HIGH",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "lambda-deployment-zips",
+      "rule": "S3_VERSIONING_DISABLED",
+      "severity": "MEDIUM",
+      "decision": "ALERT_AND_LOG",
+      "status": "ALERT_AND_LOG"
+    },
+    {
+      "resource": "quarantine-macie-findings",
+      "rule": "S3_PUBLIC_ACCESS",
+      "severity": "CRITICAL",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "quarantine-macie-findings",
+      "rule": "S3_VERSIONING_DISABLED",
+      "severity": "MEDIUM",
+      "decision": "ALERT_AND_LOG",
+      "status": "ALERT_AND_LOG"
+    },
+    {
+      "resource": "quarantine-macie-findings",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "severity": "HIGH",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "dr-replica-us-west-exp",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "severity": "HIGH",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "tmp-data-science-scratch",
+      "rule": "S3_PUBLIC_ACCESS",
+      "severity": "CRITICAL",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "tmp-data-science-scratch",
+      "rule": "S3_ENCRYPTION_DISABLED",
+      "severity": "HIGH",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "tmp-data-science-scratch",
+      "rule": "S3_VERSIONING_DISABLED",
+      "severity": "MEDIUM",
+      "decision": "ALERT_AND_LOG",
+      "status": "ALERT_AND_LOG"
+    },
+    {
+      "resource": "tmp-data-science-scratch",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "severity": "HIGH",
+      "decision": "AUTO_REMEDIATE",
+      "status": "REMEDIATED"
+    }
+  ],
+  "remediations": [
+    {
+      "resource": "ferpa-remediation-results-cap",
+      "rule": "S3_PUBLIC_ACCESS",
+      "action": "S3_BLOCK_PUBLIC_ACCESS",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "ferpa-remediation-results-cap",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "action": "S3_ENFORCE_HTTPS",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "ferpa-student-record-demo-for-cap",
+      "rule": "S3_PUBLIC_ACCESS",
+      "action": "S3_BLOCK_PUBLIC_ACCESS",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "ferpa-student-record-demo-for-cap",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "action": "S3_ENFORCE_HTTPS",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "ferpa-transcripts-raw-east",
+      "rule": "S3_PUBLIC_ACCESS",
+      "action": "S3_BLOCK_PUBLIC_ACCESS",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "ferpa-transcripts-raw-east",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "action": "S3_ENFORCE_HTTPS",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "ferpa-enrollment-exports",
+      "rule": "S3_PUBLIC_ACCESS",
+      "action": "S3_BLOCK_PUBLIC_ACCESS",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "ferpa-enrollment-exports",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "action": "S3_ENFORCE_HTTPS",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "ferpa-advising-notes-2026",
+      "rule": "S3_PUBLIC_ACCESS",
+      "action": "S3_BLOCK_PUBLIC_ACCESS",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "ferpa-advising-notes-2026",
+      "rule": "S3_ENCRYPTION_DISABLED",
+      "action": "S3_ENABLE_DEFAULT_ENCRYPTION",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "ferpa-advising-notes-2026",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "action": "S3_ENFORCE_HTTPS",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "ferpa-financial-aid-packets",
+      "rule": "S3_PUBLIC_ACCESS",
+      "action": "S3_BLOCK_PUBLIC_ACCESS",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "ferpa-financial-aid-packets",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "action": "S3_ENFORCE_HTTPS",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "ferpa-financial-aid-packets",
+      "rule": "S3_PUBLIC_ACL_EXPOSURE",
+      "action": "S3_REMOVE_PUBLIC_ACL",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "campus-id-card-photos",
+      "rule": "S3_PUBLIC_ACCESS",
+      "action": "S3_BLOCK_PUBLIC_ACCESS",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "campus-id-card-photos",
+      "rule": "S3_ENCRYPTION_DISABLED",
+      "action": "S3_ENABLE_DEFAULT_ENCRYPTION",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "campus-id-card-photos",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "action": "S3_ENFORCE_HTTPS",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "registrar-degree-audit",
+      "rule": "S3_PUBLIC_ACCESS",
+      "action": "S3_BLOCK_PUBLIC_ACCESS",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "registrar-degree-audit",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "action": "S3_ENFORCE_HTTPS",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "housing-contracts-scan",
+      "rule": "S3_ENCRYPTION_DISABLED",
+      "action": "S3_ENABLE_DEFAULT_ENCRYPTION",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "housing-contracts-scan",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "action": "S3_ENFORCE_HTTPS",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "hr-onboarding-docs",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "action": "S3_ENFORCE_HTTPS",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "payroll-yearend-archive",
+      "rule": "S3_PUBLIC_ACCESS",
+      "action": "S3_BLOCK_PUBLIC_ACCESS",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "payroll-yearend-archive",
+      "rule": "S3_ENCRYPTION_DISABLED",
+      "action": "S3_ENABLE_DEFAULT_ENCRYPTION",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "payroll-yearend-archive",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "action": "S3_ENFORCE_HTTPS",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "alumni-giving-exports",
+      "rule": "S3_PUBLIC_ACCESS",
+      "action": "S3_BLOCK_PUBLIC_ACCESS",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "alumni-giving-exports",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "action": "S3_ENFORCE_HTTPS",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "research-irb-consents",
+      "rule": "S3_PUBLIC_ACCESS",
+      "action": "S3_BLOCK_PUBLIC_ACCESS",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "research-irb-consents",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "action": "S3_ENFORCE_HTTPS",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "research-irb-consents",
+      "rule": "S3_PUBLIC_ACL_EXPOSURE",
+      "action": "S3_REMOVE_PUBLIC_ACL",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "clinic-billing-extracts",
+      "rule": "S3_ENCRYPTION_DISABLED",
+      "action": "S3_ENABLE_DEFAULT_ENCRYPTION",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "clinic-billing-extracts",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "action": "S3_ENFORCE_HTTPS",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "library-patron-holds",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "action": "S3_ENFORCE_HTTPS",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "its-vpc-flow-logs",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "action": "S3_ENFORCE_HTTPS",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "its-config-snapshots",
+      "rule": "S3_ENCRYPTION_DISABLED",
+      "action": "S3_ENABLE_DEFAULT_ENCRYPTION",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "its-config-snapshots",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "action": "S3_ENFORCE_HTTPS",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "backup-rds-snapshots-s3",
+      "rule": "S3_PUBLIC_ACCESS",
+      "action": "S3_BLOCK_PUBLIC_ACCESS",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "backup-rds-snapshots-s3",
+      "rule": "S3_ENCRYPTION_DISABLED",
+      "action": "S3_ENABLE_DEFAULT_ENCRYPTION",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "backup-rds-snapshots-s3",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "action": "S3_ENFORCE_HTTPS",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "backup-home-directories",
+      "rule": "S3_PUBLIC_ACCESS",
+      "action": "S3_BLOCK_PUBLIC_ACCESS",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "backup-home-directories",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "action": "S3_ENFORCE_HTTPS",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "analytics-clickstream-raw",
+      "rule": "S3_ENCRYPTION_DISABLED",
+      "action": "S3_ENABLE_DEFAULT_ENCRYPTION",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "analytics-clickstream-raw",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "action": "S3_ENFORCE_HTTPS",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "analytics-sis-warehouse",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "action": "S3_ENFORCE_HTTPS",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "data-lake-landing-zone",
+      "rule": "S3_PUBLIC_ACCESS",
+      "action": "S3_BLOCK_PUBLIC_ACCESS",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "data-lake-landing-zone",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "action": "S3_ENFORCE_HTTPS",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "ml-feature-store-staging",
+      "rule": "S3_ENCRYPTION_DISABLED",
+      "action": "S3_ENABLE_DEFAULT_ENCRYPTION",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "ml-feature-store-staging",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "action": "S3_ENFORCE_HTTPS",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "ci-artifacts-github-runners",
+      "rule": "S3_PUBLIC_ACCESS",
+      "action": "S3_BLOCK_PUBLIC_ACCESS",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "ci-artifacts-github-runners",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "action": "S3_ENFORCE_HTTPS",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "ci-artifacts-github-runners",
+      "rule": "S3_PUBLIC_ACL_EXPOSURE",
+      "action": "S3_REMOVE_PUBLIC_ACL",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "app-uploads-student-portal",
+      "rule": "S3_PUBLIC_ACCESS",
+      "action": "S3_BLOCK_PUBLIC_ACCESS",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "app-uploads-student-portal",
+      "rule": "S3_ENCRYPTION_DISABLED",
+      "action": "S3_ENABLE_DEFAULT_ENCRYPTION",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "app-uploads-student-portal",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "action": "S3_ENFORCE_HTTPS",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "app-static-marketing-site",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "action": "S3_ENFORCE_HTTPS",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "media-commencement-video",
+      "rule": "S3_ENCRYPTION_DISABLED",
+      "action": "S3_ENABLE_DEFAULT_ENCRYPTION",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "media-commencement-video",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "action": "S3_ENFORCE_HTTPS",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "finance-1098t-batch",
+      "rule": "S3_PUBLIC_ACCESS",
+      "action": "S3_BLOCK_PUBLIC_ACCESS",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "finance-1098t-batch",
+      "rule": "S3_ENCRYPTION_DISABLED",
+      "action": "S3_ENABLE_DEFAULT_ENCRYPTION",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "finance-1098t-batch",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "action": "S3_ENFORCE_HTTPS",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "legal-hold-ediscovery",
+      "rule": "S3_PUBLIC_ACCESS",
+      "action": "S3_BLOCK_PUBLIC_ACCESS",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "legal-hold-ediscovery",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "action": "S3_ENFORCE_HTTPS",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "vendor-sftp-dropbox",
+      "rule": "S3_PUBLIC_ACCESS",
+      "action": "S3_BLOCK_PUBLIC_ACCESS",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "vendor-sftp-dropbox",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "action": "S3_ENFORCE_HTTPS",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "vendor-sftp-dropbox",
+      "rule": "S3_PUBLIC_ACL_EXPOSURE",
+      "action": "S3_REMOVE_PUBLIC_ACL",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "shared-scratch-sandbox",
+      "rule": "S3_PUBLIC_ACCESS",
+      "action": "S3_BLOCK_PUBLIC_ACCESS",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "shared-scratch-sandbox",
+      "rule": "S3_ENCRYPTION_DISABLED",
+      "action": "S3_ENABLE_DEFAULT_ENCRYPTION",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "shared-scratch-sandbox",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "action": "S3_ENFORCE_HTTPS",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "observability-otel-export",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "action": "S3_ENFORCE_HTTPS",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "terraform-state-shared",
+      "rule": "S3_ENCRYPTION_DISABLED",
+      "action": "S3_ENABLE_DEFAULT_ENCRYPTION",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "terraform-state-shared",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "action": "S3_ENFORCE_HTTPS",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "quarantine-macie-findings",
+      "rule": "S3_PUBLIC_ACCESS",
+      "action": "S3_BLOCK_PUBLIC_ACCESS",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "quarantine-macie-findings",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "action": "S3_ENFORCE_HTTPS",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "dr-replica-us-west-exp",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "action": "S3_ENFORCE_HTTPS",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "tmp-data-science-scratch",
+      "rule": "S3_PUBLIC_ACCESS",
+      "action": "S3_BLOCK_PUBLIC_ACCESS",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "tmp-data-science-scratch",
+      "rule": "S3_ENCRYPTION_DISABLED",
+      "action": "S3_ENABLE_DEFAULT_ENCRYPTION",
+      "verified": true,
+      "status": "REMEDIATED"
+    },
+    {
+      "resource": "tmp-data-science-scratch",
+      "rule": "S3_HTTPS_ENFORCEMENT_MISSING",
+      "action": "S3_ENFORCE_HTTPS",
+      "verified": true,
+      "status": "REMEDIATED"
+    }
+  ],
+  "audit_path": "var/audit/aspare.jsonl"
+}

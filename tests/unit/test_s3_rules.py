@@ -28,18 +28,13 @@ def test_public_access_secure_bucket_is_clean(policy_registry):
 
 
 def test_encryption_detects_missing_config(policy_registry):
-    finding = EncryptionDisabledRule(policy_registry.by_rule("S3_ENCRYPTION_DISABLED")).detect(
-        unencrypted_bucket()
-    )
+    finding = EncryptionDisabledRule(policy_registry.by_rule("S3_ENCRYPTION_DISABLED")).detect(unencrypted_bucket())
     assert finding is not None
     assert finding.severity.value == "HIGH"
 
 
 def test_encryption_accepts_aes256(policy_registry):
-    assert (
-        EncryptionDisabledRule(policy_registry.by_rule("S3_ENCRYPTION_DISABLED")).detect(secure_bucket())
-        is None
-    )
+    assert EncryptionDisabledRule(policy_registry.by_rule("S3_ENCRYPTION_DISABLED")).detect(secure_bucket()) is None
 
 
 def test_versioning_detects_disabled(policy_registry):
@@ -59,10 +54,7 @@ def test_https_detects_missing_deny(policy_registry):
 
 
 def test_https_secure_policy_is_clean(policy_registry):
-    assert (
-        HttpsEnforcementRule(policy_registry.by_rule("S3_HTTPS_ENFORCEMENT_MISSING")).detect(secure_bucket())
-        is None
-    )
+    assert HttpsEnforcementRule(policy_registry.by_rule("S3_HTTPS_ENFORCEMENT_MISSING")).detect(secure_bucket()) is None
 
 
 def test_acl_detects_all_users_grant(policy_registry):

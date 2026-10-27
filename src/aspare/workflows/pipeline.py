@@ -6,6 +6,7 @@ from dataclasses import dataclass, field
 
 from aspare.core.enums import RiskDecision
 from aspare.core.models import DetectionOutcome, Finding, RemediationOutcome
+from aspare.remediation.engine import safe_remediation_order
 from aspare.workflows.detection import DetectionWorkflow
 from aspare.workflows.publishers import InProcessPublisher
 from aspare.workflows.remediation import RemediationWorkflow
@@ -39,9 +40,11 @@ class Pipeline:
         remediations: list[RemediationOutcome] = []
         queued = list(self._publisher.published)
         self._publisher.published.clear()
-        for classified in detection.classified:
-            if classified.decision is RiskDecision.AUTO_REMEDIATE:
-                remediations.append(self._remediation.run(classified.finding))
+        ordered = safe_remediation_order([item.finding for item in detection.classified])
+        by_id = {item.finding.finding_id: item.decision for item in detection.classified}
+        for finding in ordered:
+            if by_id[finding.finding_id] is RiskDecision.AUTO_REMEDIATE:
+                remediations.append(self._remediation.run(finding))
         for finding in queued:
             if all(item.finding.finding_id != finding.finding_id for item in remediations):
                 remediations.append(self._remediation.run(finding))

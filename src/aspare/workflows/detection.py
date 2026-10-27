@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from aspare.audit.repository import build_record
 from aspare.core.enums import AuditAction, FindingStatus, RiskDecision
-from aspare.core.interfaces import AuditRepository, FindingPublisher
+from aspare.core.interfaces import AuditRepository, FindingAlerter, FindingPublisher
 from aspare.core.lifecycle import InvalidLifecycleTransition, status_for_decision, transition
 from aspare.core.models import ClassifiedFinding, DetectionOutcome, Finding, StorageEvent
 from aspare.detection.engine import DetectionEngine
@@ -23,6 +23,7 @@ class DetectionWorkflow:
         risk: RiskEvaluator,
         audit: AuditRepository,
         publisher: FindingPublisher,
+        alerter: FindingAlerter | None = None,
     ) -> None:
         self._normalizer = normalizer
         self._inventory = inventory
@@ -30,6 +31,7 @@ class DetectionWorkflow:
         self._risk = risk
         self._audit = audit
         self._publisher = publisher
+        self._alerter = alerter
         self._logger = get_logger("aspare.detection")
 
     def run_raw(self, raw_event: dict) -> DetectionOutcome:
@@ -138,4 +140,9 @@ class DetectionWorkflow:
         )
         if decision is RiskDecision.AUTO_REMEDIATE:
             self._publisher.publish(finding)
+        elif decision is RiskDecision.ALERT_AND_LOG and self._alerter is not None:
+            try:
+                self._alerter.alert(finding)
+            except Exception as exc:  # noqa: BLE001 - alerting must never abort detection
+                log_event(self._logger, "alert_failed", error=str(exc), resource=finding.resource_id)
         return ClassifiedFinding(finding=finding, decision=decision)

@@ -13,9 +13,7 @@ from aspare.s3.https_policy import HTTPS_SID, secure_transport_statement
 class EnforceHttpsAction:
     action_id = "S3_ENFORCE_HTTPS"
 
-    def __init__(
-        self, remediator: StorageRemediator, settings: Settings, gate: SafetyGate
-    ) -> None:
+    def __init__(self, remediator: StorageRemediator, settings: Settings, gate: SafetyGate) -> None:
         self._remediator = remediator
         self._settings = settings
         self._gate = gate
@@ -31,8 +29,6 @@ class EnforceHttpsAction:
             self._remediator,
             self._settings,
             self._gate,
-            lambda: self._remediator.merge_secure_transport_policy(
-                finding.resource_id, statement
-            ),
+            lambda: self._remediator.merge_secure_transport_policy(finding.resource_id, statement),
             f"Merged reviewed bucket-policy statement {HTTPS_SID}",
         )

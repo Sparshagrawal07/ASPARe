@@ -15,6 +15,7 @@
 | Detection/remediation IAM roles | Split read vs write |
 | EventBridge rules | Narrow S3 event names; optional hourly scan |
 | CloudWatch log groups | 30-day retained logs |
+| `aspare-alerts` SNS topic | E-mail alerts for findings that are not auto-remediated (`AlertEmail` parameter) |
 
 The Streamlit dashboard is **not** deployed. It reads local JSONL or the audit bucket from a workstation.
 
@@ -39,7 +40,7 @@ flowchart TB
 
 ## How it works
 
-1. Package `src/` (and `config/` via `ASPARE_POLICY_PATH`) into a zip, upload to `CodeBucket/CodeKey`.
+1. `scripts/package_lambda.sh` zips `src/aspare` + `config/` (the template sets `ASPARE_ROOT=/var/task` so policies resolve); `scripts/deploy.sh` uploads and deploys it. See [GOING_LIVE](../GOING_LIVE.md).
 2. Deploy the template with `AllowedBucketName` set to the demo bucket only.
 3. Leave `DetectionRuleState=DISABLED` until the demo tag and allowlist are confirmed.
 4. Enable CloudTrail management events in the account if they are not already flowing to the default bus.

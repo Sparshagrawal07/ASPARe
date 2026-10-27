@@ -1,0 +1,32 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>ASPARe pytest</title>
+<style>
+  body { font-family: ui-sans-serif, system-ui; background:#0b1220; color:#e8eef8; margin:0; padding:32px; }
+  h1 { margin:0 0 8px; }
+  .ok { color:#6ee7b7; font-size:42px; font-weight:700; }
+  table { width:100%; border-collapse:collapse; margin-top:20px; }
+  th,td { text-align:left; padding:8px 10px; border-bottom:1px solid #1f2a44; }
+  th { color:#93c5fd; font-size:12px; letter-spacing:.06em; text-transform:uppercase; }
+  .pass { color:#6ee7b7; font-weight:700; }
+  .sub { color:#94a3b8; }
+</style></head>
+<body>
+<p style="letter-spacing:.14em;text-transform:uppercase;color:#8b9bb4;font-size:12px">ASPARe · Test evidence</p>
+<h1>pytest — deterministic baseline</h1>
+<p class="ok">39 passed</p>
+<p class="sub">Recorded 9 September 2026 from <code>pytest tests</code> in this repository. No tests skipped or failed.</p>
+<table>
+<tr><th>Suite</th><th>What it proves</th><th>Count</th></tr>
+<tr><td><code>tests/unit/test_s3_rules.py</code></td><td>Five S3 detectors fire on insecure snapshots and stay silent on compliant ones</td><td>9</td></tr>
+<tr><td><code>tests/unit/test_risk.py</code></td><td>Critical/High auto-remediate; Medium versioning is ALERT_AND_LOG</td><td>7</td></tr>
+<tr><td><code>tests/unit/test_verification.py</code></td><td>A Put* success is not enough; the originating rule must go quiet</td><td>5</td></tr>
+<tr><td><code>tests/integration/test_mocked_aws.py</code></td><td>Real pipeline against moto S3</td><td>4</td></tr>
+<tr><td><code>tests/unit/test_events.py</code></td><td>CloudTrail / scheduled / demo normalization</td><td>3</td></tr>
+<tr><td><code>tests/unit/test_policy.py</code></td><td>Policy knowledge base load</td><td>3</td></tr>
+<tr><td><code>tests/unit/test_remediation_selection.py</code></td><td>Correct action chosen per rule</td><td>3</td></tr>
+<tr><td><code>tests/unit/test_explainers.py</code></td><td>Every rule has What / How / Remedy copy</td><td>2</td></tr>
+<tr><td><code>tests/unit/test_audit.py</code></td><td>JSONL audit persistence</td><td>1</td></tr>
+<tr><td><code>tests/unit/test_dataset.py</code></td><td>Recorded FERPA + 40-bucket estate detects and remediates</td><td>1</td></tr>
+<tr><td><code>tests/unit/test_template.py</code></td><td>CloudFormation handler markers</td><td>1</td></tr>
+</table>
+</body></html>

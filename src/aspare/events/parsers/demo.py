@@ -11,7 +11,7 @@ from aspare.core.timeutil import parse_timestamp, utcnow
 
 
 def parse_demo(raw: dict[str, Any]) -> StorageEvent:
-    detail = raw.get("detail") if isinstance(raw.get("detail"), dict) else raw
+    detail: dict[str, Any] = raw["detail"] if isinstance(raw.get("detail"), dict) else raw
     bucket = str(detail.get("bucket") or detail.get("resource_id") or raw.get("bucket") or "")
     if not bucket:
         raise ValueError("Direct/demo event is missing a bucket/resource_id")

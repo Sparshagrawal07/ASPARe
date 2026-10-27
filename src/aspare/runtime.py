@@ -30,7 +30,7 @@ from aspare.risk.evaluator import RiskEvaluator, RiskPolicy
 from aspare.verification.engine import VerificationEngine
 from aspare.workflows.detection import DetectionWorkflow
 from aspare.workflows.pipeline import Pipeline
-from aspare.workflows.publishers import EventBridgePublisher, InProcessPublisher
+from aspare.workflows.publishers import EventBridgePublisher, InProcessPublisher, SnsAlerter
 from aspare.workflows.remediation import RemediationWorkflow
 
 
@@ -53,9 +53,7 @@ def build_audit(settings: Settings, client: Any | None = None) -> AuditRepositor
     elif settings.audit_backend == "s3":
         if not settings.audit_bucket:
             raise ValueError("ASPARE_AUDIT_BUCKET is required for the s3 audit backend")
-        primary = S3AuditRepository(
-            client or s3_client(settings.region), settings.audit_bucket, settings.audit_prefix
-        )
+        primary = S3AuditRepository(client or s3_client(settings.region), settings.audit_bucket, settings.audit_prefix)
     else:
         primary = JsonlAuditRepository(settings.audit_path)
     return FallbackAuditRepository(primary)
@@ -66,6 +64,7 @@ def build_runtime(
     client: Any | None = None,
     publisher: FindingPublisher | None = None,
     events_client: Any | None = None,
+    sns_client: Any | None = None,
 ) -> Runtime:
     settings = settings or Settings.from_env()
     s3 = client or s3_client(settings.region)
@@ -86,10 +85,13 @@ def build_runtime(
             publisher = EventBridgePublisher(events, settings.event_bus_name)
         else:
             publisher = in_process
+    alerter: SnsAlerter | None = None
+    if settings.alert_topic_arn:
+        import boto3
+
+        alerter = SnsAlerter(sns_client or boto3.client("sns", region_name=settings.region), settings.alert_topic_arn)
     inventory = InventoryService(providers, settings)
-    detection_workflow = DetectionWorkflow(
-        EventNormalizer(), inventory, detection, risk, audit, publisher
-    )
+    detection_workflow = DetectionWorkflow(EventNormalizer(), inventory, detection, risk, audit, publisher, alerter)
     remediation_workflow = RemediationWorkflow(
         RemediationEngine(default_s3_actions(remediator, settings, SafetyGate(settings))),
         VerificationEngine(inspector, detection),
@@ -100,7 +102,7 @@ def build_runtime(
         pipeline = Pipeline(detection_workflow, remediation_workflow, publisher)
     else:
         pipeline = Pipeline(
-            DetectionWorkflow(EventNormalizer(), inventory, detection, risk, audit, pipeline_publisher),
+            DetectionWorkflow(EventNormalizer(), inventory, detection, risk, audit, pipeline_publisher, alerter),
             remediation_workflow,
             pipeline_publisher,
         )

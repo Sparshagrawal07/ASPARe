@@ -6,7 +6,7 @@ from aspare.audit.repository import build_record
 from aspare.core.enums import AuditAction, FindingStatus, VerificationOutcome
 from aspare.core.interfaces import AuditRepository
 from aspare.core.lifecycle import InvalidLifecycleTransition, transition
-from aspare.core.models import Finding, RemediationOutcome
+from aspare.core.models import Finding, RemediationActionResult, RemediationOutcome, VerificationResult
 from aspare.logging import get_logger, log_event
 from aspare.remediation.engine import RemediationEngine
 from aspare.verification.engine import VerificationEngine
@@ -23,6 +23,9 @@ class RemediationWorkflow:
         self._verification = verification
         self._audit = audit
         self._logger = get_logger("aspare.remediation")
+
+    def can_remediate(self, finding: Finding) -> bool:
+        return self._remediation.select(finding) is not None
 
     def run(self, finding: Finding) -> RemediationOutcome:
         self._safe_transition(finding, FindingStatus.PENDING_REMEDIATION)
@@ -62,7 +65,9 @@ class RemediationWorkflow:
             self._safe_transition(finding, FindingStatus.REMEDIATION_FAILED)
         return self._finish(finding, action_result, verification)
 
-    def _finish(self, finding, action_result, verification) -> RemediationOutcome:
+    def _finish(
+        self, finding: Finding, action_result: RemediationActionResult, verification: VerificationResult
+    ) -> RemediationOutcome:
         self._audit.append(
             build_record(
                 action=AuditAction.VERIFICATION_COMPLETED.value,

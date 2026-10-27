@@ -12,9 +12,7 @@ from aspare.remediation.safety import SafetyGate
 class RemovePublicAclAction:
     action_id = "S3_REMOVE_PUBLIC_ACL"
 
-    def __init__(
-        self, remediator: StorageRemediator, settings: Settings, gate: SafetyGate
-    ) -> None:
+    def __init__(self, remediator: StorageRemediator, settings: Settings, gate: SafetyGate) -> None:
         self._remediator = remediator
         self._settings = settings
         self._gate = gate
