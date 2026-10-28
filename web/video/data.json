@@ -1,0 +1,239 @@
+{
+ "generatedBy": "web/api/_lib/service.py (the live demo engine) at video build time",
+ "summary": {
+  "total": 14,
+  "auto": 7,
+  "held": 2,
+  "escalations": 3
+ },
+ "incident": {
+  "id": "inc-actor-55382905",
+  "kind": "actor-campaign",
+  "resource": "*",
+  "severity": "CRITICAL",
+  "summary": "arn:aws:iam::123456789012:root caused anomalous changes on 3 buckets: possible credential misuse.",
+  "count": 10
+ },
+ "resources": [
+  {
+   "name": "ferpa-transcripts-prod",
+   "cloud": "aws",
+   "tags": {
+    "ASPAReDemo": "true",
+    "DataClass": "FERPA",
+    "Environment": "prod"
+   },
+   "controls": {
+    "publicBlocked": false,
+    "encrypted": true,
+    "versioning": false,
+    "https": false,
+    "publicGrant": false
+   }
+  },
+  {
+   "name": "campus-marketing-site",
+   "cloud": "aws",
+   "tags": {
+    "ASPAReDemo": "true",
+    "DataClass": "PUBLIC",
+    "Purpose": "marketing",
+    "Environment": "prod"
+   },
+   "controls": {
+    "publicBlocked": false,
+    "encrypted": true,
+    "versioning": true,
+    "https": true,
+    "publicGrant": true
+   }
+  },
+  {
+   "name": "ci-build-cache",
+   "cloud": "aws",
+   "tags": {
+    "ASPAReDemo": "true",
+    "DataClass": "INTERNAL",
+    "Purpose": "ci-cache",
+    "Environment": "dev"
+   },
+   "controls": {
+    "publicBlocked": true,
+    "encrypted": true,
+    "versioning": false,
+    "https": true,
+    "publicGrant": false
+   }
+  },
+  {
+   "name": "payroll-archive",
+   "cloud": "aws",
+   "tags": {
+    "ASPAReDemo": "true",
+    "DataClass": "FINANCIAL",
+    "Environment": "prod"
+   },
+   "controls": {
+    "publicBlocked": true,
+    "encrypted": true,
+    "versioning": true,
+    "https": true,
+    "publicGrant": false
+   }
+  },
+  {
+   "name": "studentportalprod",
+   "cloud": "azure",
+   "tags": {
+    "ASPAReDemo": "true",
+    "DataClass": "PII",
+    "Environment": "prod"
+   },
+   "controls": {
+    "publicBlocked": false,
+    "encrypted": true,
+    "versioning": false,
+    "https": false,
+    "publicGrant": true
+   }
+  },
+  {
+   "name": "research-irb-consents",
+   "cloud": "gcp",
+   "tags": {
+    "ASPAReDemo": "true",
+    "DataClass": "PHI",
+    "Environment": "prod"
+   },
+   "controls": {
+    "publicBlocked": false,
+    "encrypted": true,
+    "versioning": false,
+    "https": null,
+    "publicGrant": true
+   }
+  },
+  {
+   "name": "ml-scratch-bucket",
+   "cloud": "gcp",
+   "tags": {
+    "ASPAReDemo": "true",
+    "DataClass": "INTERNAL",
+    "Purpose": "scratch",
+    "Environment": "dev"
+   },
+   "controls": {
+    "publicBlocked": true,
+    "encrypted": true,
+    "versioning": false,
+    "https": null,
+    "publicGrant": false
+   }
+  }
+ ],
+ "ferpa": {
+  "title": "Public Access Block is incomplete",
+  "severity": "CRITICAL",
+  "decision": "AUTO_REMEDIATE",
+  "confidence": 0.984,
+  "priority": 190.6,
+  "reasons": [
+   "Control was read directly from the cloud API.",
+   "[sensitive-data-exposure] Bucket holds a regulated data class, so the same weakness has a larger blast radius.",
+   "[production-environment] Production environment.",
+   "Behavioural evidence corroborates the finding (anomaly score 0.91)."
+  ],
+  "ruleOnlyDecision": "AUTO_REMEDIATE",
+  "anomaly": {
+   "score": 0.9052,
+   "signals": [
+    {
+     "name": "privileged_actor",
+     "value": 1.0,
+     "explanation": "Change made with root credentials, which should never be used for routine work."
+    },
+    {
+     "name": "risky_action",
+     "value": 1.0,
+     "explanation": "PutBucketPublicAccessBlock can weaken the bucket's security posture."
+    },
+    {
+     "name": "off_hours",
+     "value": 0.7,
+     "explanation": "Hour 03:00 UTC is outside default working hours (7-21)."
+    }
+   ]
+  }
+ },
+ "marketing": {
+  "title": "Public Access Block is incomplete",
+  "severity": "CRITICAL",
+  "decision": "ALERT_AND_LOG",
+  "confidence": 0.52,
+  "priority": 62.4,
+  "reasons": [
+   "Control was read directly from the cloud API.",
+   "[intended-public-content] Bucket is tagged DataClass=PUBLIC, so public readability may be intentional. ASPARe alerts instead of auto-blocking.",
+   "[production-environment] Production environment."
+  ],
+  "ruleOnlyDecision": "AUTO_REMEDIATE"
+ },
+ "outcome": {
+  "findingId": "fnd-a2d9554c48b7604b",
+  "resource": "ferpa-transcripts-prod",
+  "cloud": "aws",
+  "rule": "S3_PUBLIC_ACCESS",
+  "action": "S3_BLOCK_PUBLIC_ACCESS",
+  "verified": true,
+  "verification": "VERIFIED",
+  "message": "Originating detector no longer reports a finding",
+  "before": [
+   "Public Access Block: 0/4 flags on",
+   "Default encryption: AES256",
+   "Versioning: disabled",
+   "Bucket policy: none",
+   "ACL grants: 1 (0 public)"
+  ],
+  "after": [
+   "Public Access Block: 4/4 flags on",
+   "Default encryption: AES256",
+   "Versioning: disabled",
+   "Bucket policy: present",
+   "ACL grants: 1 (0 public)"
+  ]
+ },
+ "audit": [
+  {
+   "action": "REMEDIATION_EXECUTED",
+   "result": "SUCCESS",
+   "resource": "ferpa-transcripts-prod",
+   "rule": "S3_HTTPS_ENFORCEMENT_MISSING"
+  },
+  {
+   "action": "VERIFICATION_COMPLETED",
+   "result": "VERIFIED",
+   "resource": "ferpa-transcripts-prod",
+   "rule": "S3_HTTPS_ENFORCEMENT_MISSING"
+  },
+  {
+   "action": "REMEDIATION_EXECUTED",
+   "result": "SUCCESS",
+   "resource": "ferpa-transcripts-prod",
+   "rule": "S3_PUBLIC_ACCESS"
+  },
+  {
+   "action": "VERIFICATION_COMPLETED",
+   "result": "VERIFIED",
+   "resource": "ferpa-transcripts-prod",
+   "rule": "S3_PUBLIC_ACCESS"
+  }
+ ],
+ "issuesByResource": {
+  "ferpa-transcripts-prod": 3,
+  "azure://studentportalprod": 4,
+  "gcs://research-irb-consents": 3,
+  "campus-marketing-site": 2,
+  "ci-build-cache": 1,
+  "gcs://ml-scratch-bucket": 1
+ }
+}

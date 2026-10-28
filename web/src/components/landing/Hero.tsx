@@ -1,11 +1,11 @@
 "use client";
 
-import { ArrowRight, BadgeCheck, ShieldAlert } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import BlurText from "@/components/reactbits/BlurText";
 import CountUp from "@/components/reactbits/CountUp";
 import Magnet from "@/components/reactbits/Magnet";
-import { Mascot } from "@/components/Logo";
 import { ButtonLink } from "@/components/ui";
+import { HeroVideo } from "./HeroVideo";
 
 const STATS = [
   { to: 3, label: "clouds, one engine", suffix: "", tone: "bg-peri-100" },
@@ -28,7 +28,7 @@ export function Hero() {
       <div className="pointer-events-none absolute -right-24 -top-24 h-[420px] w-[420px] rounded-full bg-sun/60" aria-hidden="true" />
       <div className="pointer-events-none absolute -left-20 bottom-10 h-56 w-56 rounded-full bg-sky/40" aria-hidden="true" />
 
-      <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-5 pb-16 pt-14 lg:grid-cols-[1.15fr_1fr] lg:pt-20">
+      <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-5 pb-16 pt-14 lg:grid-cols-[1fr_1.1fr] lg:pt-20">
         <div>
           <span className="inline-flex -rotate-2 items-center gap-2 rounded-full border-2 border-ink bg-mint px-4 py-1.5 text-sm font-extrabold">
             <span className="h-2.5 w-2.5 rounded-full bg-ink" aria-hidden="true" />
@@ -58,32 +58,7 @@ export function Hero() {
           <p className="mt-5 text-sm font-medium text-muted">No cloud keys stored. Read-only unless you say otherwise.</p>
         </div>
 
-        <div className="relative mx-auto w-full max-w-md" aria-label="Illustration: an exposed bucket becomes a protected bucket">
-          <div className="card float -rotate-2 bg-coral-100 p-5" style={{ ["--r" as string]: "-2deg" }}>
-            <div className="flex items-center gap-2">
-              <ShieldAlert size={20} className="text-bad" aria-hidden="true" />
-              <span className="text-xs font-extrabold uppercase tracking-wider text-bad">Exposed</span>
-            </div>
-            <p className="mt-2 font-mono text-sm font-bold">student-transcripts-prod</p>
-            <p className="mt-1 text-sm text-muted">Public access block switched off by root at 03:00 UTC.</p>
-          </div>
-          <div className="relative z-10 -mt-3 ml-10 mr-0 rotate-2 pb-8">
-            <div className="card bg-mint-100 p-5">
-              <div className="flex items-center gap-2">
-                <BadgeCheck size={20} className="text-ok" aria-hidden="true" />
-                <span className="text-xs font-extrabold uppercase tracking-wider text-ok">Fixed and verified</span>
-              </div>
-              <p className="mt-2 font-mono text-sm font-bold">student-transcripts-prod</p>
-              <p className="mt-1 text-sm text-muted">Re-read from the cloud: all four public-access flags are on.</p>
-            </div>
-          </div>
-          <div className="absolute -bottom-14 right-2 z-20">
-            <Mascot size={118} mood="wink" />
-          </div>
-          <div className="absolute -right-3 -top-6 -rotate-6 rounded-xl border-2 border-ink bg-sun px-3 py-1.5 text-sm font-extrabold shadow-pop">
-            0 keys stored
-          </div>
-        </div>
+        <HeroVideo />
       </div>
 
       <dl className="relative mx-auto grid max-w-6xl grid-cols-2 gap-4 px-5 pb-16 sm:grid-cols-4">
