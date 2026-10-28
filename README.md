@@ -60,6 +60,21 @@ Live AWS is opt-in and **creates its own uniquely named bucket**:
 python -m aspare.cli --mode live --confirm ASPARE-LIVE-DEMO --cleanup
 ```
 
+## Live terminal walkthrough
+
+A colourful, real-time view of every stage (connect, inventory, detect, decide, explain, remediate, verify, audit):
+
+```bash
+pip install -e ".[dev]"                        # includes rich
+python -m aspare.terminal --mode demo --fix --yes   # simulated estate, no AWS account needed
+python -m aspare.terminal --mode aws                # read-only scan of your own AWS account
+python -m aspare.terminal --mode aws --seed --fix --cleanup   # create, fix and delete a throwaway bucket
+```
+
+AWS mode uses your normal credentials (`aws configure`, `aws sso login`, or `--profile`). It is read-only unless you pass
+`--fix`, and fixes only touch buckets that pass the safety gate (tagged `ASPAReDemo=true`, and listed in `--allow` when
+given). Each fix is confirmed unless `--yes` is set. Use a terminal at least 100 columns wide.
+
 ## Architecture
 
 ```mermaid

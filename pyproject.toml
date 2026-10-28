@@ -16,7 +16,11 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+cli = [
+    "rich>=13.7",
+]
 dev = [
+    "rich>=13.7",
     "pytest>=8.0",
     "moto[s3]>=5.0",
     "ruff>=0.8",
@@ -43,6 +47,7 @@ all = [
 
 [project.scripts]
 aspare-demo = "aspare.cli:main"
+aspare-terminal = "aspare.terminal:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
